@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f4f6f5;
+  color: #14213d;
+  font-feature-settings: "tnum" 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid #2443b8;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Long-form copy (privacy, how-it-works detail). */
+.prose-fit h2 {
+  @apply mt-12 font-display text-2xl font-semibold text-ink;
+}
+.prose-fit h3 {
+  @apply mt-8 text-lg font-semibold text-ink;
+}
+.prose-fit p,
+.prose-fit li {
+  @apply mt-4 max-w-[68ch] leading-relaxed text-ink-soft;
+}
+.prose-fit ul {
+  @apply mt-2 list-disc pl-5;
+}
+.prose-fit a {
+  @apply text-cobalt underline underline-offset-2 hover:text-cobalt-deep;
+}

@@ -1,0 +1,31 @@
+// Fails the build if a sitemap URL has no page in out/, or a page is missing its canonical.
+import { readFileSync, existsSync } from "node:fs";
+import { join } from "node:path";
+
+const OUT = "out";
+const xml = readFileSync(join(OUT, "sitemap.xml"), "utf8");
+const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+const problems = [];
+
+for (const url of urls) {
+  const path = new URL(url).pathname;
+  const file = join(OUT, path, "index.html");
+  if (!existsSync(file)) {
+    problems.push(`missing page for ${url}`);
+    continue;
+  }
+  const html = readFileSync(file, "utf8");
+  if (!html.includes(`<link rel="canonical" href="${url}"`)) problems.push(`canonical mismatch on ${url}`);
+  if (/<meta name="robots" content="[^"]*noindex/.test(html)) problems.push(`noindex page in sitemap: ${url}`);
+  if ((html.match(/<h1[\s>]/g) ?? []).length !== 1) problems.push(`expected exactly one h1 on ${url}`);
+}
+
+for (const f of ["robots.txt", "llms.txt", "llms-full.txt", "CNAME"]) {
+  if (!existsSync(join(OUT, f))) problems.push(`missing ${f}`);
+}
+
+if (problems.length) {
+  console.error(`verify-sitemap: ${problems.length} problem(s)\n- ${problems.join("\n- ")}`);
+  process.exit(1);
+}
+console.log(`verify-sitemap: OK — ${urls.length} URLs resolve, each with its canonical and one h1.`);

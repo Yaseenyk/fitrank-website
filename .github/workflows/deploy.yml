@@ -1,0 +1,71 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: npm
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://fitrank.streamerosai.com
+      - run: touch ./out/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Tell IndexNow (Bing, Yandex, Seznam…) the site changed
+        run: |
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "fitrank.streamerosai.com",
+              "key": "dd6e5bfaee2b2bbb2106aa7438b78078",
+              "keyLocation": "https://fitrank.streamerosai.com/dd6e5bfaee2b2bbb2106aa7438b78078.txt",
+              "urlList": [
+                "https://fitrank.streamerosai.com/",
+                "https://fitrank.streamerosai.com/features/",
+                "https://fitrank.streamerosai.com/use-cases/",
+                "https://fitrank.streamerosai.com/pricing/",
+                "https://fitrank.streamerosai.com/how-it-works/",
+                "https://fitrank.streamerosai.com/security/",
+                "https://fitrank.streamerosai.com/results/",
+                "https://fitrank.streamerosai.com/early-access/"
+              ]
+            }' || true

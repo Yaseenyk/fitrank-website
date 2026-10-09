@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
-import { siteGraphJsonLd } from "@/lib/seo";
+import { shareImage, siteGraphJsonLd } from "@/lib/seo";
 import { MAKER, PRODUCT, SITE_DESCRIPTION, SITE_URL, VERIFICATION } from "@/lib/site";
 
 // One family, as in the app: weights carry the hierarchy.
@@ -57,9 +57,9 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/`,
     title: "FitRank: AI staffing recommendations your managers can check",
     description: SITE_DESCRIPTION,
-    images: [{ url: `${SITE_URL}/og.png`, width: 1200, height: 630, alt: OG_ALT }],
+    images: [shareImage("", OG_ALT)],
   },
-  twitter: { card: "summary_large_image", images: [`${SITE_URL}/og.png`] },
+  twitter: { card: "summary_large_image", images: [shareImage("", OG_ALT)] },
   robots: { index: true, follow: true, googleBot: { "max-image-preview": "large", "max-snippet": -1 } },
   verification: {
     ...(VERIFICATION.google ? { google: VERIFICATION.google } : {}),

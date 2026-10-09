@@ -2,8 +2,6 @@
 // Alt text says what is on the screen, not the marketing line next to it.
 // Each shot has a phone version: the app's own mobile layout, cropped to its top.
 
-import { SITE_URL } from "@/lib/site";
-
 export type ShotSource = { src: string; width: number; height: number };
 export type Shot = ShotSource & { alt: string; caption: string; mobile: ShotSource };
 
@@ -51,9 +49,3 @@ export const SHOTS = {
 } satisfies Record<string, Shot>;
 
 export type ShotKey = keyof typeof SHOTS;
-
-/** 1200×630 JPEG crop of a shot for social previews (some networks don't render WebP). */
-export function ogImage(shot: Shot) {
-  const path = shot.src.replace("/screenshots/", "/og/").replace(".webp", ".jpg");
-  return { url: `${SITE_URL}${path}`, width: 1200, height: 630, alt: shot.alt };
-}

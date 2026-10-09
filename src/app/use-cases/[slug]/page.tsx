@@ -5,7 +5,7 @@ import ProductShot from "@/components/ProductShot";
 import { Breadcrumbs, Container, CtaBand, FeatureCard, PrimaryLink, SecondaryLink } from "@/components/Blocks";
 import { USE_CASES } from "@/lib/content";
 import { featurePage } from "@/lib/features";
-import { SHOTS, ogImage } from "@/lib/shots";
+import { SHOTS } from "@/lib/shots";
 import { PRODUCT_ID, breadcrumbJsonLd, canonicalUrl, pageMetadata, personRef, webPageJsonLd } from "@/lib/seo";
 
 export const dynamicParams = false;
@@ -17,13 +17,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const u = USE_CASES.find((x) => x.slug === params.slug);
   if (!u) return {};
-  const s = SHOTS[u.shot];
-  return pageMetadata({
-    title: u.title,
-    description: u.description,
-    path: `use-cases/${u.slug}`,
-    image: ogImage(s),
-  });
+  return pageMetadata({ title: u.title, description: u.description, path: `use-cases/${u.slug}` });
 }
 
 export default function UseCasePage({ params }: { params: { slug: string } }) {

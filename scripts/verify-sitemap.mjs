@@ -10,6 +10,8 @@ const xml = readFileSync(join(OUT, "sitemap.xml"), "utf8");
 const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 const problems = [];
 
+const origin = new URL(urls[0]).origin;
+
 for (const url of urls) {
   const path = local(new URL(url).pathname);
   const file = join(OUT, path, "index.html");
@@ -29,11 +31,14 @@ for (const url of urls) {
   }
   const title = html.match(/<title>([^<]*)<\/title>/)?.[1] ?? "";
   if (title.length > 65) problems.push(`title over 65 characters on ${url}: ${title}`);
+  const og = html.match(/<meta property="og:image" content="([^"]*)"/)?.[1];
+  if (!og) problems.push(`no share image on ${url}`);
+  else if (og.startsWith(origin) && !existsSync(join(OUT, local(new URL(og).pathname)))) problems.push(`share image missing for ${url}: ${og} (run scripts/generate-images.py)`);
   const desc = html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? "";
   if (desc.length < 50 || desc.length > 160) problems.push(`description is ${desc.length} characters on ${url}`);
 }
 
-for (const f of ["robots.txt", "llms.txt", "llms-full.txt", "image-sitemap.xml", "CNAME"]) {
+for (const f of ["robots.txt", "llms.txt", "llms-full.txt", "image-sitemap.xml", "CNAME", "favicon.ico", "manifest.webmanifest", "logo.png"]) {
   if (!existsSync(join(OUT, f))) problems.push(`missing ${f}`);
 }
 

@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import { FEATURE_GROUPS } from "@/lib/content";
+import { SHOTS } from "@/lib/shots";
 import { MAKER, PRODUCT, SITE_DESCRIPTION, SITE_URL, CONTACT } from "@/lib/site";
 
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 export const PRODUCT_ID = `${SITE_URL}/#product`;
+export const ORG_ID = `${SITE_URL}/#organization`;
 export const personRef = { "@id": MAKER.id };
 
 const DESCRIPTION_MAX = 155;
@@ -24,32 +27,45 @@ export function seoDescription(text: string): string {
   return cut.slice(0, cut.lastIndexOf(" ")) + "…";
 }
 
+/** The page's share card (1200x630), made by scripts/generate-images.py from the built page. */
+export function shareImage(path: string, alt: string) {
+  const slug = path.replace(/^\/+|\/+$/g, "").replace(/\//g, "-") || "home";
+  return { url: `${SITE_URL}/og/pages/${slug}.jpg`, width: 1200, height: 630, alt };
+}
+
 /** Per-page metadata: canonical, Open Graph and Twitter all from one call. */
 export function pageMetadata({
   title,
   description,
   path,
   absoluteTitle = false,
-  image,
 }: {
   title: string;
   description: string;
   path: string;
   absoluteTitle?: boolean;
-  /** Share image; defaults to the site card. Feature pages pass their own screenshot. */
-  image?: { url: string; width: number; height: number; alt: string };
 }): Metadata {
   const desc = seoDescription(description);
   const url = canonicalUrl(path);
-  const og = image ?? { url: `${SITE_URL}/og.png`, width: 1200, height: 630, alt: title };
+  const og = shareImage(path, title);
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description: desc,
     alternates: { canonical: url },
     openGraph: { type: "website", title, description: desc, url, siteName: PRODUCT, images: [og] },
-    twitter: { card: "summary_large_image", title, description: desc, images: [og.url] },
+    twitter: { card: "summary_large_image", title, description: desc, images: [og] },
   };
 }
+
+const imageObject = (s: { src: string; width: number; height: number; alt: string; caption: string }) => ({
+  "@type": "ImageObject",
+  contentUrl: `${SITE_URL}${s.src}`,
+  url: `${SITE_URL}${s.src}`,
+  width: s.width,
+  height: s.height,
+  caption: s.caption,
+  description: s.alt,
+});
 
 /** A page about the product, with its screenshots as ImageObjects (image search + AI answers). */
 export function webPageJsonLd({
@@ -63,15 +79,7 @@ export function webPageJsonLd({
   description: string;
   shots: { src: string; width: number; height: number; alt: string; caption: string }[];
 }) {
-  const images = shots.map((s) => ({
-    "@type": "ImageObject",
-    contentUrl: `${SITE_URL}${s.src}`,
-    url: `${SITE_URL}${s.src}`,
-    width: s.width,
-    height: s.height,
-    caption: s.caption,
-    description: s.alt,
-  }));
+  const images = shots.map(imageObject);
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -106,12 +114,32 @@ export const siteGraphJsonLd = {
       },
     },
     {
+      // The brand: its logo is what search engines show next to results.
+      "@type": "Organization",
+      "@id": ORG_ID,
+      name: PRODUCT,
+      url: `${SITE_URL}/`,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png`, width: 512, height: 512 },
+      image: `${SITE_URL}/og/pages/home.jpg`,
+      description: SITE_DESCRIPTION,
+      founder: personRef,
+      email: CONTACT.email,
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: CONTACT.email,
+        telephone: CONTACT.phoneHref.replace("tel:", ""),
+        availableLanguage: ["English"],
+        url: canonicalUrl("contact"),
+      },
+    },
+    {
       "@type": "WebSite",
       "@id": WEBSITE_ID,
       url: `${SITE_URL}/`,
       name: PRODUCT,
       description: SITE_DESCRIPTION,
-      publisher: personRef,
+      publisher: { "@id": ORG_ID },
       inLanguage: "en",
     },
     {
@@ -124,13 +152,16 @@ export const siteGraphJsonLd = {
       operatingSystem: "Web",
       description: SITE_DESCRIPTION,
       author: personRef,
-      publisher: personRef,
+      publisher: { "@id": ORG_ID },
+      image: `${SITE_URL}${SHOTS.dashboard.src}`,
+      screenshot: [SHOTS.dashboard, SHOTS.run, SHOTS.runTrail, SHOTS.bench, SHOTS.candidate, SHOTS.models].map(imageObject),
+      featureList: FEATURE_GROUPS.flatMap((g) => g.features.map((f) => f.name)),
       offers: {
         "@type": "Offer",
         category: "Annual subscription",
         availability: "https://schema.org/PreOrder",
         url: canonicalUrl("pricing"),
-        seller: personRef,
+        seller: { "@id": ORG_ID },
       },
     },
   ],

@@ -11,6 +11,9 @@ npm install
 npm run dev     # http://localhost:3000
 npm run build   # static site in ./out, then checks every sitemap URL: canonical, one h1, image alt text, title and description length
 npm run lint
+
+# after changing page titles or screenshots: icons + one share card per page
+npm run build && python scripts/generate-images.py && npm run build
 ```
 
 ## Where things live
@@ -22,7 +25,7 @@ npm run lint
 - `src/lib/seo.ts`: metadata helper, canonical URLs, JSON-LD (Person, WebSite, SoftwareApplication, BreadcrumbList, FAQPage).
 - `src/lib/routes.ts`: every indexable page; the sitemap is built from it.
 - `src/components/LeadForm.tsx`: pre-register / contact-sales form, sent with EmailJS (same account as the portfolio).
-- `public/og.png`: share image (1200×630).
+- `public/og/pages/<slug>.jpg`: each page's share card (1200×630: its h1, section and hero screenshot), and the icons (`src/app/favicon.ico`, `apple-icon.png`, `public/icon-192.png`, `icon-512.png`, `logo.png`), all made by `scripts/generate-images.py` (Pillow, Figtree font under OFL in `scripts/fonts/`). The build fails if a page's card is missing.
 
 ## SEO and AI search
 
@@ -30,6 +33,8 @@ npm run lint
 - JSON-LD entity graph linked to the portfolio's Person `@id`.
 - `robots.txt` explicitly allows AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, …).
 - `/llms.txt` and `/llms-full.txt` give answer engines the whole site as plain text, including every capability page and what its screenshots show.
+- JSON-LD: Organization (logo, sales contact), WebSite, SoftwareApplication (screenshots, every feature in `featureList`), and per page WebPage, BreadcrumbList, FAQPage or HowTo.
+- Favicon set (ICO, SVG, Apple touch icon) and a web app manifest.
 - `/image-sitemap.xml` (listed in `robots.txt`) lists every screenshot per page; pages carry `WebPage` JSON-LD with the screenshots as `ImageObject`s.
 - IndexNow ping after each deploy (key file in `public/`).
 

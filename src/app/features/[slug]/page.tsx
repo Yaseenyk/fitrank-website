@@ -6,7 +6,7 @@ import { Breadcrumbs, Container, CtaBand, FaqList, PrimaryLink, SecondaryLink } 
 import { CheckIcon } from "@/components/Bits";
 import { FEATURE_GROUPS, USE_CASES } from "@/lib/content";
 import { FEATURE_BY_NAME, FEATURE_PAGES, featurePage } from "@/lib/features";
-import { SHOTS, ogImage } from "@/lib/shots";
+import { SHOTS } from "@/lib/shots";
 import { breadcrumbJsonLd, faqPageJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const dynamicParams = false;
@@ -18,13 +18,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const p = featurePage(params.slug);
   if (!p) return {};
-  const hero = p.shots[0] ? SHOTS[p.shots[0]] : undefined;
-  return pageMetadata({
-    title: p.metaTitle,
-    description: p.description,
-    path: `features/${p.slug}`,
-    image: hero && ogImage(hero),
-  });
+  return pageMetadata({ title: p.metaTitle, description: p.description, path: `features/${p.slug}` });
 }
 
 const API_EXAMPLE = `POST /api/v1/decide

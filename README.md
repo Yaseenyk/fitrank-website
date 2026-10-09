@@ -9,13 +9,15 @@ Next.js 14 (App Router, static export), TypeScript, Tailwind. Deployed to GitHub
 ```bash
 npm install
 npm run dev     # http://localhost:3000
-npm run build   # static site in ./out, then checks every sitemap URL, canonical and h1
+npm run build   # static site in ./out, then checks every sitemap URL: canonical, one h1, image alt text, title and description length
 npm run lint
 ```
 
 ## Where things live
 
 - `src/lib/content.ts`: all product copy (features, use cases, benchmarks, plans, FAQs). Pages, JSON-LD, `llms.txt` and `llms-full.txt` read from it, so edit content here.
+- `src/lib/features.ts`: one page per capability (`/features/<slug>/`). Every feature in `content.ts` belongs to exactly one page.
+- `src/lib/shots.ts` + `public/screenshots/`: real app captures on synthetic demo data (desktop WebP + phone crop `-m.webp`), with alt text. `public/og/` holds 1200×630 JPEG crops used as share images.
 - `src/lib/site.ts`: site URL, contact details, search-console verification tokens.
 - `src/lib/seo.ts`: metadata helper, canonical URLs, JSON-LD (Person, WebSite, SoftwareApplication, BreadcrumbList, FAQPage).
 - `src/lib/routes.ts`: every indexable page; the sitemap is built from it.
@@ -27,7 +29,8 @@ npm run lint
 - Canonical URLs with trailing slashes, Open Graph and Twitter cards on every page.
 - JSON-LD entity graph linked to the portfolio's Person `@id`.
 - `robots.txt` explicitly allows AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, …).
-- `/llms.txt` and `/llms-full.txt` give answer engines the whole site as plain text.
+- `/llms.txt` and `/llms-full.txt` give answer engines the whole site as plain text, including every capability page and what its screenshots show.
+- `/image-sitemap.xml` (listed in `robots.txt`) lists every screenshot per page; pages carry `WebPage` JSON-LD with the screenshots as `ImageObject`s.
 - IndexNow ping after each deploy (key file in `public/`).
 
 ## One-time setup

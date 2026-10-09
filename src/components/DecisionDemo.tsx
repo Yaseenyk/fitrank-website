@@ -81,7 +81,7 @@ export default function DecisionDemo() {
         <p className="mt-0.5 font-medium text-ink">Data engineer for a banking client, Azure Data Factory, starts 3 Nov</p>
       </div>
 
-      <div role="tablist" aria-label="Candidates" className="flex gap-1 border-b border-line px-3 pt-3">
+      <div role="tablist" aria-label="Candidates" className="flex gap-1 overflow-x-auto border-b border-line px-2 pt-3 sm:px-3">
         {CANDIDATES.map((x) => {
           const selected = x.id === active;
           return (
@@ -93,7 +93,7 @@ export default function DecisionDemo() {
               aria-selected={selected}
               aria-controls="candidate-panel"
               onClick={() => setActive(x.id)}
-              className={`-mb-px flex items-center gap-2 rounded-t-md border px-3 py-2 text-sm transition-colors ${
+              className={`-mb-px flex items-center gap-1.5 whitespace-nowrap rounded-t-md border px-2 py-2 text-[13px] transition-colors sm:gap-2 sm:px-3 sm:text-sm ${
                 selected ? "border-line border-b-white bg-white font-medium text-ink" : "border-transparent text-ink-mute hover:text-ink"
               }`}
             >

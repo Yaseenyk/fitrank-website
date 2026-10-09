@@ -1,4 +1,5 @@
 import { USE_CASES } from "@/lib/content";
+import { FEATURE_PAGES } from "@/lib/features";
 
 export type Route = { path: string; title: string; priority: number };
 
@@ -14,5 +15,6 @@ export const ROUTES: Route[] = [
   { path: "early-access", title: "Pre-register for early access", priority: 0.9 },
   { path: "contact", title: "Contact sales", priority: 0.8 },
   { path: "privacy", title: "Privacy notice", priority: 0.2 },
+  ...FEATURE_PAGES.map((f) => ({ path: `features/${f.slug}`, title: f.name, priority: 0.8 })),
   ...USE_CASES.map((u) => ({ path: `use-cases/${u.slug}`, title: u.title, priority: 0.7 })),
 ];

@@ -1,4 +1,5 @@
 import { FEATURE_GROUPS, USE_CASES } from "@/lib/content";
+import { FEATURE_PAGES } from "@/lib/features";
 import { CONTACT, MAKER, SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
 import { canonicalUrl } from "@/lib/seo";
 
@@ -27,6 +28,9 @@ Key facts:
 
 ## Feature areas
 ${FEATURE_GROUPS.map((g) => `- ${g.role}: ${g.summary} (${canonicalUrl("features")}#${g.id})`).join("\n")}
+
+## Capabilities (one page each, with real screenshots)
+${FEATURE_PAGES.map((f) => `- [${f.name}](${canonicalUrl(`features/${f.slug}`)}): ${f.description}`).join("\n")}
 
 ## Use cases
 ${USE_CASES.map((u) => `- [${u.title}](${canonicalUrl(`use-cases/${u.slug}`)}): ${u.description}`).join("\n")}

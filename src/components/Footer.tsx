@@ -2,6 +2,7 @@ import Link from "next/link";
 import Logo from "@/components/Logo";
 import { CONTACT, MAKER } from "@/lib/site";
 import { USE_CASES } from "@/lib/content";
+import { FEATURE_PAGES } from "@/lib/features";
 
 const PRODUCT_LINKS = [
   { href: "/features/", label: "Features" },
@@ -20,7 +21,7 @@ const COMPANY_LINKS = [
 export default function Footer() {
   return (
     <footer className="mt-24 border-t border-line bg-paper-deep/60">
-      <div className="mx-auto grid max-w-page gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.3fr_1fr_1.3fr_1fr]">
+      <div className="mx-auto grid max-w-page gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-[1.3fr_1fr_1.2fr_1.3fr_1fr]">
         <div>
           <Logo />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft">
@@ -35,6 +36,10 @@ export default function Footer() {
           </p>
         </div>
         <FooterList title="Product" links={PRODUCT_LINKS} />
+        <FooterList
+          title="Capabilities"
+          links={FEATURE_PAGES.slice(0, 7).map((f) => ({ href: `/features/${f.slug}/`, label: f.name }))}
+        />
         <FooterList
           title="Use cases"
           links={USE_CASES.slice(0, 6).map((u) => ({ href: `/use-cases/${u.slug}/`, label: u.title }))}

@@ -7,7 +7,7 @@ export const PRODUCT = "FitRank";
 export const SITE_TAGLINE = "Staffing decisions you can check";
 
 export const SITE_DESCRIPTION =
-  "FitRank ranks your people for open tasks with typed AI decisions: rules in code, a small in-house model that gives a probability for every answer, and a manager who makes every final call.";
+  "FitRank ranks your people for open tasks with typed AI decisions: rules in code, a probability for every answer, and a manager who makes every final call.";
 
 export const CONTACT = {
   email: "contact@streamerosai.com",

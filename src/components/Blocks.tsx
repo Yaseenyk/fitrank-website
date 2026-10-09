@@ -88,7 +88,8 @@ export function CtaBand({
   body?: string;
 }) {
   return (
-    <section className="mt-24 bg-ink">
+    // -mb-24 cancels the footer's top margin, so the dark band meets the footer with no gap.
+    <section className="-mb-24 mt-24 bg-ink">
       <Container className="grid gap-8 py-16 md:grid-cols-[1.5fr_1fr] md:items-center">
         <div>
           <h2 className="max-w-[24ch] font-display text-3xl font-semibold leading-tight text-white sm:text-4xl">{title}</h2>
@@ -104,5 +105,38 @@ export function CtaBand({
         </div>
       </Container>
     </section>
+  );
+}
+
+/** Card for a feature page: a real screen on top, name and one line below. */
+export function FeatureCard({
+  href,
+  name,
+  description,
+  image,
+}: {
+  href: string;
+  name: string;
+  description: string;
+  image?: { src: string; alt: string };
+}) {
+  return (
+    <Link href={href} className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition-all hover:-translate-y-0.5 hover:border-cobalt/40 hover:shadow-[0_18px_40px_-24px_rgba(20,33,61,0.35)]">
+      <div className="aspect-[16/10] overflow-hidden border-b border-line bg-paper">
+        {image ? (
+          // eslint-disable-next-line @next/next/no-img-element -- static export, already-sized WebP
+          <img src={image.src} alt={image.alt} loading="lazy" decoding="async" width={1440} height={900} className="h-full w-full object-cover object-left-top transition-transform duration-300 group-hover:scale-[1.02]" />
+        ) : (
+          <div className="flex h-full items-center justify-center bg-ink p-6 font-mono text-[13px] leading-relaxed text-white/80" aria-hidden="true">
+            POST /api/v1/decide → {"{ probabilities }"}
+          </div>
+        )}
+      </div>
+      <div className="flex flex-1 flex-col p-5">
+        <span className="font-semibold text-ink group-hover:text-cobalt">{name}</span>
+        <span className="mt-1.5 text-[15px] leading-relaxed text-ink-soft">{description}</span>
+        <span className="mt-auto pt-4 text-sm font-medium text-cobalt" aria-hidden="true">See how it works →</span>
+      </div>
+    </Link>
   );
 }

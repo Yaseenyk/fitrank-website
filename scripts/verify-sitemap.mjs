@@ -18,9 +18,18 @@ for (const url of urls) {
   if (!html.includes(`<link rel="canonical" href="${url}"`)) problems.push(`canonical mismatch on ${url}`);
   if (/<meta name="robots" content="[^"]*noindex/.test(html)) problems.push(`noindex page in sitemap: ${url}`);
   if ((html.match(/<h1[\s>]/g) ?? []).length !== 1) problems.push(`expected exactly one h1 on ${url}`);
+  for (const img of html.match(/<img\b[^>]*>/g) ?? []) {
+    if (!/\balt="[^"]+"/.test(img)) problems.push(`image without alt text on ${url}`);
+    const src = img.match(/\bsrc="([^"]+)"/)?.[1];
+    if (src?.startsWith("/") && !existsSync(join(OUT, src))) problems.push(`missing image ${src} on ${url}`);
+  }
+  const title = html.match(/<title>([^<]*)<\/title>/)?.[1] ?? "";
+  if (title.length > 65) problems.push(`title over 65 characters on ${url}: ${title}`);
+  const desc = html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? "";
+  if (desc.length < 50 || desc.length > 160) problems.push(`description is ${desc.length} characters on ${url}`);
 }
 
-for (const f of ["robots.txt", "llms.txt", "llms-full.txt", "CNAME"]) {
+for (const f of ["robots.txt", "llms.txt", "llms-full.txt", "image-sitemap.xml", "CNAME"]) {
   if (!existsSync(join(OUT, f))) problems.push(`missing ${f}`);
 }
 

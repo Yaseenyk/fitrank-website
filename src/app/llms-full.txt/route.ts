@@ -11,6 +11,8 @@ import {
   USE_CASES,
 } from "@/lib/content";
 import { CONTACT, MAKER, SITE_DESCRIPTION } from "@/lib/site";
+import { FEATURE_BY_NAME, FEATURE_PAGES } from "@/lib/features";
+import { SHOTS } from "@/lib/shots";
 import { canonicalUrl } from "@/lib/seo";
 
 export const dynamic = "force-static";
@@ -33,6 +35,17 @@ export function GET() {
       FEATURE_GROUPS.map((g) => `## ${g.role}\n${g.summary}\n${g.features.map((f) => `- ${f.name}: ${f.body}`).join("\n")}`).join("\n\n") +
       `\n\n## On the roadmap (not built yet)\n${ROADMAP.map((r) => `- ${r}`).join("\n")}`,
   );
+
+  for (const f of FEATURE_PAGES) {
+    const screens = f.shots.length ? `\n\nScreens shown:\n${f.shots.map((k) => `- ${SHOTS[k].caption}: ${SHOTS[k].alt}`).join("\n")}` : "";
+    parts.push(
+      `# ${f.title}\n\nURL: ${canonicalUrl(`features/${f.slug}`)}\nCapability: ${f.name}\n\n${f.lead}\n\nProblem: ${f.problem}\n\nHow it works:\n${f.steps
+        .map((s, i) => `${i + 1}. ${s}`)
+        .join("\n")}\n\nIncluded:\n${f.features.map((n) => `- ${n}: ${FEATURE_BY_NAME[n]?.body ?? ""}`).join("\n")}${screens}\n\n${f.faqs
+        .map((q) => `Q: ${q.q}\nA: ${q.a}`)
+        .join("\n\n")}`,
+    );
+  }
 
   for (const u of USE_CASES) {
     parts.push(

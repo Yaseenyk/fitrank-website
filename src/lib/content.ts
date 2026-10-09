@@ -1,5 +1,6 @@
 // Single source of product content. Pages, JSON-LD, llms.txt and llms-full.txt all read
 // from here. Everything listed is built; roadmap items live only in ROADMAP.
+import type { ShotKey } from "@/lib/shots";
 
 export type Feature = { name: string; body: string };
 export type FeatureGroup = { id: string; role: string; summary: string; features: Feature[] };
@@ -93,6 +94,9 @@ export type UseCase = {
   how: string[];
   outcome: string;
   description: string;
+  shot: ShotKey;
+  /** Slugs of the feature pages that do the work. */
+  features: string[];
 };
 
 export const USE_CASES: UseCase[] = [
@@ -109,6 +113,8 @@ export const USE_CASES: UseCase[] = [
       "Your thresholds put each person in Shortlist, Review or Hidden, and you accept or reject with a reason.",
     ],
     outcome: "A ranked, explained shortlist in seconds, and a record of every choice and why it was made.",
+    shot: "run",
+    features: ["task-intake", "explainable-matching", "learning-loop"],
   },
   {
     slug: "bench-management",
@@ -122,6 +128,8 @@ export const USE_CASES: UseCase[] = [
       "Roll-off warnings flag people coming off projects so you can hold or upskill them early.",
     ],
     outcome: "Idle time turned into a short, actionable list instead of a weekly report.",
+    shot: "bench",
+    features: ["bench-management", "employee-value"],
   },
   {
     slug: "skill-gap-planning",
@@ -135,6 +143,8 @@ export const USE_CASES: UseCase[] = [
       "For each gap it lists the people closest to it, so you can train before you hire.",
     ],
     outcome: "A training and hiring plan based on real demand.",
+    shot: "skillGaps",
+    features: ["skill-gap-analysis", "bench-management"],
   },
   {
     slug: "hire-or-move",
@@ -148,6 +158,8 @@ export const USE_CASES: UseCase[] = [
       "The manager decides, and the decision is recorded.",
     ],
     outcome: "Fewer unnecessary hires and faster internal moves.",
+    shot: "taskDetail",
+    features: ["hire-or-move", "candidate-matching"],
   },
   {
     slug: "hr-candidate-pipeline",
@@ -161,6 +173,8 @@ export const USE_CASES: UseCase[] = [
       "Candidates are scored against the task with plain blockers, and the manager marks each one as a fit or not.",
     ],
     outcome: "One tracked hand-off from manager to HR and back, with privacy built in.",
+    shot: "hrHome",
+    features: ["hiring-requests", "resume-reading", "candidate-matching"],
   },
   {
     slug: "multi-task-staffing",
@@ -174,6 +188,8 @@ export const USE_CASES: UseCase[] = [
       "It shows the margin for each proposal so you can compare plans.",
     ],
     outcome: "A staffing plan for the whole portfolio, not just the loudest task.",
+    shot: "staffing",
+    features: ["project-staffing", "explainable-matching"],
   },
   {
     slug: "pre-sales-staffing",
@@ -187,6 +203,8 @@ export const USE_CASES: UseCase[] = [
       "Nothing is created or reserved, so you can test as many scenarios as you like.",
     ],
     outcome: "Start dates you can commit to with confidence.",
+    shot: "whatIf",
+    features: ["what-if-staffing", "employee-value"],
   },
   {
     slug: "fair-auditable-decisions",
@@ -200,6 +218,8 @@ export const USE_CASES: UseCase[] = [
       "The fairness view tests recommendation rates by location and practice with the four-fifths rule.",
     ],
     outcome: "Answers for auditors, works councils and your own leadership.",
+    shot: "fairness",
+    features: ["health-and-fairness", "security-and-access", "model-governance"],
   },
   {
     slug: "decision-api",
@@ -209,10 +229,12 @@ export const USE_CASES: UseCase[] = [
     problem: "Calling a chatbot from internal tools returns free text you can't test, cap or audit.",
     how: [
       "Create a project and an API key in the admin area.",
-      "Send a question with a fixed list of options; get back a probability for each option, or an abstain when the model isn't sure.",
+      "Call a question by name with its inputs. Each question has a fixed list of options; you get back a probability for each option, or an abstain when the model isn't sure.",
       "Every call is logged, rate-limited and counted against a monthly budget.",
     ],
     outcome: "AI answers your code can rely on, with limits you control.",
+    shot: "runTrail",
+    features: ["decision-api", "in-house-decision-model"],
   },
 ];
 

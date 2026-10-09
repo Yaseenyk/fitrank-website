@@ -30,20 +30,60 @@ export function pageMetadata({
   description,
   path,
   absoluteTitle = false,
+  image,
 }: {
   title: string;
   description: string;
   path: string;
   absoluteTitle?: boolean;
+  /** Share image; defaults to the site card. Feature pages pass their own screenshot. */
+  image?: { url: string; width: number; height: number; alt: string };
 }): Metadata {
   const desc = seoDescription(description);
   const url = canonicalUrl(path);
+  const og = image ?? { url: "/og.png", width: 1200, height: 630, alt: title };
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description: desc,
     alternates: { canonical: url },
-    openGraph: { type: "website", title, description: desc, url, siteName: PRODUCT, images: [{ url: "/og.png", width: 1200, height: 630 }] },
-    twitter: { card: "summary_large_image", title, description: desc, images: ["/og.png"] },
+    openGraph: { type: "website", title, description: desc, url, siteName: PRODUCT, images: [og] },
+    twitter: { card: "summary_large_image", title, description: desc, images: [og.url] },
+  };
+}
+
+/** A page about the product, with its screenshots as ImageObjects (image search + AI answers). */
+export function webPageJsonLd({
+  path,
+  name,
+  description,
+  shots,
+}: {
+  path: string;
+  name: string;
+  description: string;
+  shots: { src: string; width: number; height: number; alt: string; caption: string }[];
+}) {
+  const images = shots.map((s) => ({
+    "@type": "ImageObject",
+    contentUrl: `${SITE_URL}${s.src}`,
+    url: `${SITE_URL}${s.src}`,
+    width: s.width,
+    height: s.height,
+    caption: s.caption,
+    description: s.alt,
+  }));
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${canonicalUrl(path)}#webpage`,
+    url: canonicalUrl(path),
+    name,
+    description: seoDescription(description),
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": PRODUCT_ID },
+    author: personRef,
+    inLanguage: "en",
+    ...(images.length ? { primaryImageOfPage: images[0], image: images } : {}),
   };
 }
 

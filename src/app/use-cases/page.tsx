@@ -5,7 +5,7 @@ import { USE_CASES } from "@/lib/content";
 import { breadcrumbJsonLd, canonicalUrl, pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Use cases: staffing, bench, skill gaps, hiring and audit",
+  title: "Use cases: staffing, bench, skill gaps, hiring",
   description:
     "How teams use FitRank: staff open tasks, cut bench time, plan for skill shortages, decide hire or move, run HR candidate pipelines, staff pre-sales deals and audit decisions.",
   path: "use-cases",

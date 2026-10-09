@@ -20,7 +20,7 @@ npm run build && python scripts/generate-images.py && npm run build
 
 - `src/lib/content.ts`: all product copy (features, use cases, benchmarks, plans, FAQs). Pages, JSON-LD, `llms.txt` and `llms-full.txt` read from it, so edit content here.
 - `src/lib/features.ts`: one page per capability (`/features/<slug>/`). Every feature in `content.ts` belongs to exactly one page.
-- `src/lib/shots.ts` + `public/screenshots/`: real app captures on synthetic demo data (desktop WebP + phone crop `-m.webp`), with alt text. `public/og/` holds 1200×630 JPEG crops used as share images.
+- `src/lib/shots.ts` + `public/screenshots/`: real app captures on synthetic demo data (desktop WebP + phone crop `-m.webp`), with alt text.
 - `src/lib/site.ts`: site URL, contact details, search-console verification tokens.
 - `src/lib/seo.ts`: metadata helper, canonical URLs, JSON-LD (Person, WebSite, SoftwareApplication, BreadcrumbList, FAQPage).
 - `src/lib/routes.ts`: every indexable page; the sitemap is built from it.

@@ -1,6 +1,7 @@
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://fitrank.streamerosai.com"
-).replace(/\/$/, "");
+// Pages reports http:// until its certificate is issued; the site is HTTPS-only, so canonicals must say https.
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://fitrank.streamerosai.com")
+  .replace(/^http:\/\//, "https://")
+  .replace(/\/$/, "");
 
 /** Path prefix the site is served under ("" on its own domain). Next adds it to <Link> and its own assets; plain src/href need withBase. */
 export const BASE_PATH = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");

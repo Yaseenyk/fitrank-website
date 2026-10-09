@@ -3,12 +3,15 @@ import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
 const OUT = "out";
+// Files in out/ have no base path; URLs and src attributes do.
+const BASE = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");
+const local = (p) => (BASE && p.startsWith(BASE) ? p.slice(BASE.length) || "/" : p);
 const xml = readFileSync(join(OUT, "sitemap.xml"), "utf8");
 const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 const problems = [];
 
 for (const url of urls) {
-  const path = new URL(url).pathname;
+  const path = local(new URL(url).pathname);
   const file = join(OUT, path, "index.html");
   if (!existsSync(file)) {
     problems.push(`missing page for ${url}`);
@@ -21,7 +24,8 @@ for (const url of urls) {
   for (const img of html.match(/<img\b[^>]*>/g) ?? []) {
     if (!/\balt="[^"]+"/.test(img)) problems.push(`image without alt text on ${url}`);
     const src = img.match(/\bsrc="([^"]+)"/)?.[1];
-    if (src?.startsWith("/") && !existsSync(join(OUT, src))) problems.push(`missing image ${src} on ${url}`);
+    if (src?.startsWith("/") && !existsSync(join(OUT, local(src)))) problems.push(`missing image ${src} on ${url}`);
+    if (BASE && src?.startsWith("/") && !src.startsWith(`${BASE}/`)) problems.push(`image ${src} misses the base path on ${url}`);
   }
   const title = html.match(/<title>([^<]*)<\/title>/)?.[1] ?? "";
   if (title.length > 65) problems.push(`title over 65 characters on ${url}: ${title}`);

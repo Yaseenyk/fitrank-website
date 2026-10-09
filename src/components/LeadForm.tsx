@@ -3,6 +3,7 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import { EMAILJS } from "@/lib/emailjs";
+import { withBase } from "@/lib/site";
 
 export type Intent = "early-access" | "sales" | "demo" | "question";
 
@@ -188,7 +189,7 @@ export default function LeadForm({ defaultIntent = "early-access" }: { defaultIn
           {status === "sending" ? "Sending…" : SUBMIT_LABEL[intent]}
         </button>
         <p className="text-sm text-ink-mute">
-          We use your details only to reply. See the <a href="/privacy/" className="underline underline-offset-2 hover:text-ink">privacy notice</a>.
+          We use your details only to reply. See the <a href={withBase("/privacy/")} className="underline underline-offset-2 hover:text-ink">privacy notice</a>.
         </p>
       </div>
 

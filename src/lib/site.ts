@@ -2,6 +2,13 @@ export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://fitrank.streamerosai.com"
 ).replace(/\/$/, "");
 
+/** Path prefix the site is served under ("" on its own domain). Next adds it to <Link> and its own assets; plain src/href need withBase. */
+export const BASE_PATH = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");
+
+export function withBase(path: string): string {
+  return `${BASE_PATH}${path}`;
+}
+
 export const PRODUCT = "FitRank";
 
 export const SITE_TAGLINE = "Staffing decisions you can check";

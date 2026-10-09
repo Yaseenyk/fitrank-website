@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import type { Shot } from "@/lib/shots";
+import { withBase } from "@/lib/site";
 
 /**
  * A real app capture in a browser frame.
@@ -37,10 +38,10 @@ export default function ProductShot({
         </div>
         <div style={style} className="[aspect-ratio:var(--ar-m)] sm:[aspect-ratio:var(--ar)]">
           <picture>
-            <source media="(max-width: 639px)" srcSet={shot.mobile.src} width={shot.mobile.width} height={shot.mobile.height} />
+            <source media="(max-width: 639px)" srcSet={withBase(shot.mobile.src)} width={shot.mobile.width} height={shot.mobile.height} />
             {/* eslint-disable-next-line @next/next/no-img-element -- static export; next/image cannot emit <picture> */}
             <img
-              src={shot.src}
+              src={withBase(shot.src)}
               alt={shot.alt}
               width={shot.width}
               height={shot.height}

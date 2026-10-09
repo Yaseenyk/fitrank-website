@@ -41,7 +41,7 @@ export function pageMetadata({
 }): Metadata {
   const desc = seoDescription(description);
   const url = canonicalUrl(path);
-  const og = image ?? { url: "/og.png", width: 1200, height: 630, alt: title };
+  const og = image ?? { url: `${SITE_URL}/og.png`, width: 1200, height: 630, alt: title };
   return {
     title: absoluteTitle ? { absolute: title } : title,
     description: desc,

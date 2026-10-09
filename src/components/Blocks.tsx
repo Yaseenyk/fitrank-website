@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Faq } from "@/lib/content";
+import { withBase } from "@/lib/site";
 
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <div className={`mx-auto max-w-page px-4 sm:px-6 ${className}`}>{children}</div>;
@@ -125,7 +126,7 @@ export function FeatureCard({
       <div className="aspect-[16/10] overflow-hidden border-b border-line bg-paper">
         {image ? (
           // eslint-disable-next-line @next/next/no-img-element -- static export, already-sized WebP
-          <img src={image.src} alt={image.alt} loading="lazy" decoding="async" width={1440} height={900} className="h-full w-full object-cover object-left-top transition-transform duration-300 group-hover:scale-[1.02]" />
+          <img src={withBase(image.src)} alt={image.alt} loading="lazy" decoding="async" width={1440} height={900} className="h-full w-full object-cover object-left-top transition-transform duration-300 group-hover:scale-[1.02]" />
         ) : (
           <div className="flex h-full items-center justify-center bg-ink p-6 font-mono text-[13px] leading-relaxed text-white/80" aria-hidden="true">
             POST /api/v1/decide → {"{ probabilities }"}

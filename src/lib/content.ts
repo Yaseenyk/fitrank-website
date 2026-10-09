@@ -28,6 +28,7 @@ export const FEATURE_GROUPS: FeatureGroup[] = [
     role: "Planning and delivery heads",
     summary: "See next quarter's staffing problems while there's still time to fix them.",
     features: [
+      { name: "Staffing dashboard", body: "One screen for how staffing is going: how often managers agree with the model, how many profiles are ready, which open tasks have a shortlist, tasks opened and filled each month, and the bench's idle cost for the next 12 months with the part open tasks could recover." },
       { name: "Bench view", body: "Who is free now, or within 30, 60 or 90 days, what that idle time costs each week, and up to three open tasks each person could take." },
       { name: "Skill gaps", body: "Every must-have skill across upcoming tasks is marked shortage, tight or covered, with the people closest to it, so you can train before you hire." },
       { name: "Staff several tasks at once", body: "FitRank proposes one person per task across all open tasks without double-booking anyone, and shows the margin of each plan." },

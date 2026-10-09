@@ -5,10 +5,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: { DEFAULT: "#14213D", soft: "#3B4763", mute: "#5E6880" },
-        paper: { DEFAULT: "#F4F6F5", deep: "#E8ECEA" },
-        line: "#D5DBD8",
-        cobalt: { DEFAULT: "#2443B8", deep: "#1A3290", wash: "#E6EBFA" },
+        ink: { DEFAULT: "#1C1A33", soft: "#47445F", mute: "#6B6987" },
+        paper: { DEFAULT: "#EFEDF9", deep: "#E6E3F5" },
+        line: "#E3E0F2",
+        // Same indigo-violet primary as the app (ADR 028).
+        cobalt: { DEFAULT: "#6551F0", deep: "#4B38D6", wash: "#EFECFE" },
         // Band colours carry meaning: use them only for shortlist / review / hidden.
         shortlist: { DEFAULT: "#0E7C66", wash: "#DDF1EB" },
         review: { DEFAULT: "#B7791F", wash: "#F7ECD9" },

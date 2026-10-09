@@ -17,11 +17,12 @@ const shot = (name: string, height: number, alt: string, caption: string, width 
 });
 
 export const SHOTS = {
+  dashboard: shot("dashboard", 1000, "FitRank dashboard: staffing-health rings (managers agree with the model, profiles ready, open tasks with a shortlist), tasks opened and filled by month, the open tasks starting soonest with how many people each has recommended, and the bench idle cost for the next 12 months with the part open tasks could recover", "The whole staffing picture on one screen"),
   tasks: shot("tasks", 900, "FitRank task list with seven open tasks, each showing priority, client, must-have skills, start date and status", "Every open task in one list"),
-  newTask: shot("new-task", 948, "FitRank new-task assistant asking which role you need to fill, with example prompts and a live task preview of role, skills, timing and location fields", "Describe the role in plain words"),
+  newTask: shot("new-task", 960, "FitRank new-task assistant asking which role you need to fill, with example prompts and a live task preview of role, skills, timing and location fields", "Describe the role in plain words"),
   taskDetail: shot("task-detail", 1000, "A FitRank task page for a React developer with Java: must-have and nice-to-have skills, two completed matching runs and a hire-or-move card recommending an internal person", "A task, its runs and the hire-or-move call"),
   run: shot("run", 1000, "FitRank matching results: a funnel from 720 people considered to 95 who passed the rules, 26 ranked by the model and 17 recommended, with the top shortlisted person at over 99% overall fit", "From 720 people to a shortlist of 15"),
-  runTrail: shot("run-trail", 1000, "FitRank 'How this was decided' panel: rules passed, facts from the data, the model's probability for every answer to five questions, safety checks and the resulting band", "Every score, traced back to rules, facts and probabilities", 1200, 2000),
+  runTrail: shot("run-trail", 1000, "FitRank 'How this was decided' panel: rules passed, facts from the data, the model's probability for every answer to five questions, safety checks and the resulting band", "Every score, traced back to rules, facts and probabilities", 1148, 2000),
   bench: shot("bench", 1000, "FitRank bench view: 629 people free now, $441,660 idle cost per week, people freeing within 30 and 90 days, and the open task each person could take next", "Who is free, what it costs, where they could go"),
   rolloffs: shot("rolloffs", 1000, "FitRank rolling-off view: 51 people rolling off within 45 days, weekly cost at risk, and for each person the task they could move to and the one skill they are short of", "Act before people come off a project"),
   skillGaps: shot("skill-gaps", 900, "FitRank skill gaps table marking Go, Rust and Swift as shortages for upcoming tasks, with free people who have each skill and who is closest", "Shortages found before a task stalls"),
@@ -46,7 +47,7 @@ export const SHOTS = {
   users: shot("admin-users", 900, "FitRank users and roles: HR, admin, resource managers and a read-only viewer, with role pickers, password reset and deactivate actions", "Who can sign in and what they can do"),
   audit: shot("admin-audit", 900, "FitRank audit export: download a spreadsheet of every recommendation with model version, score, band and the manager's decision", "Every decision, exportable"),
   evalReports: shot("admin-eval", 1000, "FitRank test reports: each model tested on unseen tasks against a simple ranking, with right person in top five, right person first and confidence error", "Every model tested against plain rules"),
-  rateCard: shot("admin-rate-card", 900, "FitRank rate card: weekly cost and bill rate per cost band with the margin for each", "Rates that drive value and margin views"),
+  rateCard: shot("admin-rate-card", 929, "FitRank rate card: weekly cost and bill rate per cost band with the margin for each", "Rates that drive value and margin views"),
 } satisfies Record<string, Shot>;
 
 export type ShotKey = keyof typeof SHOTS;

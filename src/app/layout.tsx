@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Sans, IBM_Plex_Sans_Condensed } from "next/font/google";
+import { Figtree } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,16 +7,16 @@ import JsonLd from "@/components/JsonLd";
 import { siteGraphJsonLd } from "@/lib/seo";
 import { MAKER, PRODUCT, SITE_DESCRIPTION, SITE_URL, VERIFICATION } from "@/lib/site";
 
-const sans = IBM_Plex_Sans({
+// One family, as in the app: weights carry the hierarchy.
+const sans = Figtree({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
 });
-
-const display = IBM_Plex_Sans_Condensed({
+const display = Figtree({
   subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: ["600", "700"],
   variable: "--font-display",
   display: "swap",
 });
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F4F6F5",
+  themeColor: "#EFEDF9",
   width: "device-width",
   initialScale: 1,
 };

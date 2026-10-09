@@ -90,7 +90,7 @@ export function CtaBand({
 }) {
   return (
     // -mb-24 cancels the footer's top margin, so the dark band meets the footer with no gap.
-    <section className="-mb-24 mt-24 bg-ink">
+    <section className="-mb-24 mt-24 bg-gradient-to-br from-[#241b5c] via-[#4b38d6] to-[#a21caf]">
       <Container className="grid gap-8 py-16 md:grid-cols-[1.5fr_1fr] md:items-center">
         <div>
           <h2 className="max-w-[24ch] font-display text-3xl font-semibold leading-tight text-white sm:text-4xl">{title}</h2>

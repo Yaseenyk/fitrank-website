@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 // Next 14's sitemap() has no image entries, so product screenshots get their own
 // image sitemap (listed in robots.txt) for image search.
 const PAGES: { path: string; shots: Shot[] }[] = [
-  { path: "", shots: [SHOTS.run, SHOTS.runTrail, SHOTS.bench, SHOTS.candidate, SHOTS.models] },
+  { path: "", shots: [SHOTS.dashboard, SHOTS.runTrail, SHOTS.bench, SHOTS.candidate, SHOTS.models] },
   ...FEATURE_PAGES.map((f) => ({ path: `features/${f.slug}`, shots: f.shots.map((k) => SHOTS[k]) })),
   ...USE_CASES.map((u) => ({ path: `use-cases/${u.slug}`, shots: [SHOTS[u.shot]] })),
 ].filter((p) => p.shots.length > 0);

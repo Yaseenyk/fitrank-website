@@ -28,7 +28,7 @@ export default function HomePage() {
             path: "",
             name: "FitRank: AI staffing recommendations your managers can check",
             description: SITE_DESCRIPTION,
-            shots: [SHOTS.run, ...SHOWCASE.map((s) => s.shot)],
+            shots: [SHOTS.dashboard, ...SHOWCASE.map((s) => s.shot)],
           }),
         ]}
       />
@@ -53,7 +53,7 @@ export default function HomePage() {
             </div>
             <p className="mt-5 text-sm text-ink-mute">Annual licence · No automatic assignment, ever · Real product, shown on demo data</p>
           </div>
-          <ProductShot shot={SHOTS.run} priority className="mt-14" />
+          <ProductShot shot={SHOTS.dashboard} priority className="mt-14" />
         </Container>
       </section>
 

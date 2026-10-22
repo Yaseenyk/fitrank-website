@@ -40,6 +40,6 @@ export const MAKER = {
 
 /** Search-console verification tokens. Empty strings are left out of the page. */
 export const VERIFICATION = {
-  google: "",
+  google: "OG5PRiRPw3I5jB5p-G7nDzf_mlxdiZzrpLaFYCZ0p1M",
   bing: "",
 } as const;

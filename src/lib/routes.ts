@@ -11,6 +11,7 @@ export const ROUTES: Route[] = [
   { path: "how-it-works", title: "How FitRank decides", priority: 0.8 },
   { path: "results", title: "Benchmarks", priority: 0.7 },
   { path: "security", title: "Trust, privacy and fairness", priority: 0.8 },
+  { path: "hire", title: "FitRank Hire", priority: 0.8 },
   { path: "pricing", title: "Pricing: annual plans", priority: 0.9 },
   { path: "early-access", title: "Pre-register for early access", priority: 0.9 },
   { path: "contact", title: "Contact sales", priority: 0.8 },

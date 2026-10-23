@@ -1,8 +1,10 @@
 import JsonLd from "@/components/JsonLd";
+import ProductShot from "@/components/ProductShot";
 import { CheckIcon } from "@/components/Bits";
 import { Breadcrumbs, Container, CtaBand, FaqList, PageIntro, SectionHeading } from "@/components/Blocks";
 import type { Faq } from "@/lib/content";
 import { breadcrumbJsonLd, faqPageJsonLd, pageMetadata } from "@/lib/seo";
+import { SHOTS } from "@/lib/shots";
 
 export const metadata = pageMetadata({
   title: "FitRank Hire: shortlist applicants faster",
@@ -79,6 +81,10 @@ export default function HirePage() {
       />
 
       <Container>
+        <ProductShot shot={SHOTS.hireEmployer} priority />
+      </Container>
+
+      <Container className="pt-16">
         <SectionHeading title="For your hiring team" />
         <ul className="grid gap-x-12 gap-y-8 border-t border-line pt-10 md:grid-cols-2">
           {EMPLOYER_POINTS.map((p) => (

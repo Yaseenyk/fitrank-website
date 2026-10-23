@@ -9,6 +9,7 @@ const PRODUCT_LINKS = [
   { href: "/how-it-works/", label: "How it works" },
   { href: "/results/", label: "Benchmarks" },
   { href: "/security/", label: "Trust and privacy" },
+  { href: "/hire/", label: "FitRank Hire" },
   { href: "/pricing/", label: "Pricing" },
 ];
 

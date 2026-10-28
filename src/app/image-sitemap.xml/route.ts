@@ -1,3 +1,4 @@
+import { PUBLISHED } from "@/lib/blog";
 import { USE_CASES } from "@/lib/content";
 import { FEATURE_PAGES } from "@/lib/features";
 import { SHOTS, type Shot } from "@/lib/shots";
@@ -14,6 +15,9 @@ const PAGES: { path: string; shots: Shot[] }[] = [
   ...USE_CASES.map((u) => ({ path: `use-cases/${u.slug}`, shots: [SHOTS[u.shot]] })),
 ].filter((p) => p.shots.length > 0);
 
+// Each published post's featured image.
+const POST_IMAGES = PUBLISHED.map((p) => ({ path: `blog/${p.slug}`, src: `/og/pages/blog-${p.slug}.jpg` }));
+
 export function GET() {
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
@@ -21,6 +25,12 @@ ${PAGES.map(
   (p) => `  <url>
     <loc>${canonicalUrl(p.path)}</loc>
 ${p.shots.map((s) => `    <image:image><image:loc>${SITE_URL}${s.src}</image:loc></image:image>`).join("\n")}
+  </url>`,
+).join("\n")}
+${POST_IMAGES.map(
+  (p) => `  <url>
+    <loc>${canonicalUrl(p.path)}</loc>
+    <image:image><image:loc>${SITE_URL}${p.src}</image:loc></image:image>
   </url>`,
 ).join("\n")}
 </urlset>

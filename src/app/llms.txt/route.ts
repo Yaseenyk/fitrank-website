@@ -1,3 +1,4 @@
+import { PUBLISHED } from "@/lib/blog";
 import { FEATURE_GROUPS, USE_CASES } from "@/lib/content";
 import { FEATURE_PAGES } from "@/lib/features";
 import { CONTACT, MAKER, SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
@@ -34,6 +35,9 @@ ${FEATURE_PAGES.map((f) => `- [${f.name}](${canonicalUrl(`features/${f.slug}`)})
 
 ## Use cases
 ${USE_CASES.map((u) => `- [${u.title}](${canonicalUrl(`use-cases/${u.slug}`)}): ${u.description}`).join("\n")}
+
+## Blog (the problems behind the product)
+${PUBLISHED.map((p) => `- [${p.title}](${canonicalUrl(`blog/${p.slug}`)}): ${p.description}`).join("\n")}
 
 ## Optional
 - [Full text for AI](${SITE_URL}/llms-full.txt)

@@ -39,11 +39,14 @@ export function pageMetadata({
   description,
   path,
   absoluteTitle = false,
+  article,
 }: {
   title: string;
   description: string;
   path: string;
   absoluteTitle?: boolean;
+  /** A blog post: Open Graph type article with its dates, author and tags. */
+  article?: { publishedTime: string; tags: string[]; section: string };
 }): Metadata {
   const desc = seoDescription(description);
   const url = canonicalUrl(path);
@@ -52,7 +55,22 @@ export function pageMetadata({
     title: absoluteTitle ? { absolute: title } : title,
     description: desc,
     alternates: { canonical: url },
-    openGraph: { type: "website", title, description: desc, url, siteName: PRODUCT, images: [og] },
+    ...(article ? { keywords: article.tags, authors: [{ name: MAKER.name, url: MAKER.url }] } : {}),
+    openGraph: article
+      ? {
+          type: "article",
+          title,
+          description: desc,
+          url,
+          siteName: PRODUCT,
+          images: [og],
+          publishedTime: article.publishedTime,
+          modifiedTime: article.publishedTime,
+          authors: [MAKER.url],
+          section: article.section,
+          tags: article.tags,
+        }
+      : { type: "website", title, description: desc, url, siteName: PRODUCT, images: [og] },
     twitter: { card: "summary_large_image", title, description: desc, images: [og] },
   };
 }

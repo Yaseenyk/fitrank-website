@@ -14,6 +14,7 @@ const PRODUCT_LINKS = [
 ];
 
 const COMPANY_LINKS = [
+  { href: "/blog/", label: "Blog" },
   { href: "/early-access/", label: "Pre-register" },
   { href: "/contact/", label: "Contact sales" },
   { href: "/privacy/", label: "Privacy notice" },

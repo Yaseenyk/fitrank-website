@@ -21,8 +21,17 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      new_posts: ${{ steps.today.outputs.urls }}
     steps:
       - uses: actions/checkout@v5
+      # Posts whose publish day is today in India (src/lib/blog*.ts), for the IndexNow ping below.
+      - id: today
+        run: |
+          today=$(TZ=Asia/Kolkata date +%F)
+          urls=$(awk -v d="$today" '/slug: "/{split($0,a,"\""); slug=a[2]} index($0, "date: \"" d "\"") {printf "\"https://fitrank.streamerosai.com/blog/%s/\",", slug}' src/lib/blog.ts src/lib/blog-more.ts)
+          echo "urls=$urls" >> "$GITHUB_OUTPUT"
+          echo "posts publishing today ($today): ${urls:-none}"
       - uses: actions/setup-node@v5
         with:
           node-version: 20
@@ -55,7 +64,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
   indexnow:
-    needs: deploy
+    needs: [build, deploy]
     runs-on: ubuntu-latest
     steps:
       - name: Tell IndexNow (Bing, Yandex, Seznam…) the site changed
@@ -67,6 +76,8 @@ jobs:
               "key": "dd6e5bfaee2b2bbb2106aa7438b78078",
               "keyLocation": "https://fitrank.streamerosai.com/dd6e5bfaee2b2bbb2106aa7438b78078.txt",
               "urlList": [
+                ${{ needs.build.outputs.new_posts }}
+                "https://fitrank.streamerosai.com/blog/feed.xml",
                 "https://fitrank.streamerosai.com/",
                 "https://fitrank.streamerosai.com/features/",
                 "https://fitrank.streamerosai.com/use-cases/",

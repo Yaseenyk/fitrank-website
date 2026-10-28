@@ -3,18 +3,25 @@ import JsonLd from "@/components/JsonLd";
 import { Breadcrumbs, Container, CtaBand, PageIntro } from "@/components/Blocks";
 import { PUBLISHED } from "@/lib/blog";
 import { breadcrumbJsonLd, canonicalUrl, pageMetadata, personRef } from "@/lib/seo";
+import { SITE_URL } from "@/lib/site";
 
-export const metadata = pageMetadata({
+const meta = pageMetadata({
   title: "Blog: staffing and hiring problems, plainly",
   description:
     "Notes on the problems behind staffing and hiring in IT services: bench cost, slow resource allocation, skill gaps, resume overload, fair AI hiring and AI agent safety.",
   path: "blog",
 });
 
+export const metadata = {
+  ...meta,
+  alternates: { ...meta.alternates, types: { "application/rss+xml": `${SITE_URL}/blog/feed.xml` } },
+};
+
 export default function BlogIndex() {
   const list = {
     "@context": "https://schema.org",
     "@type": "Blog",
+    "@id": `${canonicalUrl("blog")}#blog`,
     name: "FitRank blog",
     url: canonicalUrl("blog"),
     author: personRef,

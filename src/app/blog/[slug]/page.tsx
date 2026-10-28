@@ -5,7 +5,7 @@ import JsonLd from "@/components/JsonLd";
 import { Breadcrumbs, Container, CtaBand } from "@/components/Blocks";
 import { PUBLISHED, post, words, type Block } from "@/lib/blog";
 import { ORG_ID, breadcrumbJsonLd, canonicalUrl, pageMetadata, personRef, shareImage } from "@/lib/seo";
-import { MAKER } from "@/lib/site";
+import { MAKER, SITE_URL, withBase } from "@/lib/site";
 
 export const dynamicParams = false;
 
@@ -16,7 +16,13 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }) {
   const p = post(params.slug);
   if (!p) return {};
-  return pageMetadata({ title: p.seoTitle, description: p.description, path: `blog/${p.slug}` });
+  const meta = pageMetadata({
+    title: p.seoTitle,
+    description: p.description,
+    path: `blog/${p.slug}`,
+    article: { publishedTime: p.date, tags: p.keywords, section: p.topic },
+  });
+  return { ...meta, alternates: { ...meta.alternates, types: { "application/rss+xml": `${SITE_URL}/blog/feed.xml` } } };
 }
 
 /** Text with [label](href) links: internal links stay in the site, outside ones open a new tab. */
@@ -51,6 +57,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   if (!p) notFound();
   const minutes = Math.max(1, Math.round(words(p) / 200));
   const others = PUBLISHED.filter((x) => x.slug !== p.slug).slice(0, 4);
+  const card = shareImage(`blog/${p.slug}`, p.title);
   const article = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -60,10 +67,13 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     dateModified: p.date,
     url: canonicalUrl(`blog/${p.slug}`),
     mainEntityOfPage: canonicalUrl(`blog/${p.slug}`),
-    image: shareImage(`blog/${p.slug}`, p.title).url,
-    author: personRef,
+    image: { "@type": "ImageObject", url: card.url, width: card.width, height: card.height, caption: p.title },
+    author: { ...personRef, "@type": "Person", name: MAKER.name, url: MAKER.url },
     publisher: { "@id": ORG_ID },
     about: p.topic,
+    articleSection: p.topic,
+    keywords: p.keywords.join(", "),
+    isPartOf: { "@type": "Blog", "@id": `${canonicalUrl("blog")}#blog`, name: "FitRank blog" },
     wordCount: words(p),
     inLanguage: "en",
   };
@@ -80,7 +90,28 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           {minutes} min read
         </p>
       </Container>
+      <Container className="pt-6">
+        {/* eslint-disable-next-line @next/next/no-img-element -- static export, pre-sized share card */}
+        <img
+          src={withBase(`/og/pages/blog-${p.slug}.jpg`)}
+          alt={p.title}
+          width={1200}
+          height={630}
+          fetchPriority="high"
+          className="w-full max-w-[68ch] rounded-lg border border-line"
+        />
+      </Container>
       <Container className="prose-fit pb-8">{p.blocks.map(render)}</Container>
+      <Container>
+        <aside aria-label="About the author" className="max-w-[68ch] rounded-lg border border-line bg-white p-6">
+          <p className="font-semibold text-ink">
+            Written by <a href={MAKER.url} className="text-cobalt underline underline-offset-2">{MAKER.name}</a>
+          </p>
+          <p className="mt-2 leading-relaxed text-ink-soft">
+            {MAKER.jobTitle}. Builds FitRank, staffing and hiring software for IT services companies in India, from the matching model to the screens.
+          </p>
+        </aside>
+      </Container>
       <Container className="pt-8">
         <h2 className="font-display text-2xl font-semibold text-ink">More from the blog</h2>
         <ul className="mt-6 grid gap-x-10 border-t border-line md:grid-cols-2">

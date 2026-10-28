@@ -1,3 +1,5 @@
+import { MORE_POSTS } from "@/lib/blog-more";
+
 // Ten problem-first posts. Each one owns its own group of search terms, so no two posts compete:
 // it describes the problem, says honestly why it is hard, then shows how FitRank approaches it.
 // Links inside text use [label](href); FitRank is described as it is today: in pilot.
@@ -16,12 +18,15 @@ export type Post = {
   description: string;
   date: string;
   topic: string;
+  /** The search terms this post is written for (structured data, meta and Open Graph tags). */
+  keywords: string[];
   blocks: Block[];
 };
 
-export const POSTS: Post[] = [
+const FIRST: Post[] = [
   {
     slug: "bench-management-cost",
+    keywords: ["bench management", "reduce bench time", "billable utilization", "RMG", "bench to billable"],
     title: "The bench is costing you more than you think",
     seoTitle: "Bench management: the real cost of idle people",
     description:
@@ -52,10 +57,11 @@ export const POSTS: Post[] = [
   },
   {
     slug: "skills-based-resource-matching",
+    keywords: ["skills-based resource matching", "resource allocation software", "project staffing software", "resource scheduling", "PSA software", "AI resource allocation"],
     title: "Why finding the right person for a project still takes days",
     seoTitle: "Skills-based resource matching: why it takes days",
     description:
-      "Resource allocation in IT services still runs on calls and spreadsheets. Why skills-based matching is hard, what PSA tools miss, and a better way to staff projects.",
+      "Resource allocation in IT services still runs on calls and spreadsheets. Why skills-based matching is hard and what PSA tools miss.",
     date: "2026-10-30",
     topic: "Resource allocation",
     blocks: [
@@ -80,6 +86,7 @@ export const POSTS: Post[] = [
   },
   {
     slug: "job-description-to-staffing-request",
+    keywords: ["job description parser", "JD to requirements", "staffing request automation"],
     title: "Managers don't have time to fill a staffing form",
     seoTitle: "From job description to staffing request, faster",
     description:
@@ -107,6 +114,7 @@ export const POSTS: Post[] = [
   },
   {
     slug: "hire-or-move-internal-mobility",
+    keywords: ["internal mobility", "internal talent marketplace", "redeploy bench employees", "build vs buy talent"],
     title: "Hiring outside while the right person sits on your bench",
     seoTitle: "Internal mobility: hire outside or move someone in?",
     description:
@@ -133,6 +141,7 @@ export const POSTS: Post[] = [
   },
   {
     slug: "project-team-builder",
+    keywords: ["project team builder", "team staffing tool", "project staffing"],
     title: "Staffing a project is a team problem, not a one-person problem",
     seoTitle: "Project team builder: staffing a whole team",
     description:
@@ -160,10 +169,11 @@ export const POSTS: Post[] = [
   },
   {
     slug: "skills-gap-key-person-risk",
+    keywords: ["skills gap analysis", "skills inventory", "capacity planning", "key person risk", "workforce planning IT services"],
     title: "You find out about a skill gap when the project is already late",
     seoTitle: "Skills gap analysis and key-person risk, early",
     description:
-      "Skill gaps usually show up after a project stalls. Why skills inventory and capacity planning fail in IT services, and how to see gaps and key-person risk early.",
+      "Skill gaps show up after a project stalls. Why skills inventory and capacity planning fail, and how to see gaps and key-person risk early.",
     date: "2026-11-13",
     topic: "Skills gap analysis",
     blocks: [
@@ -186,6 +196,7 @@ export const POSTS: Post[] = [
   },
   {
     slug: "ai-resume-screening-india",
+    keywords: ["AI resume screening", "AI resume screener India", "ATS software India", "resume parser", "AI recruitment software India"],
     title: "500 applications for one role: resume screening in India today",
     seoTitle: "AI resume screening in India: the 500-resume problem",
     description:
@@ -213,10 +224,11 @@ export const POSTS: Post[] = [
   },
   {
     slug: "candidate-ghosting-blind-screening",
+    keywords: ["candidate ghosting", "candidate experience", "blind resume screening", "careers page builder", "DPDP compliant recruitment"],
     title: "Candidates hear nothing back. That is a hiring problem too",
     seoTitle: "Candidate ghosting and blind screening in India",
     description:
-      "Most job seekers in India say employers ghosted them. Why candidate experience suffers, how blind resume screening helps, and what the DPDP Act asks of employers.",
+      "Most job seekers in India say employers ghosted them. Why it happens, how blind resume screening helps, and what the DPDP Act asks.",
     date: "2026-11-20",
     topic: "Candidate experience",
     blocks: [
@@ -239,6 +251,7 @@ export const POSTS: Post[] = [
   },
   {
     slug: "explainable-fair-ai-hiring",
+    keywords: ["explainable AI hiring", "bias-free hiring", "fair AI recruitment", "human in the loop AI hiring", "audit trail hiring"],
     title: "If an AI can't explain a hiring decision, it shouldn't make it",
     seoTitle: "Explainable AI hiring: fair, with a human in the loop",
     description:
@@ -265,6 +278,7 @@ export const POSTS: Post[] = [
   },
   {
     slug: "ai-agent-guardrails",
+    keywords: ["AI agent guardrails", "human in the loop approval", "tool approval for AI agents", "LLM guardrails API", "AI action governance"],
     title: "Letting an AI agent act on its own is the easy part",
     seoTitle: "AI agent guardrails: approve actions before they run",
     description:
@@ -291,6 +305,9 @@ export const POSTS: Post[] = [
   },
 ];
 
+/** Every post, published or scheduled. */
+export const POSTS: Post[] = [...FIRST, ...MORE_POSTS];
+
 export function post(slug: string): Post | undefined {
   return PUBLISHED.find((p) => p.slug === slug);
 }
@@ -308,7 +325,10 @@ function todayInIndia(): string {
 }
 
 /** Posts whose publish day has come, newest first. Everything on the site reads this list. */
-export const PUBLISHED: Post[] = POSTS.filter((p) => p.date <= todayInIndia()).sort((a, b) =>
+// BLOG_PREVIEW_ALL=1 builds every post, for checking and share cards locally; deploys never set it.
+const PREVIEW_ALL = process.env.BLOG_PREVIEW_ALL === "1";
+
+export const PUBLISHED: Post[] = POSTS.filter((p) => PREVIEW_ALL || p.date <= todayInIndia()).sort((a, b) =>
   b.date.localeCompare(a.date),
 );
 

@@ -1,3 +1,4 @@
+import { POSTS } from "@/lib/blog";
 import { USE_CASES } from "@/lib/content";
 import { FEATURE_PAGES } from "@/lib/features";
 
@@ -12,10 +13,12 @@ export const ROUTES: Route[] = [
   { path: "results", title: "Benchmarks", priority: 0.7 },
   { path: "security", title: "Trust, privacy and fairness", priority: 0.8 },
   { path: "hire", title: "FitRank Hire", priority: 0.8 },
+  { path: "blog", title: "Blog", priority: 0.7 },
   { path: "pricing", title: "Pricing: annual plans", priority: 0.9 },
   { path: "early-access", title: "Pre-register for early access", priority: 0.9 },
   { path: "contact", title: "Contact sales", priority: 0.8 },
   { path: "privacy", title: "Privacy notice", priority: 0.2 },
   ...FEATURE_PAGES.map((f) => ({ path: `features/${f.slug}`, title: f.name, priority: 0.8 })),
+  ...POSTS.map((p) => ({ path: `blog/${p.slug}`, title: p.title, priority: 0.6 })),
   ...USE_CASES.map((u) => ({ path: `use-cases/${u.slug}`, title: u.title, priority: 0.7 })),
 ];

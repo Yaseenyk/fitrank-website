@@ -1,6 +1,8 @@
 // Ten problem-first posts. Each one owns its own group of search terms, so no two posts compete:
 // it describes the problem, says honestly why it is hard, then shows how FitRank approaches it.
 // Links inside text use [label](href); FitRank is described as it is today: in pilot.
+// Each post has its own publish day (two a week). A post is built only once its day has come in
+// India, and the deploy workflow rebuilds the site every morning, so posts go live by themselves.
 
 export type Block =
   | { type: "p"; text: string }
@@ -17,8 +19,6 @@ export type Post = {
   blocks: Block[];
 };
 
-const DATE = "2026-10-28";
-
 export const POSTS: Post[] = [
   {
     slug: "bench-management-cost",
@@ -26,7 +26,7 @@ export const POSTS: Post[] = [
     seoTitle: "Bench management: the real cost of idle people",
     description:
       "In IT services, people on the bench are paid but bill nothing. Why bench management stays hard, and how to move people from bench to billable faster.",
-    date: DATE,
+    date: "2026-10-28",
     topic: "Bench management",
     blocks: [
       { type: "p", text: "If you have worked in an IT services company, you know the Monday call. The RMG team shares a sheet, somebody reads out the names on the bench, and every manager says the same thing: nobody on this list fits my project. Two weeks later the same names are still on the sheet." },
@@ -56,7 +56,7 @@ export const POSTS: Post[] = [
     seoTitle: "Skills-based resource matching: why it takes days",
     description:
       "Resource allocation in IT services still runs on calls and spreadsheets. Why skills-based matching is hard, what PSA tools miss, and a better way to staff projects.",
-    date: DATE,
+    date: "2026-10-30",
     topic: "Resource allocation",
     blocks: [
       { type: "p", text: "A client asks for a senior React developer who has worked in banking, can start on the 15th and overlaps four hours with US time. The account manager forwards it to delivery, delivery forwards it to RMG, and RMG starts calling project managers. Three days later you have two names, one of them is not really senior, and the other is already promised to another project." },
@@ -84,7 +84,7 @@ export const POSTS: Post[] = [
     seoTitle: "From job description to staffing request, faster",
     description:
       "Staffing requests stall because managers will not fill long forms. Why turning a client JD into clean requirements is hard, and how to automate it safely.",
-    date: DATE,
+    date: "2026-11-03",
     topic: "Staffing requests",
     blocks: [
       { type: "p", text: "Every staffing system has a request form. Skills, level, years, start date, duration, location, work mode, priority. It looks reasonable when you design it. Then a delivery manager with three escalations and a client call in ten minutes opens it, sees fifteen fields, and sends RMG a WhatsApp message instead: need 2 Java devs asap, JD attached." },
@@ -111,7 +111,7 @@ export const POSTS: Post[] = [
     seoTitle: "Internal mobility: hire outside or move someone in?",
     description:
       "Companies hire externally while a fitting employee waits on the bench. Why internal mobility is hard in IT services, and how to decide hire or move first.",
-    date: DATE,
+    date: "2026-11-06",
     topic: "Internal mobility",
     blocks: [
       { type: "p", text: "This one is painful to watch. A manager cannot find anyone for a role, asks HR to hire, HR posts on Naukri, screens 300 resumes, runs interviews for three weeks and finally makes an offer. The new joiner comes in with a 60-day notice period. Meanwhile someone with almost the same skills has been on the bench in another unit the whole time." },
@@ -137,7 +137,7 @@ export const POSTS: Post[] = [
     seoTitle: "Project team builder: staffing a whole team",
     description:
       "Most tools find one person per role. Real projects need a team: a lead, the right members, no double booking. Why team staffing is hard and how to do it.",
-    date: DATE,
+    date: "2026-11-10",
     topic: "Team staffing",
     blocks: [
       { type: "p", text: "When we showed an early version of FitRank to a manager, the first feedback was simple: where is the team? It had found one person. But the client had asked for three React developers and a lead, not one developer." },
@@ -164,7 +164,7 @@ export const POSTS: Post[] = [
     seoTitle: "Skills gap analysis and key-person risk, early",
     description:
       "Skill gaps usually show up after a project stalls. Why skills inventory and capacity planning fail in IT services, and how to see gaps and key-person risk early.",
-    date: DATE,
+    date: "2026-11-13",
     topic: "Skills gap analysis",
     blocks: [
       { type: "p", text: "A new project kicks off in two weeks and needs Kafka. Delivery asks RMG, RMG checks, and there is exactly one person with real Kafka experience, already on another critical project. Now it is a scramble: hire in a hurry, borrow from another account, or start the project and hope." },
@@ -190,7 +190,7 @@ export const POSTS: Post[] = [
     seoTitle: "AI resume screening in India: the 500-resume problem",
     description:
       "Indian employers get hundreds of applications per role, many AI-written. Why resume screening and ATS keyword filters struggle, and what screening should do.",
-    date: DATE,
+    date: "2026-11-17",
     topic: "Resume screening",
     blocks: [
       { type: "p", text: "Post a developer role on Naukri or LinkedIn in India and you know what comes next. By the end of the day there are a few hundred applications. By the end of the week, maybe a thousand. Somebody in HR has to go through them, and that somebody also has ten other open roles." },
@@ -217,7 +217,7 @@ export const POSTS: Post[] = [
     seoTitle: "Candidate ghosting and blind screening in India",
     description:
       "Most job seekers in India say employers ghosted them. Why candidate experience suffers, how blind resume screening helps, and what the DPDP Act asks of employers.",
-    date: DATE,
+    date: "2026-11-20",
     topic: "Candidate experience",
     blocks: [
       { type: "p", text: "Ask anyone who looked for a job in India recently. They applied to fifty places and heard back from five. The rest never replied, not even a no. A 2024 survey reported that 73% of job seekers said employers had ghosted them ([source](https://salarybox.in/blog/candidate-ghosting-a-growing-hiring-challenge-in-india/))." },
@@ -243,7 +243,7 @@ export const POSTS: Post[] = [
     seoTitle: "Explainable AI hiring: fair, with a human in the loop",
     description:
       "AI hiring tools have shown bias and now face lawsuits. Why fair AI recruitment is hard, and why explainable scores, human decisions and audit trails matter.",
-    date: DATE,
+    date: "2026-11-24",
     topic: "Fair AI hiring",
     blocks: [
       { type: "p", text: "In 2024 researchers at the University of Washington tested large language models on ranking resumes that were identical except for the name. The models preferred white-associated names 85% of the time and Black-associated names 9% of the time ([UW News](https://www.washington.edu/news/2024/10/31/ai-bias-resume-screening-race-gender/)). Same resume, different name, different result." },
@@ -269,7 +269,7 @@ export const POSTS: Post[] = [
     seoTitle: "AI agent guardrails: approve actions before they run",
     description:
       "AI agents can now run commands, send emails and change data. Why guardrails and human approval are hard to get right, and a typed way to check agent actions.",
-    date: DATE,
+    date: "2026-11-27",
     topic: "AI agent guardrails",
     blocks: [
       { type: "p", text: "Building an AI agent that can do things is easier than ever. Give it a few tools, a goal, and it will read files, run commands, update tickets and send emails. The hard part comes after: what stops it from deleting the wrong table, emailing all your customers, or spending money nobody approved?" },
@@ -292,7 +292,7 @@ export const POSTS: Post[] = [
 ];
 
 export function post(slug: string): Post | undefined {
-  return POSTS.find((p) => p.slug === slug);
+  return PUBLISHED.find((p) => p.slug === slug);
 }
 
 export function words(p: Post): number {
@@ -301,3 +301,14 @@ export function words(p: Post): number {
     .join(" ")
     .split(/\s+/).length;
 }
+
+/** Today in India (YYYY-MM-DD), when the site is built. */
+function todayInIndia(): string {
+  return new Date(Date.now() + 5.5 * 3600 * 1000).toISOString().slice(0, 10);
+}
+
+/** Posts whose publish day has come, newest first. Everything on the site reads this list. */
+export const PUBLISHED: Post[] = POSTS.filter((p) => p.date <= todayInIndia()).sort((a, b) =>
+  b.date.localeCompare(a.date),
+);
+

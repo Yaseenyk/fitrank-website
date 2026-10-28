@@ -1,7 +1,7 @@
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import { Breadcrumbs, Container, CtaBand, PageIntro } from "@/components/Blocks";
-import { POSTS } from "@/lib/blog";
+import { PUBLISHED } from "@/lib/blog";
 import { breadcrumbJsonLd, canonicalUrl, pageMetadata, personRef } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -18,7 +18,7 @@ export default function BlogIndex() {
     name: "FitRank blog",
     url: canonicalUrl("blog"),
     author: personRef,
-    blogPost: POSTS.map((p) => ({
+    blogPost: PUBLISHED.map((p) => ({
       "@type": "BlogPosting",
       headline: p.title,
       url: canonicalUrl(`blog/${p.slug}`),
@@ -35,7 +35,7 @@ export default function BlogIndex() {
       />
       <Container>
         <ul className="divide-y divide-line border-y border-line">
-          {POSTS.map((p) => (
+          {PUBLISHED.map((p) => (
             <li key={p.slug} className="py-6">
               <p className="text-sm text-ink-mute">{p.topic}</p>
               <Link href={`/blog/${p.slug}/`} className="mt-1 block font-display text-xl font-semibold text-ink hover:text-cobalt">

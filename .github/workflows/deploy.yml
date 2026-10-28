@@ -4,11 +4,15 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Every morning at 06:00 India time: blog posts go live on their publish day (src/lib/blog.ts).
+  schedule:
+    - cron: "30 0 * * *"
 
 permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write
 
 concurrency:
   group: pages
@@ -70,6 +74,18 @@ jobs:
                 "https://fitrank.streamerosai.com/how-it-works/",
                 "https://fitrank.streamerosai.com/security/",
                 "https://fitrank.streamerosai.com/results/",
-                "https://fitrank.streamerosai.com/early-access/"
+                "https://fitrank.streamerosai.com/early-access/",
+                "https://fitrank.streamerosai.com/blog/"
               ]
             }' || true
+
+  keepalive:
+    # GitHub switches off scheduled workflows after 60 days without repository activity;
+    # enabling the workflow again resets that clock, so the daily publish keeps running.
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh workflow enable deploy.yml --repo "${{ github.repository }}"
+        env:
+          GH_TOKEN: ${{ github.token }}
+

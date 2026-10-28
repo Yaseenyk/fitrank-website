@@ -3,14 +3,14 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import JsonLd from "@/components/JsonLd";
 import { Breadcrumbs, Container, CtaBand } from "@/components/Blocks";
-import { POSTS, post, words, type Block } from "@/lib/blog";
+import { PUBLISHED, post, words, type Block } from "@/lib/blog";
 import { ORG_ID, breadcrumbJsonLd, canonicalUrl, pageMetadata, personRef, shareImage } from "@/lib/seo";
 import { MAKER } from "@/lib/site";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return POSTS.map((p) => ({ slug: p.slug }));
+  return PUBLISHED.map((p) => ({ slug: p.slug }));
 }
 
 export function generateMetadata({ params }: { params: { slug: string } }) {
@@ -50,7 +50,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   const p = post(params.slug);
   if (!p) notFound();
   const minutes = Math.max(1, Math.round(words(p) / 200));
-  const others = POSTS.filter((x) => x.slug !== p.slug).slice(0, 4);
+  const others = PUBLISHED.filter((x) => x.slug !== p.slug).slice(0, 4);
   const article = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",

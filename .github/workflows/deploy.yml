@@ -29,7 +29,7 @@ jobs:
       - id: today
         run: |
           today=$(TZ=Asia/Kolkata date +%F)
-          urls=$(awk -v d="$today" '/slug: "/{split($0,a,"\""); slug=a[2]} index($0, "date: \"" d "\"") {printf "\"https://fitrank.streamerosai.com/blog/%s/\",", slug}' src/lib/blog.ts src/lib/blog-more.ts)
+          urls=$(awk -v d="$today" '/slug: "/{split($0,a,"\""); slug=a[2]} index($0, "date: \"" d "\"") {printf "\"https://fitrank.streamerosai.com/blog/%s/\",", slug}' src/lib/blog.ts src/lib/blog-more.ts src/lib/blog-scheduling.ts)
           echo "urls=$urls" >> "$GITHUB_OUTPUT"
           echo "posts publishing today ($today): ${urls:-none}"
       - uses: actions/setup-node@v5
@@ -86,7 +86,10 @@ jobs:
                 "https://fitrank.streamerosai.com/security/",
                 "https://fitrank.streamerosai.com/results/",
                 "https://fitrank.streamerosai.com/early-access/",
-                "https://fitrank.streamerosai.com/blog/"
+                "https://fitrank.streamerosai.com/blog/",
+                "https://fitrank.streamerosai.com/tools/",
+                "https://fitrank.streamerosai.com/tools/schedule-generator/",
+                "https://fitrank.streamerosai.com/tools/employee-schedule-template-excel/"
               ]
             }' || true
 

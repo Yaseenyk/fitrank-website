@@ -1,4 +1,5 @@
 import { MORE_POSTS } from "@/lib/blog-more";
+import { SCHEDULING_POSTS } from "@/lib/blog-scheduling";
 
 // Ten problem-first posts. Each one owns its own group of search terms, so no two posts compete:
 // it describes the problem, says honestly why it is hard, then shows how FitRank approaches it.
@@ -306,7 +307,7 @@ const FIRST: Post[] = [
 ];
 
 /** Every post, published or scheduled. */
-export const POSTS: Post[] = [...FIRST, ...MORE_POSTS];
+export const POSTS: Post[] = [...FIRST, ...MORE_POSTS, ...SCHEDULING_POSTS];
 
 export function post(slug: string): Post | undefined {
   return PUBLISHED.find((p) => p.slug === slug);

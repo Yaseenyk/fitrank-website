@@ -21,7 +21,7 @@ const display = Figtree({
   display: "swap",
 });
 
-const OG_ALT = "FitRank: staffing recommendations with a probability and a reason for every person";
+const OG_ALT = "FitRank: staff scheduling recommendations with a probability and a reason for every person";
 
 const other: Record<string, string> = {};
 if (VERIFICATION.bing) other["msvalidate.01"] = VERIFICATION.bing;
@@ -29,18 +29,22 @@ if (VERIFICATION.bing) other["msvalidate.01"] = VERIFICATION.bing;
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "FitRank: AI staffing recommendations your managers can check",
+    default: "FitRank: AI Staff Scheduling Your Managers Can Check",
     template: `%s | ${PRODUCT}`,
   },
   description: SITE_DESCRIPTION,
   applicationName: PRODUCT,
   keywords: [
+    "AI staff scheduling software",
+    "staff scheduling software",
+    "employee scheduling app",
+    "workforce scheduling software",
     "AI resource management software",
     "resource allocation software for IT services",
     "employee to project matching",
     "bench management software",
     "skill gap analysis tool",
-    "explainable AI staffing",
+    "explainable AI scheduling",
     "human in the loop AI",
     "workforce planning software",
   ],
@@ -55,7 +59,7 @@ export const metadata: Metadata = {
     siteName: PRODUCT,
     locale: "en_US",
     url: `${SITE_URL}/`,
-    title: "FitRank: AI staffing recommendations your managers can check",
+    title: "FitRank: AI Staff Scheduling Your Managers Can Check",
     description: SITE_DESCRIPTION,
     images: [shareImage("", OG_ALT)],
   },

@@ -9,7 +9,7 @@ import { PRODUCT_ID, breadcrumbJsonLd, canonicalUrl, pageMetadata } from "@/lib/
 const total = FEATURE_GROUPS.reduce((n, g) => n + g.features.length, 0);
 
 export const metadata = pageMetadata({
-  title: "Features for staffing, planning, HR and admins",
+  title: "Features for scheduling, planning, HR and admins",
   description: `All ${total} FitRank features across ${FEATURE_PAGES.length} capabilities: explained shortlists, bench and skill-gap planning, privacy-first resume reading and fairness checks.`,
   path: "features",
 });

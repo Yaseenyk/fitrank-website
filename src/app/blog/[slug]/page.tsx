@@ -108,7 +108,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             Written by <a href={MAKER.url} className="text-cobalt underline underline-offset-2">{MAKER.name}</a>
           </p>
           <p className="mt-2 leading-relaxed text-ink-soft">
-            {MAKER.jobTitle}. Builds FitRank, staffing and hiring software for IT services companies in India, from the matching model to the screens.
+            {MAKER.jobTitle}. Builds FitRank, staff scheduling and hiring software for IT services companies in India, from the matching model to the screens.
           </p>
         </aside>
       </Container>

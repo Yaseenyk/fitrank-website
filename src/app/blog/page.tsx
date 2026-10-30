@@ -6,9 +6,9 @@ import { breadcrumbJsonLd, canonicalUrl, pageMetadata, personRef } from "@/lib/s
 import { SITE_URL } from "@/lib/site";
 
 const meta = pageMetadata({
-  title: "Blog: staffing and hiring problems, plainly",
+  title: "Blog: staff scheduling and hiring, plainly",
   description:
-    "Notes on the problems behind staffing and hiring in IT services: bench cost, slow resource allocation, skill gaps, resume overload, fair AI hiring and AI agent safety.",
+    "Notes on staff scheduling and hiring in IT services: rostering and rotating shifts, bench cost, slow resource allocation, skill gaps, resume overload and fair AI hiring.",
   path: "blog",
 });
 

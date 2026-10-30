@@ -27,7 +27,7 @@ export default function EarlyAccessPage() {
             Pre-register for early access
           </h1>
           <p className="mt-6 max-w-[46ch] text-lg leading-relaxed text-ink-soft">
-            FitRank is built and running. We&apos;re choosing a small number of pilot companies to prove it on real staffing decisions.
+            FitRank is built and running. We&apos;re choosing a small number of pilot companies to prove it on real scheduling decisions.
           </p>
           <h2 className="mt-10 font-display text-2xl font-semibold text-ink">What a pilot includes</h2>
           <ul className="mt-5 space-y-5">

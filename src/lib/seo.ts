@@ -166,7 +166,7 @@ export const siteGraphJsonLd = {
       name: PRODUCT,
       url: `${SITE_URL}/`,
       applicationCategory: "BusinessApplication",
-      applicationSubCategory: "Resource management and staffing",
+      applicationSubCategory: "Staff scheduling and resource management",
       operatingSystem: "Web",
       description: SITE_DESCRIPTION,
       author: personRef,

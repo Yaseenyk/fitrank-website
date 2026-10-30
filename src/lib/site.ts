@@ -12,10 +12,10 @@ export function withBase(path: string): string {
 
 export const PRODUCT = "FitRank";
 
-export const SITE_TAGLINE = "Staffing decisions you can check";
+export const SITE_TAGLINE = "Staff scheduling decisions you can check";
 
 export const SITE_DESCRIPTION =
-  "FitRank ranks your people for open tasks with typed AI decisions: rules in code, a probability for every answer, and a manager who makes every final call.";
+  "AI staff scheduling you can check. FitRank ranks your people for open tasks: rules in code, a probability for every answer, and a manager makes the final call.";
 
 export const CONTACT = {
   email: "contact@streamerosai.com",

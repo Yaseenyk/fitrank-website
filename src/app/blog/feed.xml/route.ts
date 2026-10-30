@@ -27,7 +27,7 @@ export function GET() {
     <title>FitRank blog</title>
     <link>${canonicalUrl("blog")}</link>
     <atom:link href="${SITE_URL}/blog/feed.xml" rel="self" type="application/rss+xml" />
-    <description>The problems behind staffing and hiring in IT services, written down plainly.</description>
+    <description>Staff scheduling and hiring in IT services, written down plainly.</description>
     <language>en-in</language>
 ${items}
   </channel>

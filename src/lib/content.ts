@@ -339,7 +339,7 @@ export const TIERS: Tier[] = [
 export type Faq = { q: string; a: string };
 
 export const FAQS: Faq[] = [
-  { q: "What is FitRank?", a: "FitRank is staffing software that ranks your employees for open tasks. Rules and facts are worked out in code, a small in-house AI model answers five fixed questions with a probability for each answer, and a manager makes every final decision." },
+  { q: "What is FitRank?", a: "FitRank is AI staff scheduling software that ranks your employees for open tasks. Rules and facts are worked out in code, a small in-house AI model answers five fixed questions with a probability for each answer, and a manager makes every final decision." },
   { q: "Does FitRank assign people automatically?", a: "No. FitRank only recommends. A task is filled only when a manager accepts someone, and there is no code path that assigns a person on its own." },
   { q: "How is FitRank different from asking ChatGPT to pick someone?", a: "A chatbot returns free text you can't check or measure. FitRank asks typed questions with fixed options, returns a probability for every option, checks each answer against facts calculated in code, and records everything. Its own model runs in-house, so scoring costs nothing per run." },
   { q: "Which AI model does FitRank use?", a: "Matching uses a small transformer model trained by distilling an open-weight LLM. It runs on an ordinary CPU. A hosted LLM is used only to read free text, such as a task description or a resume, into fixed fields; it never ranks or decides about people." },
@@ -348,7 +348,7 @@ export const FAQS: Faq[] = [
   { q: "Can we import our existing employee data?", a: "Yes. Import employees, skills and clients from CSV, including HRMS exports. You preview the file, map your own level, practice and skill names, and only valid rows are saved." },
   { q: "Does it integrate with our HRMS or single sign-on?", a: "Today FitRank imports CSV exports. Keka and other HRMS connectors, and Microsoft Entra ID single sign-on, are on the roadmap and are prioritised with early-access customers." },
   { q: "How is FitRank priced?", a: "FitRank is sold as an annual licence in three tiers: Early access pilot, Team and Enterprise. Pricing depends on team size and deployment, so contact sales or pre-register for a quote." },
-  { q: "Is FitRank available now?", a: "FitRank is in early access. The product is built and running; we are taking on a small number of pilot companies to validate it on real staffing decisions. Pre-register to be considered." },
+  { q: "Is FitRank available now?", a: "FitRank is in early access. The product is built and running; we are taking on a small number of pilot companies to validate it on real scheduling decisions. Pre-register to be considered." },
 ];
 
 export const HOME_FAQS = FAQS.filter((_, i) => [0, 1, 2, 4, 5, 8].includes(i));

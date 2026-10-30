@@ -18,7 +18,7 @@ export default function SecurityPage() {
       <Breadcrumbs trail={[{ name: "Trust and privacy" }]} />
       <PageIntro
         title="Trust, privacy and fairness"
-        lead="Staffing decisions affect people's careers. These protections are built into how FitRank works, not left to configuration."
+        lead="Scheduling decisions affect people's careers. These protections are built into how FitRank works, not left to configuration."
       />
       <Container>
         <ul className="grid gap-x-12 gap-y-8 border-t border-line pt-10 md:grid-cols-2">

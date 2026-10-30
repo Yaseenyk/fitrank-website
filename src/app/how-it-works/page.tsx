@@ -4,14 +4,14 @@ import { DECISIONS, PIPELINE } from "@/lib/content";
 import { PRODUCT_ID, breadcrumbJsonLd, canonicalUrl, pageMetadata, personRef } from "@/lib/seo";
 
 const DESCRIPTION =
-  "How FitRank makes a staffing recommendation: rules and facts in code, five typed AI decisions with a probability for every option, code cross-checks, thresholds and a human decision.";
+  "How FitRank makes a staff scheduling recommendation: rules and facts in code, five typed AI decisions with a probability for every option, code cross-checks, thresholds and a human decision.";
 
 export const metadata = pageMetadata({ title: "How FitRank decides", description: DESCRIPTION, path: "how-it-works" });
 
 const article = {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  headline: "How FitRank makes a staffing recommendation",
+  headline: "How FitRank makes a staff scheduling recommendation",
   description: DESCRIPTION,
   url: canonicalUrl("how-it-works"),
   author: personRef,
@@ -27,7 +27,7 @@ export default function HowItWorksPage() {
       <Breadcrumbs trail={[{ name: "How it works" }]} />
       <PageIntro
         title="How FitRank decides"
-        lead="Most AI staffing tools ask a chatbot to pick someone. FitRank splits the decision into parts: code does what code can, a small model answers fixed questions, and a person decides."
+        lead="Most AI scheduling tools ask a chatbot to pick someone. FitRank splits the decision into parts: code does what code can, a small model answers fixed questions, and a person decides."
       />
 
       <Container className="py-8">

@@ -7,6 +7,7 @@ import { BenchmarkTable, CheckIcon } from "@/components/Bits";
 import { FEATURE_GROUPS, GUARANTEES, HOME_FAQS, METRICS, PIPELINE, TIERS, USE_CASES } from "@/lib/content";
 import { FEATURE_BY_NAME, FEATURE_PAGES, featurePage } from "@/lib/features";
 import { SHOTS } from "@/lib/shots";
+import { TOOLS } from "@/lib/tools";
 import { faqPageJsonLd, webPageJsonLd } from "@/lib/seo";
 import { SITE_DESCRIPTION } from "@/lib/site";
 
@@ -26,7 +27,7 @@ export default function HomePage() {
           faqPageJsonLd(HOME_FAQS),
           webPageJsonLd({
             path: "",
-            name: "FitRank: AI staffing recommendations your managers can check",
+            name: "FitRank: AI Staff Scheduling Your Managers Can Check",
             description: SITE_DESCRIPTION,
             shots: [SHOTS.dashboard, ...SHOWCASE.map((s) => s.shot)],
           }),
@@ -44,8 +45,8 @@ export default function HomePage() {
               Find the right person for every open task, and see why.
             </h1>
             <p className="mt-6 max-w-[60ch] text-lg leading-relaxed text-ink-soft sm:text-xl">
-              FitRank ranks your employees for open tasks. Rules and facts are worked out in code, a small in-house AI model gives a
-              probability for every judgement, and your managers make every final call.
+              FitRank is AI staff scheduling that ranks your employees for open tasks. Rules and facts are worked out in code, a small
+              in-house AI model gives a probability for every judgement, and your managers make every final call.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <PrimaryLink href="/early-access/">Pre-register for early access</PrimaryLink>
@@ -192,6 +193,26 @@ export default function HomePage() {
           ))}
         </ul>
       </Container>
+
+      <section aria-labelledby="free-tools" className="bg-paper-deep/60">
+        <Container className="grid gap-8 py-14 lg:grid-cols-[1fr_1.3fr] lg:items-center">
+          <SectionHeading
+            id="free-tools"
+            title="Free scheduling tools, no sign-up"
+            lead="For the schedule grid itself: a generator that fills a week in your browser and an Excel template with weekly and monthly sheets."
+          />
+          <ul className="grid gap-4 sm:grid-cols-2">
+            {TOOLS.map((t) => (
+              <li key={t.slug}>
+                <Link href={`/tools/${t.slug}/`} className="group block h-full rounded-xl border border-line bg-white p-5 transition-colors hover:border-cobalt/40">
+                  <span className="block font-semibold text-ink group-hover:text-cobalt">{t.name}</span>
+                  <span className="mt-2 block text-[15px] leading-relaxed text-ink-soft">{t.description.split(": ")[1] ?? t.description}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
 
       <section aria-labelledby="trust" className="border-y border-line bg-white">
         <Container className="grid gap-12 py-20 lg:grid-cols-[1fr_1.6fr]">

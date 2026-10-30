@@ -24,6 +24,8 @@ npm run build && python scripts/generate-images.py && npm run build
 - `src/lib/site.ts`: site URL, contact details, search-console verification tokens.
 - `src/lib/seo.ts`: metadata helper, canonical URLs, JSON-LD (Person, WebSite, SoftwareApplication, BreadcrumbList, FAQPage).
 - `src/lib/routes.ts`: every indexable page; the sitemap is built from it.
+- `src/lib/blog.ts`, `blog-more.ts`, `blog-scheduling.ts`: blog posts as typed objects, each with its publish day; the daily deploy builds a post once its day has come in India.
+- `src/lib/tools.ts` + `src/app/tools/`: the free scheduling tools (browser-only schedule generator in `src/components/ScheduleGenerator.tsx`; Excel template at `public/templates/`, built by `scripts/generate-schedule-template.py` with openpyxl).
 - `src/components/LeadForm.tsx`: pre-register / contact-sales form, sent with EmailJS (same account as the portfolio).
 - `public/og/pages/<slug>.jpg`: each page's share card (1200×630: its h1, section and hero screenshot), and the icons (`src/app/favicon.ico`, `apple-icon.png`, `public/icon-192.png`, `icon-512.png`, `logo.png`), all made by `scripts/generate-images.py` (Pillow, Figtree font under OFL in `scripts/fonts/`). The build fails if a page's card is missing.
 

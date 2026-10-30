@@ -3,6 +3,7 @@ import Logo from "@/components/Logo";
 import { CONTACT, MAKER } from "@/lib/site";
 import { USE_CASES } from "@/lib/content";
 import { FEATURE_PAGES } from "@/lib/features";
+import { TOOLS } from "@/lib/tools";
 
 const PRODUCT_LINKS = [
   { href: "/features/", label: "Features" },
@@ -15,6 +16,8 @@ const PRODUCT_LINKS = [
 
 const COMPANY_LINKS = [
   { href: "/blog/", label: "Blog" },
+  { href: "/tools/", label: "Free scheduling tools" },
+  ...TOOLS.map((t) => ({ href: `/tools/${t.slug}/`, label: t.name })),
   { href: "/early-access/", label: "Pre-register" },
   { href: "/contact/", label: "Contact sales" },
   { href: "/privacy/", label: "Privacy notice" },
@@ -27,7 +30,7 @@ export default function Footer() {
         <div>
           <Logo />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft">
-            Staffing recommendations with a probability and a reason for every person. A manager makes every final call.
+            Staff scheduling recommendations with a probability and a reason for every person. A manager makes every final call.
           </p>
           <p className="mt-6 text-sm text-ink-soft">
             <a href={`mailto:${CONTACT.email}`} className="hover:text-ink">{CONTACT.email}</a>

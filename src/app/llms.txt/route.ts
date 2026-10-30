@@ -1,6 +1,7 @@
 import { PUBLISHED } from "@/lib/blog";
 import { FEATURE_GROUPS, USE_CASES } from "@/lib/content";
 import { FEATURE_PAGES } from "@/lib/features";
+import { TOOLS } from "@/lib/tools";
 import { CONTACT, MAKER, SITE_DESCRIPTION, SITE_URL } from "@/lib/site";
 import { canonicalUrl } from "@/lib/seo";
 
@@ -26,6 +27,9 @@ Key facts:
 - [Pricing](${canonicalUrl("pricing")}): annual plans (Early access pilot, Team, Enterprise)
 - [Pre-register](${canonicalUrl("early-access")}): join the early-access pilot
 - [Contact sales](${canonicalUrl("contact")})
+
+## Free scheduling tools (no sign-up, nothing uploaded)
+${TOOLS.map((t) => `- [${t.name}](${canonicalUrl(`tools/${t.slug}`)}): ${t.description}`).join("\n")}
 
 ## Feature areas
 ${FEATURE_GROUPS.map((g) => `- ${g.role}: ${g.summary} (${canonicalUrl("features")}#${g.id})`).join("\n")}

@@ -80,12 +80,14 @@ def wrap(draw: ImageDraw.ImageDraw, text: str, f: ImageFont.FreeTypeFont, width:
 
 def section(path: str) -> str:
     if not path:
-        return "AI staffing recommendations"
+        return "AI staff scheduling"
     first = path.split("/")[0]
     if first == "features":
         return "Feature" if "/" in path else "All features"
     if first == "use-cases":
         return "Use case" if "/" in path else "Use cases"
+    if first == "tools":
+        return "Free tool" if "/" in path else "Free tools"
     return {
         "how-it-works": "How it works",
         "results": "Benchmarks",

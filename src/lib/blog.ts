@@ -27,16 +27,19 @@ export type Post = {
 const FIRST: Post[] = [
   {
     slug: "bench-management-cost",
-    keywords: ["bench management", "reduce bench time", "billable utilization", "RMG", "bench to billable"],
+    keywords: ["bench management", "bench management meaning", "bench management in hr", "bench management roles and responsibilities", "bench management tool", "reduce bench time", "bench to billable"],
     title: "The bench is costing you more than you think",
-    seoTitle: "Bench management: the real cost of idle people",
-    description:
-      "In IT services, people on the bench are paid but bill nothing. Why bench management stays hard, and how to move people from bench to billable faster.",
+    seoTitle: "Bench management: meaning, roles and real cost",
+    description: "Bench management meaning in HR and IT services, who handles it, what bench time really costs, and how to move people from bench to billable faster.",
     date: "2026-10-28",
     topic: "Bench management",
     blocks: [
       { type: "p", text: "If you have worked in an IT services company, you know the Monday call. The RMG team shares a sheet, somebody reads out the names on the bench, and every manager says the same thing: nobody on this list fits my project. Two weeks later the same names are still on the sheet." },
       { type: "p", text: "Bench is normal. Projects end, new ones have not started, people finish one engagement before the next is signed. A small bench is even healthy because it lets you say yes to a client quickly. The problem starts when people stay there and nobody can say why." },
+      { type: "h2", text: "What bench management means" },
+      { type: "p", text: "Bench management is how a services company handles people who are employed but not on a billable project: tracking who is free, planning when people will roll off, and moving them to the next project, to training or to internal work. In HR terms it sits between resource management, which decides who works where, and talent management, which decides how people grow." },
+      { type: "h2", text: "Who handles bench management: roles and responsibilities" },
+      { type: "ul", items: ["Resource manager or RMG team: keeps the bench list current, matches people to open requests and reports bench cost.", "Delivery and project managers: release people on time and say early when a project is ending.", "HR: runs training plans and internal moves, and handles exits when nothing else works.", "Leadership: sets the target bench size and decides when to hire and when to redeploy."] },
       { type: "h2", text: "What the bench actually costs" },
       { type: "p", text: "Take a simple example. Say 30 engineers are on the bench and the average cost to the company is ₹1 lakh a month each. That is ₹30 lakh a month going out with nothing billed against it. If even ten of them could have moved to an open task two weeks earlier, that is ₹5 lakh saved in one month, without hiring anyone or winning a new deal. Your numbers will be different, but the math works the same way for every services company." },
       { type: "p", text: "And money is only half of it. People who sit on the bench for long start looking outside. The good ones leave first, because they get calls from recruiters every week." },
@@ -50,6 +53,7 @@ const FIRST: Post[] = [
       { type: "p", text: "None of these is a hard technical problem on its own. It is hard because all of them have to be solved together, every week, while delivery keeps running." },
       { type: "h2", text: "What usually gets tried" },
       { type: "p", text: "A bigger Excel sheet. A resource management module inside the HRMS that nobody updates. A weekly review meeting. These help a little, but they all depend on someone remembering to update data and someone else remembering to look at it. Utilization dashboards tell you the bench is high. They do not tell you who should go where." },
+      { type: "p", text: "If you are comparing bench management tools or bench management software, check three things: does it show who frees up in the next 30 days, does it suggest a next step for each person, and does it explain why." },
       { type: "h2", text: "How FitRank approaches it" },
       { type: "p", text: "We built FitRank around one question for every person on the bench: what is the one next step for this person this week? It shows who is free now and who frees up in the next 14 to 90 days, and for each of them it picks the best open task they fit, or the single skill they are short of for that task." },
       { type: "p", text: "The matching runs over everyone, not just the names somebody remembers, and every suggestion comes with plain reasons: has 4 of 5 must-have skills, free from the 12th, missing Kafka. A manager still makes every call. FitRank never assigns anyone by itself." },
@@ -58,11 +62,10 @@ const FIRST: Post[] = [
   },
   {
     slug: "skills-based-resource-matching",
-    keywords: ["skills-based resource matching", "resource allocation software", "project staffing software", "resource scheduling", "PSA software", "AI resource allocation"],
+    keywords: ["resource allocation in project management", "skills-based resource matching", "resource allocation software", "resource management software for professional services", "project staffing", "AI resource allocation"],
     title: "Why finding the right person for a project still takes days",
-    seoTitle: "Skills-based resource matching: why it takes days",
-    description:
-      "Resource allocation in IT services still runs on calls and spreadsheets. Why skills-based matching is hard and what PSA tools miss.",
+    seoTitle: "Resource allocation in IT projects: why it is slow",
+    description: "Resource allocation in project management still runs on calls and spreadsheets in IT services. Why skills-based matching is hard and what PSA tools miss.",
     date: "2026-10-30",
     topic: "Resource allocation",
     blocks: [
@@ -87,12 +90,12 @@ const FIRST: Post[] = [
   },
   {
     slug: "job-description-to-staffing-request",
-    keywords: ["job description parser", "JD to requirements", "staffing request automation"],
+    keywords: ["job description format", "job description parser", "JD to requirements", "staffing request automation", "job description and resume match"],
     title: "Managers don't have time to fill a staffing form",
     seoTitle: "From job description to staffing request, faster",
     description:
       "Staffing requests stall because managers will not fill long forms. Why turning a client JD into clean requirements is hard, and how to automate it safely.",
-    date: "2026-11-03",
+    date: "2026-11-20",
     topic: "Staffing requests",
     blocks: [
       { type: "p", text: "Every staffing system has a request form. Skills, level, years, start date, duration, location, work mode, priority. It looks reasonable when you design it. Then a delivery manager with three escalations and a client call in ten minutes opens it, sees fifteen fields, and sends RMG a WhatsApp message instead: need 2 Java devs asap, JD attached." },
@@ -115,12 +118,11 @@ const FIRST: Post[] = [
   },
   {
     slug: "hire-or-move-internal-mobility",
-    keywords: ["internal mobility", "internal talent marketplace", "redeploy bench employees", "build vs buy talent"],
+    keywords: ["internal mobility", "internal mobility meaning", "internal mobility rate formula", "internal talent marketplace", "redeploy bench employees", "build vs buy talent"],
     title: "Hiring outside while the right person sits on your bench",
-    seoTitle: "Internal mobility: hire outside or move someone in?",
-    description:
-      "Companies hire externally while a fitting employee waits on the bench. Why internal mobility is hard in IT services, and how to decide hire or move first.",
-    date: "2026-11-06",
+    seoTitle: "Internal mobility: meaning, rate formula, hire vs move",
+    description: "Internal mobility meaning, how to calculate the internal mobility rate, and why IT services companies hire outside while a fitting employee waits on the bench.",
+    date: "2026-11-13",
     topic: "Internal mobility",
     blocks: [
       { type: "p", text: "This one is painful to watch. A manager cannot find anyone for a role, asks HR to hire, HR posts on Naukri, screens 300 resumes, runs interviews for three weeks and finally makes an offer. The new joiner comes in with a 60-day notice period. Meanwhile someone with almost the same skills has been on the bench in another unit the whole time." },
@@ -133,6 +135,8 @@ const FIRST: Post[] = [
         "The comparison is never side by side. Nobody puts the internal option and the cost and time of hiring outside next to each other before deciding.",
       ] },
       { type: "p", text: "Internal talent marketplace products try to fix this by letting employees apply for internal roles. That helps people who are actively looking, but most people on the bench are not browsing a portal. They are waiting to be told what is next." },
+      { type: "h2", text: "Internal mobility meaning and rate formula" },
+      { type: "p", text: "Internal mobility means filling roles by moving people already in the company: to another project, unit or role. A simple measure is the internal mobility rate = roles filled by internal moves \u00f7 all roles filled in the period \u00d7 100. If 12 of 40 roles this quarter went to people already in the company, the rate is 30%. Track it per unit as well; one unit holding on to its people can hide behind a good company average." },
       { type: "h2", text: "Build vs buy, for talent" },
       { type: "p", text: "There is also a middle option that gets skipped: the person inside is a near fit, missing one skill that could be trained in two or three weeks. Hiring takes longer than that, costs more, and the new person still needs onboarding. But this only works if somebody can see the near fit and the gap early enough." },
       { type: "h2", text: "How FitRank approaches it" },
@@ -142,16 +146,17 @@ const FIRST: Post[] = [
   },
   {
     slug: "project-team-builder",
-    keywords: ["project team builder", "team staffing tool", "project staffing"],
+    keywords: ["project staffing plan", "project staffing plan template", "team allocation", "team allocation template", "project team builder", "team staffing tool"],
     title: "Staffing a project is a team problem, not a one-person problem",
-    seoTitle: "Project team builder: staffing a whole team",
+    seoTitle: "Project staffing plan: building the whole team",
     description:
       "Most tools find one person per role. Real projects need a team: a lead, the right members, no double booking. Why team staffing is hard and how to do it.",
-    date: "2026-11-10",
+    date: "2026-12-11",
     topic: "Team staffing",
     blocks: [
       { type: "p", text: "When we showed an early version of FitRank to a manager, the first feedback was simple: where is the team? It had found one person. But the client had asked for three React developers and a lead, not one developer." },
       { type: "p", text: "That is how real staffing works. Projects need a team, and picking a good team is not the same as picking the best person four times." },
+      { type: "p", text: "A project staffing plan, or team allocation plan, usually lists each role with its level, the person, their allocation and start date. Most teams keep it in an Excel template. The template is not the hard part. Choosing who goes in each row is." },
       { type: "h2", text: "Why building a team is harder" },
       { type: "ul", items: [
         "The lead changes everything. A strong lead can carry a less experienced member. A weak lead with a strong team still struggles. So the lead has to be picked first.",
@@ -170,12 +175,11 @@ const FIRST: Post[] = [
   },
   {
     slug: "skills-gap-key-person-risk",
-    keywords: ["skills gap analysis", "skills inventory", "capacity planning", "key person risk", "workforce planning IT services"],
+    keywords: ["skill gap analysis", "skill gap analysis template", "skill gap analysis meaning", "skills inventory", "key person risk", "workforce planning"],
     title: "You find out about a skill gap when the project is already late",
-    seoTitle: "Skills gap analysis and key-person risk, early",
-    description:
-      "Skill gaps show up after a project stalls. Why skills inventory and capacity planning fail, and how to see gaps and key-person risk early.",
-    date: "2026-11-13",
+    seoTitle: "Skill gap analysis: template and key-person risk",
+    description: "Skill gap analysis meaning, a simple template for IT services teams, and how to spot key-person risk before a project stalls instead of after it.",
+    date: "2026-11-17",
     topic: "Skills gap analysis",
     blocks: [
       { type: "p", text: "A new project kicks off in two weeks and needs Kafka. Delivery asks RMG, RMG checks, and there is exactly one person with real Kafka experience, already on another critical project. Now it is a scramble: hire in a hurry, borrow from another account, or start the project and hope." },
@@ -187,6 +191,8 @@ const FIRST: Post[] = [
         "Capacity planning is done in headcount, not skills. \"We need 20 more people in Q1\" does not tell you that 6 of them need Spark.",
         "Key-person risk is invisible until it hurts. When one person holds a skill that two running projects depend on, it is fine until they resign or fall sick.",
       ] },
+      { type: "h2", text: "A simple skill gap analysis template" },
+      { type: "ul", items: ["Demand by skill: open tasks plus pipeline deals likely to close, by month.", "Supply by skill: people who have it at the needed level and used it recently.", "Gap = demand minus supply, per skill and month.", "One action per gap: train someone close, move someone from another unit, or hire.", "Review it every two weeks; demand changes faster than people expect."] },
       { type: "h2", text: "What usually gets tried" },
       { type: "p", text: "Skills gap analysis software in HR suites often works on job families and competency frameworks. That is useful for career planning, but it is too slow and too general for a delivery manager who needs to know who can do Kafka next month." },
       { type: "h2", text: "How FitRank approaches it" },
@@ -197,12 +203,11 @@ const FIRST: Post[] = [
   },
   {
     slug: "ai-resume-screening-india",
-    keywords: ["AI resume screening", "AI resume screener India", "ATS software India", "resume parser", "AI recruitment software India"],
+    keywords: ["ai resume screening", "ai resume screening tools", "resume screening software", "ai recruitment tools in india", "applicant tracking systems in india", "ats software for hr", "resume parser"],
     title: "500 applications for one role: resume screening in India today",
-    seoTitle: "AI resume screening in India: the 500-resume problem",
-    description:
-      "Indian employers get hundreds of applications per role, many AI-written. Why resume screening and ATS keyword filters struggle, and what screening should do.",
-    date: "2026-11-17",
+    seoTitle: "AI resume screening tools in India: what to expect",
+    description: "AI resume screening in India: why ATS keyword filters fail with hundreds of AI-written resumes, what screening software should do, and what to avoid.",
+    date: "2026-11-27",
     topic: "Resume screening",
     blocks: [
       { type: "p", text: "Post a developer role on Naukri or LinkedIn in India and you know what comes next. By the end of the day there are a few hundred applications. By the end of the week, maybe a thousand. Somebody in HR has to go through them, and that somebody also has ten other open roles." },
@@ -225,15 +230,17 @@ const FIRST: Post[] = [
   },
   {
     slug: "candidate-ghosting-blind-screening",
-    keywords: ["candidate ghosting", "candidate experience", "blind resume screening", "careers page builder", "DPDP compliant recruitment"],
+    keywords: ["candidate ghosting", "candidate ghosting meaning", "candidates ghosting interviews", "candidate ghosting after offer", "blind resume screening", "candidate experience", "DPDP compliant recruitment"],
     title: "Candidates hear nothing back. That is a hiring problem too",
-    seoTitle: "Candidate ghosting and blind screening in India",
+    seoTitle: "Candidate ghosting: meaning, causes, blind screening",
     description:
       "Most job seekers in India say employers ghosted them. Why it happens, how blind resume screening helps, and what the DPDP Act asks.",
-    date: "2026-11-20",
+    date: "2026-12-01",
     topic: "Candidate experience",
     blocks: [
       { type: "p", text: "Ask anyone who looked for a job in India recently. They applied to fifty places and heard back from five. The rest never replied, not even a no. A 2024 survey reported that 73% of job seekers said employers had ghosted them ([source](https://salarybox.in/blog/candidate-ghosting-a-growing-hiring-challenge-in-india/))." },
+      { type: "h2", text: "Candidate ghosting meaning" },
+      { type: "p", text: "Candidate ghosting usually means an employer stops replying to a candidate partway through hiring, with no rejection and no reason. The word is also used the other way round, when candidates stop replying, skip interviews or do not join after accepting an offer. This post is about the first kind." },
       { type: "p", text: "Companies usually see this as the candidate's problem. It is not. People remember which company never replied. Some of them become clients, some refer friends, and some apply again two years later when they are exactly who you need." },
       { type: "h2", text: "Why replying to everyone is hard" },
       { type: "ul", items: [
@@ -252,12 +259,12 @@ const FIRST: Post[] = [
   },
   {
     slug: "explainable-fair-ai-hiring",
-    keywords: ["explainable AI hiring", "bias-free hiring", "fair AI recruitment", "human in the loop AI hiring", "audit trail hiring"],
+    keywords: ["ai in hr", "ai in recruitment", "explainable AI hiring", "bias-free hiring", "fair AI recruitment", "human in the loop AI hiring"],
     title: "If an AI can't explain a hiring decision, it shouldn't make it",
-    seoTitle: "Explainable AI hiring: fair, with a human in the loop",
+    seoTitle: "AI in HR hiring: why it must explain every decision",
     description:
       "AI hiring tools have shown bias and now face lawsuits. Why fair AI recruitment is hard, and why explainable scores, human decisions and audit trails matter.",
-    date: "2026-11-24",
+    date: "2026-12-18",
     topic: "Fair AI hiring",
     blocks: [
       { type: "p", text: "In 2024 researchers at the University of Washington tested large language models on ranking resumes that were identical except for the name. The models preferred white-associated names 85% of the time and Black-associated names 9% of the time ([UW News](https://www.washington.edu/news/2024/10/31/ai-bias-resume-screening-race-gender/)). Same resume, different name, different result." },
@@ -279,12 +286,12 @@ const FIRST: Post[] = [
   },
   {
     slug: "ai-agent-guardrails",
-    keywords: ["AI agent guardrails", "human in the loop approval", "tool approval for AI agents", "LLM guardrails API", "AI action governance"],
+    keywords: ["ai agent guardrails", "ai agent guardrails framework", "ai agent guardrails example", "human in the loop approval", "tool approval for AI agents", "AI action governance"],
     title: "Letting an AI agent act on its own is the easy part",
-    seoTitle: "AI agent guardrails: approve actions before they run",
+    seoTitle: "AI agent guardrails: a simple framework with examples",
     description:
       "AI agents can now run commands, send emails and change data. Why guardrails and human approval are hard to get right, and a typed way to check agent actions.",
-    date: "2026-11-27",
+    date: "2026-12-22",
     topic: "AI agent guardrails",
     blocks: [
       { type: "p", text: "Building an AI agent that can do things is easier than ever. Give it a few tools, a goal, and it will read files, run commands, update tickets and send emails. The hard part comes after: what stops it from deleting the wrong table, emailing all your customers, or spending money nobody approved?" },

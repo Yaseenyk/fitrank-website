@@ -16,6 +16,22 @@ export const TOOLS: Tool[] = [
     description:
       "Free employee schedule template for Excel: a weekly and a monthly sheet with shift codes, hours per person and coverage by formula. Download the .xlsx, no sign-up.",
   },
+  {
+    slug: "employee-skill-matrix-template",
+    name: "Employee skill matrix template (Excel)",
+    title: "Employee Skill Matrix Template (Excel), Free Download",
+    description:
+      "Free employee skill matrix template in Excel: people in rows, skills in columns, a 0 to 4 rating scale, colour coding and skill gap totals. No sign-up.",
+  },
+  {
+    slug: "notice-period-calculator",
+    name: "Notice period calculator",
+    title: "Notice Period Calculator: Last Working Day (India)",
+    description:
+      "Free notice period calculator: enter your resignation date and notice period in days or months to get your last working day, days left and buyout date.",
+  },
 ];
+
+export const SKILL_MATRIX_FILE = "/templates/employee-skill-matrix-template.xlsx";
 
 export const TEMPLATE_FILE = "/templates/employee-schedule-template.xlsx";

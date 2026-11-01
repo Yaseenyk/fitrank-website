@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Figtree } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -8,15 +8,17 @@ import { shareImage, siteGraphJsonLd } from "@/lib/seo";
 import { MAKER, PRODUCT, SITE_DESCRIPTION, SITE_URL, VERIFICATION } from "@/lib/site";
 
 // One family, as in the app: weights carry the hierarchy.
-const sans = Figtree({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+// Figtree (latin, variable 400-700) is kept in the repo so the build never fetches Google Fonts;
+// that fetch failed once on GitHub Actions and stopped a deploy.
+const sans = localFont({
+  src: "./fonts/Figtree-latin.woff2",
+  weight: "400 700",
   variable: "--font-sans",
   display: "swap",
 });
-const display = Figtree({
-  subsets: ["latin"],
-  weight: ["600", "700"],
+const display = localFont({
+  src: "./fonts/Figtree-latin.woff2",
+  weight: "400 700",
   variable: "--font-display",
   display: "swap",
 });

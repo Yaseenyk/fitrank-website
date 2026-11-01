@@ -11,7 +11,7 @@ export const MORE_POSTS: Post[] = [
     seoTitle: "We tested ChatGPT for staffing decisions",
     description:
       "We used a large language model to rank people for project tasks. It never made things up, but it did not beat a simple rule. What we learned from the test.",
-    date: "2026-12-01",
+    date: "2027-01-05",
     topic: "From building FitRank",
     blocks: [
       { type: "p", text: "When we started FitRank, the obvious first idea was to ask a big language model. Give it the task, give it a person's profile, ask: is this a good fit? It reads, it reasons, it should be good at this." },
@@ -34,12 +34,11 @@ export const MORE_POSTS: Post[] = [
   },
   {
     slug: "utilization-vs-billable-utilization",
-    keywords: ["utilization rate", "billable utilization", "resource utilization IT services"],
+    keywords: ["billable utilization", "billable utilization meaning", "billable utilization formula", "billable utilization rate", "resource utilization formula", "utilization rate"],
     title: "Utilization rate vs billable utilization: what to actually track",
-    seoTitle: "Utilization rate vs billable utilization in IT services",
-    description:
-      "Utilization and billable utilization are not the same number. What each one tells an IT services company, how they mislead, and what to track every week.",
-    date: "2026-12-04",
+    seoTitle: "Billable utilization: meaning, formula and targets",
+    description: "Billable utilization meaning, the formula with an example, how it differs from resource utilization, and what IT services teams should track each week.",
+    date: "2026-11-06",
     topic: "Utilization",
     blocks: [
       { type: "p", text: "Ask three people in an IT services company what the utilization is this month and you may get three numbers. Finance has one, delivery has another, and RMG has a third. Usually all three are right, because they are measuring different things." },
@@ -49,6 +48,10 @@ export const MORE_POSTS: Post[] = [
         "Billable utilization: hours actually billed to a client divided by available hours. Only work the client pays for counts.",
       ] },
       { type: "p", text: "A team can be 90% utilized and 60% billable. Everyone looks busy, but a third of that busy time earns nothing. That is the gap that hurts margins quietly." },
+      { type: "h2", text: "The formulas, with an example" },
+      { type: "ul", items: ["Resource utilization % = hours on any project work \u00f7 available hours \u00d7 100.", "Billable utilization % = billable hours \u00f7 available hours \u00d7 100.", "Available hours are usually working hours minus leave and holidays, for example 8 hours \u00d7 21 working days = 168 hours in a month."] },
+      { type: "p", text: "Example: someone with 168 available hours who billed 126 hours has a billable utilization of 75%. If they also spent 20 hours on an internal tool, their resource utilization is 146 \u00f7 168, about 87%. Targets differ by company and role, so agree yours and write down what counts." },
+      { type: "p", text: "Because billable utilization often shows up in appraisals, people care how it is counted: whether training, bench time and internal projects count against them, and whether leave is removed from available hours first. Settle those rules once, in writing." },
       { type: "h2", text: "How the numbers mislead" },
       { type: "ul", items: [
         "Internal work hides the bench. Parking people on an internal tool or a long proof of concept makes utilization look fine.",
@@ -68,7 +71,7 @@ export const MORE_POSTS: Post[] = [
     seoTitle: "AI confidence and calibration: is 90% really 90%?",
     description:
       "An AI's confidence score is only useful if it is calibrated. What calibration means, how to measure it in plain terms, and how we calibrate FitRank's scores.",
-    date: "2026-12-08",
+    date: "2027-01-15",
     topic: "From building FitRank",
     blocks: [
       { type: "p", text: "Most AI tools show a number next to their answer. 92% match. 87% confidence. People read that as \"right 92% of the time\". Usually nobody has checked whether that is true." },
@@ -89,12 +92,12 @@ export const MORE_POSTS: Post[] = [
   },
   {
     slug: "resource-planning-90-days",
-    keywords: ["resource planning", "resource forecasting", "demand forecasting by skill", "capacity planning IT services"],
+    keywords: ["resource planning", "resource planning software", "resource forecasting", "capacity planning IT services"],
     title: "Resource planning for the next 90 days, not just this week",
-    seoTitle: "Resource planning for the next 90 days in IT services",
+    seoTitle: "Resource planning in IT services: the 90-day view",
     description:
       "Most IT services firms staff for this week. Why 90-day resource planning is hard, and how forecasting demand by skill avoids scrambles.",
-    date: "2026-12-11",
+    date: "2026-12-29",
     topic: "Resource planning",
     blocks: [
       { type: "p", text: "Most staffing in IT services is reactive. A request comes in, RMG looks for someone, and the search starts from whoever is free today. It works until three large requests land in the same week, and then everyone scrambles." },
@@ -119,7 +122,7 @@ export const MORE_POSTS: Post[] = [
     seoTitle: "Training our own small AI model on free Kaggle GPUs",
     description:
       "How we trained FitRank's matching model without paying for GPUs: an open teacher model on Kaggle labels examples, and a small student model runs on CPU.",
-    date: "2026-12-15",
+    date: "2027-01-22",
     topic: "From building FitRank",
     blocks: [
       { type: "p", text: "After the language model test showed no gain over a simple rule, we decided to train our own model. The catch: we had no GPU budget. So we did it on Kaggle's free GPUs." },
@@ -149,7 +152,7 @@ export const MORE_POSTS: Post[] = [
     seoTitle: "Rolling-off employees: plan the next project early",
     description:
       "People come off projects and land on the bench because nobody planned two weeks earlier. Why roll-offs are missed in IT services and how to catch them in time.",
-    date: "2026-12-18",
+    date: "2027-01-01",
     topic: "Roll-offs",
     blocks: [
       { type: "p", text: "Most bench time does not start with the bench. It starts two or three weeks earlier, when someone's project is ending and nobody plans what they do next. The project ends on Friday, and on Monday they are on the bench sheet." },
@@ -173,7 +176,7 @@ export const MORE_POSTS: Post[] = [
     seoTitle: "Removing personal data before AI reads a resume",
     description:
       "How we remove names, emails, phone numbers and other personal details from resumes in code before any AI model reads them, and the edge cases that made it hard.",
-    date: "2026-12-22",
+    date: "2027-01-29",
     topic: "From building FitRank",
     blocks: [
       { type: "p", text: "Reading resumes is a good use of a language model. Turning a messy PDF into skills, years and education is exactly the kind of text work it is good at. But a resume is full of personal data, and we did not want any of it sent to an outside AI service." },
@@ -198,7 +201,7 @@ export const MORE_POSTS: Post[] = [
     seoTitle: "Timezone overlap when staffing for US and UK clients",
     description:
       "US and UK clients often need hours of overlap with India. Why timezone requirements get lost in staffing, and how to match people on overlap, not just skills.",
-    date: "2026-12-25",
+    date: "2027-01-26",
     topic: "Timezone overlap",
     blocks: [
       { type: "p", text: "\"Needs 4 hours overlap with EST.\" It is one line in the client's email, and it decides who can actually do the job. India is 9.5 to 10.5 hours ahead of US Eastern time, depending on daylight saving. Four hours of overlap means someone working into the night in India." },
@@ -222,7 +225,7 @@ export const MORE_POSTS: Post[] = [
     seoTitle: "Our AI answered reversed questions backwards",
     description:
       "Our model answered \"Would a manager reject them?\" backwards most of the time. Why it happened, how we fixed it, and what is still open.",
-    date: "2026-12-29",
+    date: "2027-02-09",
     topic: "From building FitRank",
     blocks: [
       { type: "p", text: "We are working on a model that can answer any typed question, not just the five matching questions it was trained on. To test it, we asked the same question in different ways. \"Is this candidate a good fit?\" and \"Would a staffing manager turn this candidate down?\" are the same question, reversed." },
@@ -238,12 +241,12 @@ export const MORE_POSTS: Post[] = [
   },
   {
     slug: "stale-skill-profiles",
-    keywords: ["employee skill profiles", "skills inventory", "skill data quality"],
+    keywords: ["employee skill matrix", "employee skill profiles", "skills inventory", "skill data quality"],
     title: "Why skill profiles go stale, and how to keep them fresh",
     seoTitle: "Why employee skill profiles go stale, and the fix",
     description:
       "Employee skill profiles are filled once and then age. Why skills inventories go stale in IT services, and ways to keep them current without endless forms.",
-    date: "2027-01-01",
+    date: "2026-12-25",
     topic: "Skills inventory",
     blocks: [
       { type: "p", text: "Every company's HRMS has a skills section. Employees fill it when they join, maybe again during an appraisal, and then never. Two years later it says someone is an expert in AngularJS and has never heard of the cloud platform they have used every day since." },
@@ -261,6 +264,7 @@ export const MORE_POSTS: Post[] = [
         "Use the resume as evidence, but let HR or the manager accept a suggested skill instead of adding it blindly.",
         "Ask for a quick review on a schedule, not a full rewrite.",
       ] },
+      { type: "p", text: "If you keep skills in a spreadsheet today, start with a clear format: see [employee skill matrix: format and limits](/blog/employee-skill-matrix/) and the free [skill matrix template](/tools/employee-skill-matrix-template/)." },
       { type: "h2", text: "How FitRank approaches it" },
       { type: "p", text: "In FitRank, a skill's \"last used\" date moves forward on its own when a person finishes a project that used it. Resumes are read into suggested skills that HR accepts or dismisses, and profiles due for review are flagged. Matching then weighs recent skills above old ones. See [people data](/features/people-data/)." },
     ],
@@ -272,7 +276,7 @@ export const MORE_POSTS: Post[] = [
     seoTitle: "Synthetic data for AI testing: what it can prove",
     description:
       "We built FitRank on synthetic employees with hidden ground truth. What synthetic data proves, where it misleads, and what still decides.",
-    date: "2027-01-05",
+    date: "2027-02-16",
     topic: "From building FitRank",
     blocks: [
       { type: "p", text: "You cannot build a staffing tool on a real company's employee data on day one. Nobody will give it to you, and they should not. So we built FitRank on synthetic data: a generated company with employees, skills, projects, leave and open tasks." },
@@ -297,7 +301,7 @@ export const MORE_POSTS: Post[] = [
     seoTitle: "Shadow resources: train people on live projects",
     description:
       "Putting a learner on a live project as a shadow builds skills faster than courses. Why shadowing is rarely planned in IT services and how to make it work.",
-    date: "2027-01-08",
+    date: "2027-02-12",
     topic: "Shadow resources",
     blocks: [
       { type: "p", text: "Most people learn more in three weeks on a real project than in three months of courses. Every delivery leader knows this. Yet the bench is full of people doing online courses while the projects next door could teach them the skill they are missing." },
@@ -321,7 +325,7 @@ export const MORE_POSTS: Post[] = [
     seoTitle: "Why an AI should say not sure instead of guessing",
     description:
       "An AI that always answers will sometimes be confidently wrong. How we built an abstain rule into FitRank's decision service, and what it does to accuracy.",
-    date: "2027-01-12",
+    date: "2027-02-23",
     topic: "From building FitRank",
     blocks: [
       { type: "p", text: "Most AI systems are built to always give an answer. Ask anything, get something. That is fine for a chatbot. It is not fine when the answer decides whether an agent deletes data or whether a person gets shortlisted." },
@@ -340,15 +344,16 @@ export const MORE_POSTS: Post[] = [
   },
   {
     slug: "notice-periods-staffing-plans",
-    keywords: ["notice period India", "notice period buyout", "staffing plans"],
+    keywords: ["notice period", "notice period meaning", "notice period in it companies", "notice period buyout", "notice period calculator", "staffing plans"],
     title: "Notice periods in India and why they break staffing plans",
-    seoTitle: "Notice periods in India and staffing plans",
-    description:
-      "Long notice periods in Indian IT mean a hire made today starts months later. How notice periods break staffing plans, and how to plan around them.",
-    date: "2027-01-15",
+    seoTitle: "Notice period in India: meaning and staffing impact",
+    description: "Notice period meaning, typical notice periods in Indian IT companies, buyouts, and how 60 to 90-day notice periods break staffing and hiring plans.",
+    date: "2026-11-24",
     topic: "Notice periods",
     blocks: [
       { type: "p", text: "In many Indian IT companies, notice periods of 60 to 90 days are common, especially for experienced people. So when a project needs someone in three weeks and the answer is \"hire\", the real start date is often three months away." },
+      { type: "h2", text: "Notice period meaning" },
+      { type: "p", text: "A notice period is the time between resigning and the last working day, set in the offer or appointment letter. It gives the company time to hand over work and find a replacement. A notice period buyout means paying, or having the new employer pay, for days not served so the person can leave earlier, where the policy allows it." },
       { type: "h2", text: "How notice periods break plans" },
       { type: "ul", items: [
         "The hire is too late for the project. By the time they join, the client has escalated or the work has been redistributed.",
@@ -363,6 +368,7 @@ export const MORE_POSTS: Post[] = [
         "Ask for the notice period early, and do not guess it. If a resume does not say, ask the candidate.",
         "Start replacement planning on the day someone resigns.",
       ] },
+      { type: "p", text: "To work out a last working day quickly, use our free [notice period calculator](/tools/notice-period-calculator/)." },
       { type: "h2", text: "How FitRank approaches it" },
       { type: "p", text: "FitRank checks inside first, and for outside candidates it treats the notice period as availability: someone who can only join after the project's latest start date is shown with that reason. If a resume does not state the notice period, it is marked to confirm with the candidate instead of guessed. See [hire or move](/features/hire-or-move/)." },
     ],
@@ -374,7 +380,7 @@ export const MORE_POSTS: Post[] = [
     seoTitle: "Careers page checklist and Google job posting markup",
     description:
       "A careers page that candidates trust and Google can read: what to include, how job posting structured data works, and the mistakes that get jobs dropped.",
-    date: "2027-01-19",
+    date: "2027-02-05",
     topic: "Careers pages",
     blocks: [
       { type: "p", text: "For many smaller companies in India the careers page is a PDF link or a Google Form. Candidates do not trust it, and Google cannot read it. Both cost you applicants." },
@@ -394,15 +400,15 @@ export const MORE_POSTS: Post[] = [
   },
   {
     slug: "dpdp-act-hr-checklist",
-    keywords: ["DPDP Act HR", "DPDP compliance checklist", "recruitment data privacy India"],
+    keywords: ["dpdp act 2023", "dpdp rules 2025", "dpdp act 2023 and dpdp rules 2025", "dpdp act for hr", "dpdp compliance checklist", "recruitment data privacy india"],
     title: "The DPDP Act for HR teams: a plain checklist",
-    seoTitle: "DPDP Act for HR teams: a plain checklist",
-    description:
-      "What India's DPDP Act means for recruitment and HR data, in plain words: notice, purpose, deletion, consent and timing. Not legal advice.",
-    date: "2027-01-22",
+    seoTitle: "DPDP Act 2023 and Rules 2025: a checklist for HR",
+    description: "DPDP Act 2023 and DPDP Rules 2025 for HR and recruitment teams, in plain words: notice, purpose, deletion, consent and timing. Not legal advice.",
+    date: "2026-12-08",
     topic: "Data protection",
     blocks: [
       { type: "p", text: "HR teams handle more personal data than almost anyone else in a company: resumes, IDs, salaries, addresses, family details. India's Digital Personal Data Protection Act changes how that data should be handled. This is our plain reading as builders, not legal advice. Check with your lawyer." },
+      { type: "p", text: "Two names come up: the DPDP Act 2023 is the law itself, and the DPDP Rules 2025 set out how parts of it work in practice, including timelines. The checklist below covers both, for HR and recruitment." },
       { type: "h2", text: "The checklist" },
       { type: "ul", items: [
         "Tell people what you collect and why, before or when you collect it. A short, plain notice on the application form counts for a lot.",
@@ -420,15 +426,17 @@ export const MORE_POSTS: Post[] = [
   },
   {
     slug: "human-in-the-loop-ai",
-    keywords: ["human in the loop", "AI approval workflow", "AI governance"],
+    keywords: ["human in the loop", "human in the loop meaning", "human in the loop in ai", "ai approval workflow", "AI governance"],
     title: "Human-in-the-loop: where AI should stop and a person should decide",
-    seoTitle: "Human in the loop: where AI should stop",
+    seoTitle: "Human in the loop in AI: meaning and where to use it",
     description:
       "Human-in-the-loop AI is often a rubber stamp. Where the line between AI and people should be, and how to design approvals people actually read.",
-    date: "2027-01-26",
+    date: "2026-12-15",
     topic: "Human in the loop",
     blocks: [
       { type: "p", text: "\"Human in the loop\" is on every AI product page now. In practice it often means a person clicks approve on whatever the AI suggested, 200 times a day, without reading. That is not a human in the loop. That is a human as a rubber stamp." },
+      { type: "h2", text: "Human in the loop meaning" },
+      { type: "p", text: "Human in the loop means a person reviews and decides at the points where an AI system's output affects people or cannot be undone, instead of the system acting on its own. It is different from human on the loop, where a person only watches and can step in." },
       { type: "h2", text: "Where the line should be" },
       { type: "p", text: "A simple way to draw it: let code and AI do what can be checked, and let people decide what affects people or cannot be undone." },
       { type: "ul", items: [
@@ -454,7 +462,7 @@ export const MORE_POSTS: Post[] = [
     seoTitle: "Campus vs lateral hiring for IT services",
     description:
       "Campus and lateral hiring solve different staffing problems. When each makes sense for IT services, the hidden costs of both, and how to decide per role.",
-    date: "2027-01-29",
+    date: "2027-01-19",
     topic: "Hiring strategy",
     blocks: [
       { type: "p", text: "IT services companies hire in two very different ways: freshers from campus, trained over months, and lateral hires with experience who are expected to deliver almost immediately. Most companies do both. The question is which one fits which need." },
@@ -478,12 +486,12 @@ export const MORE_POSTS: Post[] = [
   },
   {
     slug: "offer-dropouts-no-shows-india",
-    keywords: ["offer dropouts", "interview no-shows", "candidate dropout India"],
+    keywords: ["offer dropout", "offer dropout ratio formula", "interview no-shows", "candidate dropout India", "candidates ghosting interviews"],
     title: "Interview no-shows and offer dropouts in India: why they happen",
-    seoTitle: "Offer dropouts and interview no-shows in India",
+    seoTitle: "Offer dropout ratio and interview no-shows in India",
     description:
       "Candidates skip interviews and accept offers they never join. Why offer dropouts and no-shows are common in Indian hiring, and what actually reduces them.",
-    date: "2027-02-02",
+    date: "2026-12-04",
     topic: "Offer dropouts",
     blocks: [
       { type: "p", text: "Recruiters in India know the pattern. Ten candidates confirm interviews and six turn up. Three accept the offer and one joins. The others took a counter-offer, a better offer, or simply stopped answering the phone." },
@@ -495,6 +503,8 @@ export const MORE_POSTS: Post[] = [
         "Slow processes. When an interview loop takes three weeks, the candidate's best option may already be gone.",
         "Silence works both ways. Candidates who were ghosted by employers before see little reason to call back.",
       ] },
+      { type: "h2", text: "Offer dropout ratio formula" },
+      { type: "p", text: "Offer dropout ratio = offers accepted but not joined \u00f7 offers accepted \u00d7 100. If 20 people accepted and 6 never joined, the ratio is 30%. Track it by notice period length and by how long the offer stage took; that usually shows where the dropouts come from." },
       { type: "h2", text: "What reduces it" },
       { type: "ul", items: [
         "Speed. Shortlist in days, not weeks.",
@@ -513,7 +523,7 @@ export const MORE_POSTS: Post[] = [
     seoTitle: "Measuring fairness in hiring and staffing",
     description:
       "Fairness checks often compare the wrong groups or flag noise. How to measure fairness in hiring and staffing honestly, and when a gap is real.",
-    date: "2027-02-05",
+    date: "2027-02-02",
     topic: "Fairness",
     blocks: [
       { type: "p", text: "Saying a hiring or staffing process is fair is easy. Measuring it is harder, and it is easy to measure it wrongly in both directions: missing real bias, or crying bias over random noise." },
@@ -542,7 +552,7 @@ export const MORE_POSTS: Post[] = [
     seoTitle: "Choosing a cheap or strong AI model per task",
     description:
       "Using the biggest AI model for every step is slow and expensive. How to route each step to a cheaper or stronger model, and how to check the choice is safe.",
-    date: "2027-02-09",
+    date: "2027-02-19",
     topic: "AI cost",
     blocks: [
       { type: "p", text: "Teams building with AI often pick one model for everything. Usually the strongest, because nobody wants to be blamed for a wrong answer. Then the monthly bill arrives, and most of it was spent on steps a much smaller model could have done." },
@@ -565,12 +575,12 @@ export const MORE_POSTS: Post[] = [
   },
   {
     slug: "jd-fewer-better-applications",
-    keywords: ["how to write a job description", "job description template", "better applicants"],
+    keywords: ["job description format", "job description sample", "how to write a job description", "job description template"],
     title: "How to write a job description that gets fewer, better applications",
-    seoTitle: "Write a job description that gets better applications",
+    seoTitle: "Job description format that gets better applicants",
     description:
       "A long, generic JD brings hundreds of poor-fit applications. How to write job descriptions that attract the right candidates and are easier to screen.",
-    date: "2027-02-12",
+    date: "2027-01-12",
     topic: "Job descriptions",
     blocks: [
       { type: "p", text: "Most job descriptions are copied from the last one and grown over time. Twenty-five required skills, a paragraph about the company's values, and \"5 to 12 years\". It brings hundreds of applications and very few good ones, because almost anyone can match something in it." },
@@ -597,12 +607,12 @@ export const MORE_POSTS: Post[] = [
   },
   {
     slug: "talent-pool-india-consent",
-    keywords: ["talent pool", "talent pool consent", "candidate database India"],
+    keywords: ["talent pool", "talent pool meaning", "talent pool consent", "candidate database India"],
     title: "Talent pools in India: consent, rules and what actually works",
-    seoTitle: "Talent pools in India: consent and what works",
+    seoTitle: "Talent pool meaning, consent and what works in India",
     description:
       "Most talent pools are old resumes nobody looks at. How to build a talent pool in India that people agreed to, that stays useful, and that respects their data.",
-    date: "2027-02-16",
+    date: "2027-01-08",
     topic: "Talent pools",
     blocks: [
       { type: "p", text: "Every recruiter has heard \"we will keep your resume for future openings\". In practice it means the resume sits in an inbox or an ATS, nobody searches it, and the candidate never hears from the company again." },
@@ -631,7 +641,7 @@ export const MORE_POSTS: Post[] = [
     seoTitle: "Switching AI models safely: versions and rollback",
     description:
       "Updating an AI model in production can quietly make things worse. How we version, evaluate, switch and roll back models in FitRank without guesswork.",
-    date: "2027-02-19",
+    date: "2027-02-26",
     topic: "From building FitRank",
     blocks: [
       { type: "p", text: "Retraining a model is the fun part. Switching the product to the new one is where things go wrong. A new model can be better on average and worse on exactly the cases your users care about, and you only find out from complaints." },
@@ -648,6 +658,54 @@ export const MORE_POSTS: Post[] = [
       { type: "p", text: "One risk we designed against early: if a retrained model's files are copied over an old one, its probabilities would be adjusted by the old model's calibration. They would look plausible and be wrong. So each calibration records a fingerprint of the exact weights it was fitted for, and is ignored for any other weights." },
       { type: "h2", text: "Automatic retraining, manual switching" },
       { type: "p", text: "FitRank retrains the final scorer on managers' real decisions once there are enough of them, but it never switches models by itself. A person compares and decides. More on [model governance](/features/model-governance/)." },
+    ],
+  },
+  {
+    slug: "employee-skill-matrix",
+    keywords: ["skill matrix", "employee skill matrix", "skill matrix format", "skill matrix template excel", "employee skill matrix format in excel", "skill matrix meaning"],
+    title: "Employee skill matrix: format, meaning and where Excel breaks",
+    seoTitle: "Employee skill matrix: format, template and limits",
+    description:
+      "Employee skill matrix meaning, the format that works, a free Excel template to download, and where a spreadsheet skill matrix breaks as a team grows.",
+    date: "2026-11-03",
+    topic: "Skill matrix",
+    blocks: [
+      { type: "p", text: "Search for skill matrix and you will find hundreds of Excel templates. That tells you two things: almost every team needs one, and almost every team builds it in a spreadsheet. We did too, before building FitRank." },
+      { type: "h2", text: "Skill matrix meaning" },
+      { type: "p", text: "A skill matrix is a grid. People go in the rows, skills go in the columns, and each cell says how good that person is at that skill. It answers one question at a glance: who here can do what, and how well?" },
+      { type: "p", text: "In IT services it is used for staffing (who can take this project), for training (which skills are thin) and for appraisals (how someone has grown)." },
+      { type: "h2", text: "A skill matrix format that works" },
+      { type: "ul", items: ["One row per person, with designation, level and the date they are free for new work.", "One column per skill your projects actually need. Ten to twenty is plenty to start.", "A short rating scale with a written meaning for each number. We use 0 to 4: none, basic, working, strong, expert.", "A total row that counts how many people are strong in each skill. That row is your skill gap view.", "A last reviewed date per row, so you know which ratings are old."] },
+      { type: "p", text: "We made exactly this as a [free employee skill matrix template in Excel](/tools/employee-skill-matrix-template/). It has the rating scale, colours and gap totals built in, and it works in Google Sheets too." },
+      { type: "h2", text: "Where an Excel skill matrix breaks" },
+      { type: "ul", items: ["Ratings go stale. People are rated once, and the sheet says the same thing for two years.", "Ratings are inconsistent. One manager's 4 is another manager's 3, and self-ratings drift high or low.", "It has no history. It cannot tell someone who used React last month from someone who used it five years ago.", "It cannot match. Finding the right person for a project still means filtering columns by hand and asking around.", "It does not scale. Past a few dozen people and skills, nobody reads the whole grid."] },
+      { type: "h2", text: "How FitRank approaches it" },
+      { type: "p", text: "FitRank keeps the same idea, people against skills with a level, but fills it from work instead of typing: a skill's last used date moves forward when someone finishes a project that used it, resumes are read into suggested skills that HR accepts, and profiles due for review are flagged. Then, instead of reading a grid, a manager opens an open task and sees the people who fit, with the reason. See [people data](/features/people-data/)." },
+      { type: "p", text: "If a spreadsheet works for your team today, use the template. When it stops working, that is the problem we built FitRank for." },
+    ],
+  },
+  {
+    slug: "resource-manager-rmg",
+    keywords: ["resource manager", "resource manager job description", "rmg full form", "resource management group", "resource manager roles and responsibilities", "rmg in it company"],
+    title: "What a resource manager (RMG) actually does",
+    seoTitle: "Resource manager job description and RMG full form",
+    description:
+      "RMG full form, the resource manager job description in IT services, day-to-day responsibilities, the skills it needs, and what makes the role hard.",
+    date: "2026-11-10",
+    topic: "Resource management",
+    blocks: [
+      { type: "p", text: "In most IT services companies there is a team everyone calls RMG. Delivery managers message them when a project needs people, HR talks to them before hiring, and finance asks them why the bench is so high. Outside the industry, hardly anyone knows what the job is." },
+      { type: "h2", text: "RMG full form" },
+      { type: "p", text: "RMG stands for Resource Management Group. Some companies call it the resource management team or workforce management. It is the team that decides, or helps decide, who works on which project and when." },
+      { type: "h2", text: "Resource manager job description" },
+      { type: "p", text: "A typical resource manager job description in IT services covers most of this:" },
+      { type: "ul", items: ["Take staffing requests from delivery and account teams: role, skills, level, start date and location.", "Find the right people inside the company first, from the bench and from people rolling off projects.", "Track utilization and bench, and report bench cost to leadership.", "Plan ahead with sales: which deals may close and which skills they will need.", "Raise hiring requests to HR when nobody inside fits, with a clear requirement.", "Keep employee skill and availability data reasonably current.", "Keep it fair, so the same few people do not get every good project."] },
+      { type: "h2", text: "Skills a resource manager needs" },
+      { type: "ul", items: ["Enough technical understanding to tell a React developer from a React Native one.", "Negotiation, because delivery managers rarely want to give up good people.", "Comfort with data: utilization, bench age, forecast against actual.", "Calm under pressure. Most requests are urgent, and many arrive at once."] },
+      { type: "h2", text: "Why the role is hard" },
+      { type: "p", text: "Resource managers are measured on utilization and bench cost, but they control neither the projects nor the people. Their data lives in an HRMS that is out of date, a project tracker and managers' heads. Most of the day goes into calls and spreadsheets to answer one question: who is free, and who fits?" },
+      { type: "h2", text: "How FitRank helps a resource manager" },
+      { type: "p", text: "FitRank is built for that question. It keeps a ranked list of who fits each open task with the reasons, shows who is on the bench and who rolls off in the next 30 days, and suggests one next step per person. Resource managers still decide; they just start from a shortlist instead of a blank sheet. See [bench management](/features/bench-management/) and [candidate matching](/features/candidate-matching/)." },
     ],
   },
 ];

@@ -5,7 +5,7 @@ import { TOOLS } from "@/lib/tools";
 import { breadcrumbJsonLd, canonicalUrl, pageMetadata, personRef } from "@/lib/seo";
 
 const DESCRIPTION =
-  "Free staff scheduling tools from FitRank: an automatic schedule generator that runs in your browser and an Excel employee schedule template with weekly and monthly sheets.";
+  "Free tools from FitRank: an automatic schedule generator, an Excel employee schedule template, an employee skill matrix template and a notice period calculator.";
 
 export const metadata = pageMetadata({ title: "Free scheduling tools", description: DESCRIPTION, path: "tools" });
 
@@ -26,7 +26,7 @@ export default function ToolsPage() {
       <Breadcrumbs trail={[{ name: "Free tools" }]} />
       <PageIntro
         title="Free scheduling tools"
-        lead="Two small tools for the schedule grid itself: one fills a week in your browser, the other is a spreadsheet you keep. No sign-up, nothing uploaded. FitRank is for the harder question of who fits an open task, and why."
+        lead="Small free tools: two for the schedule grid itself (one fills a week in your browser, the other is a spreadsheet you keep), a skill matrix template and a notice period calculator. No sign-up, nothing uploaded. FitRank is for the harder question of who fits an open task, and why."
       />
       <Container>
         <ul className="grid gap-4 md:grid-cols-2">

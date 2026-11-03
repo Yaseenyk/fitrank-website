@@ -82,6 +82,17 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${sans.variable} ${display.variable}`}>
+      <head>
+        {/* Google tag (GA4). A plain tag in the server-rendered head so Google's tag checker finds it
+            in the HTML; next/script would inject it client-side and the checker misses it. */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-64FMK4BV5Z" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-64FMK4BV5Z');",
+          }}
+        />
+      </head>
       <body className="font-sans">
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2">
           Skip to content

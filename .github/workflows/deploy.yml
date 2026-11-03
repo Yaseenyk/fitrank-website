@@ -29,7 +29,7 @@ jobs:
       - id: today
         run: |
           today=$(TZ=Asia/Kolkata date +%F)
-          urls=$(awk -v d="$today" '/slug: "/{split($0,a,"\""); slug=a[2]} index($0, "date: \"" d "\"") {printf "\"https://fitrank.streamerosai.com/blog/%s/\",", slug}' src/lib/blog.ts src/lib/blog-more.ts src/lib/blog-scheduling.ts)
+          urls=$(awk -v d="$today" '/slug: "/{split($0,a,"\""); slug=a[2]} index($0, "date: \"" d "\"") {printf "\"https://fitrank.streamerosai.com/blog/%s/\",", slug}' src/lib/blog.ts src/lib/blog-more.ts src/lib/blog-scheduling.ts src/lib/blog-stories.ts)
           echo "urls=$urls" >> "$GITHUB_OUTPUT"
           echo "posts publishing today ($today): ${urls:-none}"
       - uses: actions/setup-node@v5

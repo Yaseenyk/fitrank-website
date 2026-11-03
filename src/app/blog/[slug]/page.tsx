@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import JsonLd from "@/components/JsonLd";
 import { Breadcrumbs, Container, CtaBand } from "@/components/Blocks";
 import { PUBLISHED, post, words, type Block } from "@/lib/blog";
-import { ORG_ID, breadcrumbJsonLd, canonicalUrl, pageMetadata, personRef, shareImage } from "@/lib/seo";
+import { ORG_ID, breadcrumbJsonLd, canonicalUrl, faqPageJsonLd, pageMetadata, personRef, shareImage } from "@/lib/seo";
 import { MAKER, SITE_URL, withBase } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -49,6 +49,24 @@ function withLinks(text: string): ReactNode[] {
 function render(b: Block, i: number) {
   if (b.type === "h2") return <h2 key={i}>{b.text}</h2>;
   if (b.type === "ul") return <ul key={i}>{b.items.map((t) => <li key={t}>{withLinks(t)}</li>)}</ul>;
+  if (b.type === "ol") return <ol key={i}>{b.items.map((t) => <li key={t}>{withLinks(t)}</li>)}</ol>;
+  if (b.type === "tldr")
+    return (
+      <p key={i} className="rounded-lg border border-line bg-white p-5 leading-relaxed text-ink">
+        <strong>Short answer.</strong> {withLinks(b.text)}
+      </p>
+    );
+  if (b.type === "faq")
+    return (
+      <div key={i}>
+        {b.items.map((f) => (
+          <div key={f.q}>
+            <h3>{f.q}</h3>
+            <p>{withLinks(f.a)}</p>
+          </div>
+        ))}
+      </div>
+    );
   return <p key={i}>{withLinks(b.text)}</p>;
 }
 
@@ -77,9 +95,10 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     wordCount: words(p),
     inLanguage: "en",
   };
+  const faq = p.blocks.flatMap((b) => (b.type === "faq" ? b.items : []));
   return (
     <>
-      <JsonLd data={[article, breadcrumbJsonLd([{ name: "Blog", path: "blog" }, { name: p.title, path: `blog/${p.slug}` }])]} />
+      <JsonLd data={[article, ...(faq.length ? [faqPageJsonLd(faq)] : []), breadcrumbJsonLd([{ name: "Blog", path: "blog" }, { name: p.title, path: `blog/${p.slug}` }])]} />
       <Breadcrumbs trail={[{ name: "Blog", href: "/blog/" }, { name: p.title }]} />
       <Container className="pb-4 pt-12 sm:pt-16">
         <p className="text-ink-mute">{p.topic}</p>

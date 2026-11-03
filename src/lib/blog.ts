@@ -1,5 +1,6 @@
 import { MORE_POSTS } from "@/lib/blog-more";
 import { SCHEDULING_POSTS } from "@/lib/blog-scheduling";
+import { STORY_POSTS } from "@/lib/blog-stories";
 
 // Ten problem-first posts. Each one owns its own group of search terms, so no two posts compete:
 // it describes the problem, says honestly why it is hard, then shows how FitRank approaches it.
@@ -10,7 +11,10 @@ import { SCHEDULING_POSTS } from "@/lib/blog-scheduling";
 export type Block =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
-  | { type: "ul"; items: string[] };
+  | { type: "ul"; items: string[] }
+  | { type: "ol"; items: string[] }
+  | { type: "tldr"; text: string }
+  | { type: "faq"; items: { q: string; a: string }[] };
 
 export type Post = {
   slug: string;
@@ -314,7 +318,7 @@ const FIRST: Post[] = [
 ];
 
 /** Every post, published or scheduled. */
-export const POSTS: Post[] = [...FIRST, ...MORE_POSTS, ...SCHEDULING_POSTS];
+export const POSTS: Post[] = [...FIRST, ...MORE_POSTS, ...SCHEDULING_POSTS, ...STORY_POSTS];
 
 export function post(slug: string): Post | undefined {
   return PUBLISHED.find((p) => p.slug === slug);
@@ -322,7 +326,7 @@ export function post(slug: string): Post | undefined {
 
 export function words(p: Post): number {
   return p.blocks
-    .map((b) => (b.type === "ul" ? b.items.join(" ") : b.text))
+    .map((b) => (b.type === "ul" || b.type === "ol" ? b.items.join(" ") : b.type === "faq" ? b.items.map((i) => `${i.q} ${i.a}`).join(" ") : b.text))
     .join(" ")
     .split(/\s+/).length;
 }

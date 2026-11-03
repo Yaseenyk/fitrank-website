@@ -60,6 +60,9 @@ body {
 .prose-fit ul {
   @apply mt-2 list-disc pl-5;
 }
+.prose-fit ol {
+  @apply mt-2 list-decimal pl-5;
+}
 .prose-fit a {
   @apply text-cobalt underline underline-offset-2 hover:text-cobalt-deep;
 }

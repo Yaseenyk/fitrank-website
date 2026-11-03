@@ -23,13 +23,7 @@ export default function PrivacyPage() {
         <h2>How it&apos;s sent</h2>
         <p>
           The form sends your message by email using EmailJS, an email delivery service. It goes to {CONTACT.email}. This site sets no
-          advertising cookies.
-        </p>
-        <h2>Analytics</h2>
-        <p>
-          We use Google Analytics to see how visitors find and use the site. It sets first-party analytics cookies and sends usage data, such
-          as pages viewed and approximate location, to Google. We don&apos;t use it for advertising. You can block it with a browser extension
-          or by disabling cookies.
+          advertising cookies and runs no tracking scripts.
         </p>
         <h2>What we use it for</h2>
         <p>Only to reply to you about FitRank: early access, a quote, a demo or your question. We don&apos;t sell or share it.</p>
@@ -39,7 +33,7 @@ export default function PrivacyPage() {
         <p>
           To see, correct or delete what you sent us, email <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>.
         </p>
-        <p className="text-sm">Last updated 3 November 2026.</p>
+        <p className="text-sm">Last updated 8 October 2026.</p>
       </Container>
     </>
   );

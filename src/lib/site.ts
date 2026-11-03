@@ -28,9 +28,9 @@ export const CONTACT = {
 
 export const MAKER = {
   name: "Yaseen Khatib",
-  url: "https://yaseenkhatib.streamerosai.com",
+  url: "https://yk.streamerosai.com",
   // Same @id the portfolio uses, so search engines join the two sites into one entity.
-  id: "https://yaseenkhatib.streamerosai.com/#person",
+  id: "https://yk.streamerosai.com/#person",
   jobTitle: "Senior Full-Stack AI Engineer",
   sameAs: [
     "https://www.linkedin.com/in/yaseen-yk",

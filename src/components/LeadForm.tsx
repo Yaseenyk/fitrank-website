@@ -4,6 +4,7 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import { EMAILJS } from "@/lib/emailjs";
 import { withBase } from "@/lib/site";
+import { gaEvent } from "@/lib/ga";
 
 export type Intent = "early-access" | "sales" | "demo" | "question";
 
@@ -94,6 +95,7 @@ export default function LeadForm({ defaultIntent = "early-access" }: { defaultIn
         EMAILJS.publicKey,
       );
       setSentIntent(intent);
+      gaEvent("generate_lead", { form_name: "fitrank-lead", cta_text: intent });
       setStatus("sent");
       setForm(EMPTY);
     } catch (err) {

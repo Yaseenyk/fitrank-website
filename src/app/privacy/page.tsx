@@ -28,7 +28,7 @@ export default function PrivacyPage() {
         <h2>Analytics</h2>
         <p>
           We use Google Analytics to see how visitors find and use the site. It sets first-party analytics cookies and sends usage data, such
-          as pages viewed and approximate location, to Google. We don&apos;t use it for advertising. You can block it with a browser extension
+          as pages viewed and approximate location, to Google. We don&apos;t use it for advertising. The site also uses Microsoft Clarity, a free tool that records anonymised heatmaps and session replays so I can see where visitors get stuck. Text typed into forms is masked and is not recorded. You can block it with a browser extension
           or by disabling cookies.
         </p>
         <h2>What we use it for</h2>

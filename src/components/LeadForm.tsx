@@ -111,7 +111,7 @@ export default function LeadForm({ defaultIntent = "early-access" }: { defaultIn
   const label = "block text-sm font-medium text-ink";
 
   return (
-    <form onSubmit={submit} className="grid gap-5" noValidate={false}>
+    <form onSubmit={submit} data-clarity-mask="true" className="grid gap-5" noValidate={false}>
       <fieldset>
         <legend className={label}>What would you like to do?</legend>
         <div className="mt-2 grid gap-2 sm:grid-cols-2">

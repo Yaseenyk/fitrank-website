@@ -194,9 +194,9 @@ export const USE_CASES: UseCase[] = [
   },
   {
     slug: "pre-sales-staffing",
-    title: "Check you can staff a deal before you win it",
+    title: "Can we staff this deal? Check before you sign",
     who: "Pre-sales and account teams",
-    description: "Run a what-if staffing check for a prospective deal using rules only, without creating a task.",
+    description: "Check a prospective deal against the real bench before you promise a start date: roles, skills, who is free in time, and margin per week.",
     problem: "Deals get signed with start dates nobody checked against the bench.",
     how: [
       "Describe the roles and start date of the prospective deal.",
@@ -209,9 +209,9 @@ export const USE_CASES: UseCase[] = [
   },
   {
     slug: "fair-auditable-decisions",
-    title: "Make staffing decisions you can audit and defend",
+    title: "How to audit AI staffing decisions for fairness",
     who: "Leadership, HR and compliance",
-    description: "Keep a full trail of every recommendation, test recommendation rates for fairness, and never use protected attributes.",
+    description: "What to record, what to leave out and how to test recommendation rates, so AI-assisted staffing decisions can be explained to an auditor.",
     problem: "AI hiring and staffing tools are hard to trust when nobody can see why they suggested someone, or whether they treat groups differently.",
     how: [
       "Protected attributes such as gender, age, religion and caste are never stored, sent to AI or used as signals.",
@@ -224,9 +224,9 @@ export const USE_CASES: UseCase[] = [
   },
   {
     slug: "decision-api",
-    title: "Add typed AI decisions to your own tools",
+    title: "Typed AI decisions through an API",
     who: "Engineering and platform teams",
-    description: "Ask bounded questions over an API and get a probability for every option, with keys, budgets and rate limits per project.",
+    description: "Ask your own tools a question with fixed options and get a probability for each, not free text. Keys, budgets and logs per project.",
     problem: "Calling a chatbot from internal tools returns free text you can't test, cap or audit.",
     how: [
       "Create a project and an API key in the admin area.",

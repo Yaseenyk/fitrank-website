@@ -4,8 +4,10 @@
 import type { Block } from "@/lib/blog";
 import { ARTICLES_A } from "@/lib/usecase-articles-a";
 import { ARTICLES_B } from "@/lib/usecase-articles-b";
+import { ARTICLES_C } from "@/lib/usecase-articles-c";
 
 export const UC_ARTICLES: Record<string, Block[]> = {
   ...ARTICLES_A,
   ...ARTICLES_B,
+  ...ARTICLES_C,
 };

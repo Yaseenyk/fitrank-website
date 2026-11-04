@@ -149,9 +149,9 @@ export const USE_CASES: UseCase[] = [
   },
   {
     slug: "hire-or-move",
-    title: "Decide whether to hire or move someone",
+    title: "Hire externally or move someone: how to decide",
     who: "Delivery and talent leaders",
-    description: "Compare the best internal person with the best outside candidate for each task, with reasons on both sides.",
+    description: "Compare the best internal person with the best outside candidate on fit, start date and margin. A method, a worked example and where it stops.",
     problem: "Teams hire for roles they could have filled internally, or wait on an internal move that never comes.",
     how: [
       "For each task, FitRank finds the best internal person and the best candidate HR has in the pipeline.",
@@ -164,9 +164,9 @@ export const USE_CASES: UseCase[] = [
   },
   {
     slug: "hr-candidate-pipeline",
-    title: "Bring in outside candidates when nobody inside fits",
+    title: "Hiring request to HR when no one inside fits",
     who: "HR and talent acquisition teams",
-    description: "Turn 'no internal fit' into a hiring request, read resumes with personal details removed, and match candidates to every open task.",
+    description: "A clean hand-off from manager to HR: structured request, resumes read with personal details removed, candidates scored, fit recorded.",
     problem: "When the bench can't cover a task, the request reaches HR as an email with half the details, and candidates are screened by hand.",
     how: [
       "The manager sends a hiring request straight from a task with no internal fit.",
@@ -179,9 +179,9 @@ export const USE_CASES: UseCase[] = [
   },
   {
     slug: "multi-task-staffing",
-    title: "Staff a whole portfolio of tasks at once",
+    title: "Staffing several tasks at once without double-booking",
     who: "Resource management offices",
-    description: "Propose one person per task across every open task without double-booking anyone, and see the margin of each plan.",
+    description: "Staffing tasks one at a time gives the best person to the loudest task. Plan the portfolio together, without booking anyone twice.",
     problem: "Staffing tasks one at a time gives the best person to whichever task asked first.",
     how: [
       "FitRank takes the latest match runs for all open tasks.",

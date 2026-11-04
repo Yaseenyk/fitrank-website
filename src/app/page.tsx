@@ -1,5 +1,5 @@
 import Link from "next/link";
-import DecisionDemo from "@/components/DecisionDemo";
+import DecisionDemo from "@/components/DecisionDemoLazy";
 import JsonLd from "@/components/JsonLd";
 import ProductShot from "@/components/ProductShot";
 import { Container, CtaBand, FaqList, PrimaryLink, SecondaryLink, SectionHeading } from "@/components/Blocks";

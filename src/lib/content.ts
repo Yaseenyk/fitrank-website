@@ -103,9 +103,9 @@ export type UseCase = {
 export const USE_CASES: UseCase[] = [
   {
     slug: "staff-open-tasks",
-    title: "Staff an open task with the right person",
+    title: "How to find the right person for an open task",
     who: "Resource managers in IT services and consulting",
-    description: "Rank everyone who can actually take a task, with a probability and a cited reason for each person, and keep the final call with the manager.",
+    description: "A step-by-step way to staff an open task: write it as fields, cut the pool by rules, compare on counted facts, then decide. With a worked example.",
     problem: "Matching usually means a spreadsheet, a few phone calls and whoever the manager remembers. Good people on the bench get missed, and nobody can say afterwards why someone was picked.",
     how: [
       "Describe the task in plain words and confirm the skills, level, dates and location FitRank reads from it.",
@@ -119,9 +119,9 @@ export const USE_CASES: UseCase[] = [
   },
   {
     slug: "bench-management",
-    title: "Cut bench time and idle cost",
+    title: "How to reduce bench time in a services team",
     who: "Delivery heads and resource management offices",
-    description: "See who is free now and in the next 30, 60 and 90 days, what idle time costs each week, and which open tasks each person could take.",
+    description: "A weekly bench review that works: windows, a priced idle week, a named next task for every person, and one action each. With a worked example.",
     problem: "Bench reports show who is free, not where they could go. By the time someone notices a match, the person has been idle for weeks.",
     how: [
       "The bench view lists who is free now and soon, with the weekly idle cost from your rate card.",
@@ -134,9 +134,9 @@ export const USE_CASES: UseCase[] = [
   },
   {
     slug: "skill-gap-planning",
-    title: "Find skill shortages before they cost you a deal",
+    title: "Skill gap analysis for upcoming projects",
     who: "Practice leads and capability planners",
-    description: "Mark every must-have skill across upcoming tasks as shortage, tight or covered, and see who is closest to filling each gap.",
+    description: "Find skill shortages before a task stalls: list must-haves, count who is free in time, mark covered, tight or short, and pick who to train.",
     problem: "Skill gaps surface when a task can't be staffed, which is too late to train anyone.",
     how: [
       "FitRank reads the must-have skills of all upcoming tasks.",

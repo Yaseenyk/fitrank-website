@@ -3,10 +3,12 @@ import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
 import ProductShot from "@/components/ProductShot";
 import { Breadcrumbs, Container, CtaBand, FeatureCard, PrimaryLink, SecondaryLink } from "@/components/Blocks";
+import { Blocks } from "@/components/Prose";
 import { USE_CASES } from "@/lib/content";
+import { UC_ARTICLES } from "@/lib/usecase-articles";
 import { featurePage } from "@/lib/features";
 import { SHOTS } from "@/lib/shots";
-import { PRODUCT_ID, breadcrumbJsonLd, canonicalUrl, pageMetadata, personRef, webPageJsonLd } from "@/lib/seo";
+import { PRODUCT_ID, breadcrumbJsonLd, canonicalUrl, faqPageJsonLd, pageMetadata, personRef, webPageJsonLd } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -25,6 +27,8 @@ export default function UseCasePage({ params }: { params: { slug: string } }) {
   if (!u) notFound();
   const others = USE_CASES.filter((x) => x.slug !== u.slug).slice(0, 4);
   const shot = SHOTS[u.shot];
+  const article = UC_ARTICLES[u.slug];
+  const faq = article?.flatMap((b) => (b.type === "faq" ? b.items : [])) ?? [];
   const capabilities = u.features.map((slug) => featurePage(slug)!);
 
   const howTo = {
@@ -43,6 +47,7 @@ export default function UseCasePage({ params }: { params: { slug: string } }) {
       <JsonLd
         data={[
           howTo,
+          ...(faq.length ? [faqPageJsonLd(faq)] : []),
           webPageJsonLd({ path: `use-cases/${u.slug}`, name: u.title, description: u.description, shots: [shot] }),
           breadcrumbJsonLd([{ name: "Use cases", path: "use-cases" }, { name: u.title, path: `use-cases/${u.slug}` }]),
         ]}
@@ -63,6 +68,11 @@ export default function UseCasePage({ params }: { params: { slug: string } }) {
         <ProductShot shot={shot} priority />
       </Container>
 
+      {article ? (
+        <Container className="prose-fit pb-8">
+          <Blocks blocks={article} />
+        </Container>
+      ) : (
       <Container className="grid gap-14 py-12 lg:grid-cols-[1fr_1.4fr]">
         <section aria-labelledby="problem">
           <h2 id="problem" className="font-display text-2xl font-semibold text-ink">The problem</h2>
@@ -82,6 +92,7 @@ export default function UseCasePage({ params }: { params: { slug: string } }) {
           </ol>
         </section>
       </Container>
+      )}
 
       <Container className="pt-8">
         <h2 className="font-display text-2xl font-semibold text-ink">The features that do the work</h2>

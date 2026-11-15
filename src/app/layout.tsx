@@ -99,6 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "(function(){if(/^(localhost|127.0.0.1|0.0.0.0)$/.test(location.hostname)&&!/ga_test=1/.test(location.search)){window.gaEvent=function(){};window.gtag=function(){};return}var w=window,d=document,done=false;function go(){if(done)return;done=true;var s=d.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-64FMK4BV5Z';d.head.appendChild(s);(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(w,d,'clarity','script','z8awz5dimz');}['pointerdown','keydown','scroll','touchstart'].forEach(function(e){w.addEventListener(e,go,{once:true,passive:true})});function onLoad(){setTimeout(go,4000);if('requestIdleCallback' in w)w.requestIdleCallback(go,{timeout:3000});else setTimeout(go,3000)}if(d.readyState==='complete')onLoad();else w.addEventListener('load',onLoad,{once:true})})();",
           }}
         />
+        <script defer src="https://pulse.yaseenyk.workers.dev/p.js" data-site="fitrank.streamerosai.com" data-exclude="/contact,/early-access"></script>
       </head>
       <body className="font-sans">
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-4 focus:py-2">

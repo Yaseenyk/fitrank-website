@@ -31,7 +31,7 @@ export const MAKER = {
   url: "https://yk.streamerosai.com",
   // Same @id the portfolio uses, so search engines join the two sites into one entity.
   id: "https://yk.streamerosai.com/#person",
-  jobTitle: "Senior Full-Stack AI Engineer",
+  jobTitle: "Full Stack AI Developer",
   sameAs: [
     "https://www.linkedin.com/in/yaseen-yk",
     "https://github.com/Yaseenyk",

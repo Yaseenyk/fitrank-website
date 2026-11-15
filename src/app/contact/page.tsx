@@ -1,5 +1,6 @@
 import JsonLd from "@/components/JsonLd";
 import LeadForm from "@/components/LeadForm";
+import Link from "next/link";
 import { Breadcrumbs, Container } from "@/components/Blocks";
 import { CONTACT } from "@/lib/site";
 import { breadcrumbJsonLd, canonicalUrl, pageMetadata, personRef } from "@/lib/seo";
@@ -56,6 +57,26 @@ export default function ContactPage() {
         <div className="rounded-lg border border-line bg-white p-6 sm:p-8">
           <LeadForm defaultIntent="sales" />
         </div>
+      </Container>
+      <Container className="prose-fit pb-10">
+        <h2>Who you are writing to</h2>
+        <p>
+          FitRank is built and run by one person, Yaseen Khatib, in {CONTACT.city}, {CONTACT.country}. Your message goes to me and I reply by email. See the <Link href="/about/">about page</Link> for who builds the product and what stage it is at.
+        </p>
+        <h2>What to write about</h2>
+        <ul>
+          <li><strong>A pilot or a quote.</strong> Tell me roughly how many people you staff, what kinds of tasks (delivery, pre-sales, hiring) and how you schedule today. Pricing depends on team size and deployment, as the <Link href="/pricing/">pricing page</Link> explains.</li>
+          <li><strong>A demo on sample data.</strong> The screenshots on this site show synthetic demo data; a demo uses the same kind of data, not real people.</li>
+          <li><strong>A question about a feature or about how decisions are made.</strong> The <Link href="/how-it-works/">how it works</Link> and <Link href="/security/">trust</Link> pages answer most of them.</li>
+          <li><strong>The free tools or the blog:</strong> a bug, a wrong figure or a correction.</li>
+          <li><strong>Your data:</strong> to see, correct or delete what you sent, email from the address you used. See the <Link href="/privacy/">privacy notice</Link>.</li>
+        </ul>
+        <h2>What FitRank cannot help with</h2>
+        <p>
+          It is a staffing recommendation tool for organisations. It is not a job board and cannot help an individual find a job, and it does not run payroll or replace an HR system.
+        </p>
+        <h2>Please do not send</h2>
+        <p>Passwords, personal data about your employees, or confidential company documents. Use sample or anonymised data until an agreement is in place.</p>
       </Container>
     </>
   );

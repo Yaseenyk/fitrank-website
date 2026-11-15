@@ -3,12 +3,15 @@ import LeadForm from "@/components/LeadForm";
 import { Breadcrumbs, Container } from "@/components/Blocks";
 import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
-export const metadata = pageMetadata({
+const base = pageMetadata({
   title: "Pre-register for early access",
   description:
     "FitRank is taking on a small number of pilot companies. Pre-register to staff a team with FitRank, with guided setup and an accuracy review against your managers' decisions.",
   path: "early-access",
 });
+
+// A short form page: the pilot terms are summarised on /pricing/ and /about/, so this page stays out of the index.
+export const metadata = { ...base, robots: { index: false, follow: true } };
 
 const PILOT = [
   { name: "Setup with you", body: "We import your employees, skills and clients from CSV and map them to FitRank's fields together." },

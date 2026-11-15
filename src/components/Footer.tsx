@@ -18,9 +18,11 @@ const COMPANY_LINKS = [
   { href: "/blog/", label: "Blog" },
   { href: "/tools/", label: "Free scheduling tools" },
   ...TOOLS.map((t) => ({ href: `/tools/${t.slug}/`, label: t.name })),
+  { href: "/about/", label: "About" },
   { href: "/early-access/", label: "Pre-register" },
   { href: "/contact/", label: "Contact sales" },
   { href: "/privacy/", label: "Privacy notice" },
+  { href: "/terms/", label: "Terms of use" },
 ];
 
 export default function Footer() {

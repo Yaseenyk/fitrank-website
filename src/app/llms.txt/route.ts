@@ -1,4 +1,4 @@
-import { PUBLISHED } from "@/lib/blog";
+import { INDEXED as PUBLISHED } from "@/lib/blog";
 import { FEATURE_GROUPS, USE_CASES } from "@/lib/content";
 import { FEATURE_PAGES } from "@/lib/features";
 import { TOOLS } from "@/lib/tools";

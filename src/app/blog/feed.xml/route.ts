@@ -1,4 +1,4 @@
-import { PUBLISHED } from "@/lib/blog";
+import { INDEXED as PUBLISHED } from "@/lib/blog";
 import { canonicalUrl } from "@/lib/seo";
 import { MAKER, SITE_URL } from "@/lib/site";
 

@@ -86,10 +86,21 @@ const FIRST: Post[] = [
       { type: "h2", text: "What the current tools do" },
       { type: "p", text: "Most resource scheduling software and PSA (professional services automation) tools are really scheduling tools. They show who is booked where and let you filter by a skill tag. That works if your skill data is clean and your requirement is one keyword. It breaks when the requirement is a real client brief and the skill data is two years old." },
       { type: "p", text: "Newer \"AI resource allocation\" tools mostly add a match percentage. The problem is that a percentage with no reason behind it is hard to trust, and managers fall back to calling people they know." },
+      { type: "h2", text: "Turn the brief into a request that can be matched" },
+      { type: "p", text: "Whatever tool you use, matching is only as good as the request. Before anyone searches, split the client's email into fixed fields and send back what is missing:" },
+      { type: "ol", items: [
+        "Role and level: senior React developer, not just React.",
+        "Must-have skills, each with the level needed. Keep this list short; every extra must-have removes people.",
+        "Nice-to-have skills, kept apart so they rank people instead of excluding them.",
+        "Domain: banking experience is a must-have only if the client said so.",
+        "Start date, length and allocation, so availability can be checked against real free dates and leave.",
+        "Location and working-hours overlap, written as hours, for example four hours with US Eastern time.",
+      ] },
+      { type: "p", text: "A request in this shape can be checked by a person in minutes and by software in seconds. A forwarded email cannot be checked by either." },
       { type: "h2", text: "How FitRank approaches it" },
       { type: "p", text: "FitRank does skills-based resource matching in layers. First the hard rules run in code: available on the start date, right location or remote, enough timezone overlap. Then every person who passes is checked on five fixed questions: how well the skills match, whether the level is right, whether they know the domain, how risky delivery would be, and the overall fit. Each answer is a probability, not a guess written as text." },
       { type: "p", text: "The result is a short list with the reasons next to every name, so a manager can see why someone is there and why someone else is not. The manager accepts or rejects, and those decisions are what the system learns from." },
-      { type: "p", text: "See [how FitRank decides](/how-it-works/) and the [candidate matching](/features/candidate-matching/) page for the details. It is in pilot, and we are looking for teams who want to try it on real open tasks." },
+      { type: "p", text: "See [how FitRank decides](/how-it-works/), [plain-language task intake](/features/task-intake/) and [explained matching](/features/explainable-matching/) for the details. It is in pilot, and we are looking for teams who want to try it on real open tasks." },
     ],
   },
   {
@@ -143,9 +154,19 @@ const FIRST: Post[] = [
       { type: "p", text: "Internal mobility means filling roles by moving people already in the company: to another project, unit or role. A simple measure is the internal mobility rate = roles filled by internal moves \u00f7 all roles filled in the period \u00d7 100. If 12 of 40 roles this quarter went to people already in the company, the rate is 30%. Track it per unit as well; one unit holding on to its people can hide behind a good company average." },
       { type: "h2", text: "Build vs buy, for talent" },
       { type: "p", text: "There is also a middle option that gets skipped: the person inside is a near fit, missing one skill that could be trained in two or three weeks. Hiring takes longer than that, costs more, and the new person still needs onboarding. But this only works if somebody can see the near fit and the gap early enough." },
+      { type: "h2", text: "Putting the two options side by side" },
+      { type: "p", text: "The comparison that gets skipped is simple to write down. For one open role, fill in two columns, inside and outside, before anyone posts a job:" },
+      { type: "ul", items: [
+        "Start date: the internal person's free date against the outside candidate's notice period plus the time to find them. A 60-day notice period starts only after the offer is accepted.",
+        "Fit: must-have skills at the needed level, and how recently each was used. A near fit missing one skill goes in the inside column with the gap named.",
+        "Cost and margin: the internal person's cost band against the expected offer, both priced against the rate the client pays.",
+        "Ramp-up: someone who knows your tools, clients and delivery process starts useful sooner than a new joiner, who also needs onboarding.",
+        "What happens to the bench: if the outside hire goes ahead, the internal person is still idle and still paid.",
+      ] },
+      { type: "p", text: "Neither column always wins. An outside hire can be right when nobody inside is close, or when the skill is needed for years. The mistake is deciding without looking at both." },
       { type: "h2", text: "How FitRank approaches it" },
       { type: "p", text: "In FitRank every task is matched against everyone inside first, across units. If a good internal fit exists, the manager sees them with reasons. If someone is close but missing a skill, that is shown too. Only when nobody inside fits does the manager send a hiring request to HR, with the task attached, so HR does not start from a blank page." },
-      { type: "p", text: "When HR uploads outside resumes, they are scored by the same rules as employees, and the manager marks each one fit or not. Every hand-off is tracked, so later you can see how many roles were filled from inside. More on the [hire or move](/features/hire-or-move/) page." },
+      { type: "p", text: "When HR uploads outside resumes, they are scored by the same rules as employees, and the manager marks each one fit or not. Every hand-off is tracked, so later you can see how many roles were filled from inside. Each open task also carries a hire-or-move card that compares the best internal person with the best outside candidate by fit, start date and margin, with the reasons for each side; the manager decides. More on the [skill gaps and hire-or-move](/features/skill-gap-analysis/) page." },
     ],
   },
   {
@@ -197,12 +218,20 @@ const FIRST: Post[] = [
       ] },
       { type: "h2", text: "A simple skill gap analysis template" },
       { type: "ul", items: ["Demand by skill: open tasks plus pipeline deals likely to close, by month.", "Supply by skill: people who have it at the needed level and used it recently.", "Gap = demand minus supply, per skill and month.", "One action per gap: train someone close, move someone from another unit, or hire.", "Review it every two weeks; demand changes faster than people expect."] },
+      { type: "h2", text: "Key-person risk: a check you can run this week" },
+      { type: "p", text: "You do not need software for a first look. List the projects running now and, for each, the skills it cannot do without. Then count how many people hold each skill at a level where they could carry it alone:" },
+      { type: "ol", items: [
+        "One holder on a live project: a key-person risk. If that person resigns or falls sick, the project stalls.",
+        "One holder across the whole company: a bigger risk, because there is nobody to borrow from another account.",
+        "Two or three holders who are all fully booked: the skill is covered on paper and short in practice.",
+      ] },
+      { type: "p", text: "For each risk, pick one action: pair a second person with the holder, write down what only that person knows, or plan training for the closest colleague. Re-run the count when a project starts or ends." },
       { type: "h2", text: "What usually gets tried" },
       { type: "p", text: "Skills gap analysis software in HR suites often works on job families and competency frameworks. That is useful for career planning, but it is too slow and too general for a delivery manager who needs to know who can do Kafka next month." },
       { type: "h2", text: "How FitRank approaches it" },
-      { type: "p", text: "FitRank works from the same data it uses for matching. For upcoming tasks it lists the skills that are short, who is closest to having them, and how much training would close the gap. It flags skills held by only one or two people that running work depends on, and people who alone carry a skill on a live project." },
-      { type: "p", text: "Profiles also stay fresher on their own: when someone finishes a project that used a skill, the \"last used\" date for that skill moves forward without anyone filling a form. So the gap list is based on what people actually did recently, not on what they typed when they joined." },
-      { type: "p", text: "Details on the [skill gap analysis](/features/skill-gap-analysis/) page. This is workforce planning for IT services at the level a delivery manager can act on this week." },
+      { type: "p", text: "FitRank works from the same data it uses for matching. For a window you choose (30, 60 or 90 days, or six months), it reads the must-have skills of upcoming tasks and marks each one shortage, tight or covered against the people who will be free in time. For every gap it shows the free people who already have the skill and the person closest to it, so you can train before you hire." },
+      { type: "p", text: "The result is only as good as the profiles. Each skill on a profile carries a level, years of experience and when it was last used; a data-health view lists profiles that are missing information or due for their six-monthly review, and HR can check skills against a resume. When nobody is close, each open task's hire-or-move card compares the best internal person with the best outside candidate." },
+      { type: "p", text: "Details on the [skill gaps and hire-or-move](/features/skill-gap-analysis/) page. This is workforce planning for IT services at the level a delivery manager can act on this week." },
     ],
   },
   {
@@ -312,7 +341,7 @@ const FIRST: Post[] = [
       { type: "h2", text: "A typed way to check actions" },
       { type: "p", text: "The idea we use is simple: do not ask the model an open question, ask a typed one with fixed answers, and read the probability of each answer. Before an action: allow, ask a person, or block. Before a call: cheap model or strong model. After a result: pass, retry or escalate. If the top answer is not confident enough, or the model gives different answers when the options are shuffled, the check says \"not sure\" and a person decides." },
       { type: "h2", text: "How FitRank's decision service approaches it" },
-      { type: "p", text: "The same engine that makes FitRank's staffing decisions is available as a [decision API](/features/decision-api/) for other projects: tool approval, model choice and result checks for AI agents, with per-project keys, a budget, and every call logged for audit. It is early. We have measured it on test cases with known answers, where it answered correctly when it answered and held back on the risky borderline cases, but it still needs real agent traffic before anyone should rely on it alone. That is the honest state of AI action governance today." },
+      { type: "p", text: "The same engine that makes FitRank's staffing decisions is available as a [decision API](/features/in-house-decision-model/) for other projects: tool approval, model choice and result checks for AI agents, with per-project keys, a budget, and every call logged for audit. It is early. We have measured it on test cases with known answers, where it answered correctly when it answered and held back on the risky borderline cases, but it still needs real agent traffic before anyone should rely on it alone. That is the honest state of AI action governance today." },
     ],
   },
 ];
@@ -343,4 +372,14 @@ const PREVIEW_ALL = process.env.BLOG_PREVIEW_ALL === "1";
 export const PUBLISHED: Post[] = POSTS.filter((p) => PREVIEW_ALL || p.date <= todayInIndia()).sort((a, b) =>
   b.date.localeCompare(a.date),
 );
+
+/**
+ * 19 Nov 2026 (AdSense "low-value content" review of streamerosai.com): a post with fewer words than this is still built for
+ * readers on its day, but it is noindex and left out of the sitemap, llms.txt, the feed and the image sitemap until it is
+ * deepened with real substance. Add words only by adding real information; never pad a post to pass this line.
+ */
+export const MIN_INDEXED_WORDS = 600;
+export const isShortPost = (p: Post): boolean => words(p) < MIN_INDEXED_WORDS;
+/** Published posts that search engines are pointed to. */
+export const INDEXED: Post[] = PUBLISHED.filter((p) => !isShortPost(p));
 

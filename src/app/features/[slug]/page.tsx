@@ -5,17 +5,28 @@ import ProductShot from "@/components/ProductShot";
 import { Breadcrumbs, Container, CtaBand, FaqList, PrimaryLink, SecondaryLink } from "@/components/Blocks";
 import { CheckIcon } from "@/components/Bits";
 import { FEATURE_GROUPS, USE_CASES } from "@/lib/content";
-import { FEATURE_BY_NAME, FEATURE_PAGES, featurePage } from "@/lib/features";
+import { FEATURE_BY_NAME, FEATURE_PAGES, MERGED_FEATURE_PAGES, featurePage } from "@/lib/features";
 import { SHOTS } from "@/lib/shots";
 import { breadcrumbJsonLd, faqPageJsonLd, pageMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return FEATURE_PAGES.map((p) => ({ slug: p.slug }));
+  // Merged pages keep their address for old links; they render a short noindex pointer (see MERGED_FEATURE_PAGES).
+  return [...FEATURE_PAGES, ...MERGED_FEATURE_PAGES].map((p) => ({ slug: p.slug }));
 }
 
+const mergedPage = (slug: string) => MERGED_FEATURE_PAGES.find((m) => m.slug === slug);
+
 export function generateMetadata({ params }: { params: { slug: string } }) {
+  const m = mergedPage(params.slug);
+  if (m) {
+    const into = featurePage(m.into)!;
+    return {
+      ...pageMetadata({ title: `${m.name}: now part of ${into.name}`.slice(0, 60), description: `${m.name} is now described on the ${into.name} page, together with the related features.`, path: `features/${m.slug}` }),
+      robots: { index: false, follow: true },
+    };
+  }
   const p = featurePage(params.slug);
   if (!p) return {};
   return pageMetadata({ title: p.metaTitle, description: p.description, path: `features/${p.slug}` });
@@ -43,7 +54,37 @@ Authorization: Bearer <project key>
   ...
 }`;
 
+function MergedNotice({ name, into }: { name: string; into: NonNullable<ReturnType<typeof featurePage>> }) {
+  return (
+    <>
+      <Breadcrumbs trail={[{ name: "Features", href: "/features/" }, { name }]} />
+      <Container className="py-16 sm:py-20">
+        <h1 className="max-w-[24ch] font-display text-4xl font-semibold leading-tight tracking-tight text-ink sm:text-5xl">{name} is now part of {into.name}</h1>
+        <p className="mt-6 max-w-[64ch] text-lg leading-relaxed text-ink-soft">
+          This capability used to have its own page. Its features are now explained on one page with the closely related ones, with the same screenshots and answers.
+        </p>
+        <div className="mt-8"><PrimaryLink href={`/features/${into.slug}/`}>Go to {into.name}</PrimaryLink></div>
+        <h2 className="mt-14 font-display text-2xl font-semibold text-ink">What that page covers</h2>
+        <ul className="mt-6 grid gap-x-10 gap-y-6 sm:grid-cols-2">
+          {into.features.map((n) => (
+            <li key={n} className="flex gap-3">
+              <CheckIcon />
+              <div>
+                <h3 className="font-semibold text-ink">{n}</h3>
+                <p className="mt-1.5 leading-relaxed text-ink-soft">{FEATURE_BY_NAME[n]?.body}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-10"><Link href="/features/" className="font-medium text-cobalt hover:underline">See all {FEATURE_PAGES.length} capabilities</Link></p>
+      </Container>
+    </>
+  );
+}
+
 export default function FeaturePageView({ params }: { params: { slug: string } }) {
+  const m = mergedPage(params.slug);
+  if (m) return <MergedNotice name={m.name} into={featurePage(m.into)!} />;
   const p = featurePage(params.slug);
   if (!p) notFound();
   const group = FEATURE_GROUPS.find((g) => g.id === p.group)!;
@@ -112,6 +153,20 @@ export default function FeaturePageView({ params }: { params: { slug: string } }
           </ol>
         </section>
       </Container>
+
+      {hero && p.features.includes("Decision API") && (
+        <Container className="pb-16">
+          <h2 className="font-display text-3xl font-semibold text-ink">Calling the Decision API</h2>
+          <figure className="mt-6 overflow-hidden rounded-xl border border-ink/10 bg-ink">
+            <pre className="overflow-x-auto p-6 text-[13px] leading-relaxed text-white/90 sm:text-sm">
+              <code>{API_EXAMPLE}</code>
+            </pre>
+            <figcaption className="border-t border-white/10 px-6 py-3 text-sm text-white/60">
+              Illustrative call to a built-in question: a probability for every option, or an abstain when the model isn&apos;t sure.
+            </figcaption>
+          </figure>
+        </Container>
+      )}
 
       {more.length > 0 && (
         <section aria-label="More screens" className="border-y border-line bg-white">

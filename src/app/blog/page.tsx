@@ -1,7 +1,7 @@
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import { Breadcrumbs, Container, CtaBand, PageIntro } from "@/components/Blocks";
-import { PUBLISHED } from "@/lib/blog";
+import { INDEXED, PUBLISHED } from "@/lib/blog";
 import { breadcrumbJsonLd, canonicalUrl, pageMetadata, personRef } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 
@@ -25,7 +25,7 @@ export default function BlogIndex() {
     name: "FitRank blog",
     url: canonicalUrl("blog"),
     author: personRef,
-    blogPost: PUBLISHED.map((p) => ({
+    blogPost: INDEXED.map((p) => ({
       "@type": "BlogPosting",
       headline: p.title,
       url: canonicalUrl(`blog/${p.slug}`),

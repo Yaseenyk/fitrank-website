@@ -26,7 +26,7 @@ export const ARTICLES_C: Record<string, Block[]> = {
       "FitRank checks who would be free and qualified in time, using rules only. That makes the answer instant and repeatable, which is what a what-if needs. The model's ranking is kept for real tasks, where a manager reviews it.",
       "The result shows how many roles you can staff from inside, the people who could fill them, and billing and margin per week.",
       "Nothing is created or reserved. No task is added and nobody is held, so you can try as many scenarios as you like. When the deal is won, you create the real task and run matching. See [what-if staffing for pre-sales](/features/what-if-staffing/).",
-      "For the margin, FitRank uses your rate card and margin target; salaries are not stored. See [employee value and client profiles](/features/employee-value/).",
+      "For the margin, FitRank uses your rate card and margin target; salaries are not stored. See [employee value and client profiles](/features/what-if-staffing/).",
     ] },
     { type: "p", text: "A what-if tells you whether a role could be staffed, not who is best for it. That needs a real task and a match run. The step from one to the other is described in [how to find the right person for an open task](/use-cases/staff-open-tasks/)." },
     { type: "h2", text: "A checklist before you commit a date" },
@@ -81,7 +81,7 @@ export const ARTICLES_C: Record<string, Block[]> = {
     { type: "ul", items: [
       "Protected attributes are never stored, sent to AI or used as signals: gender, age, religion, caste, ethnicity, nationality, marital status, disability, health, sexual orientation, political views, photos and salaries. Names and employee codes are never sent to a language model. See [security and access](/features/security-and-access/).",
       "Every recommendation records the model, versions, score, band and what the manager did. All of it can be exported as an audit CSV, and sign-ins, task changes, decisions, thresholds, model switches, imports and outcomes are audited too.",
-      "The fairness view compares recommendation rates by location and practice among qualified people, using the four-fifths rule and a significance test. A group recommended at less than 80 per cent of the best group's rate is flagged for a look when the test says the gap is unlikely to be chance. Rates appear only when there are enough decisions. See [health and fairness dashboards](/features/health-and-fairness/).",
+      "The fairness view compares recommendation rates by location and practice among qualified people, using the four-fifths rule and a significance test. A group recommended at less than 80 per cent of the best group's rate is flagged for a look when the test says the gap is unlikely to be chance. Rates appear only when there are enough decisions. See [health and fairness dashboards](/features/model-governance/).",
       "The health view shows how often managers agree with the model by band, week and model version, six-week placement outcomes and the reasons managers gave when rejecting suggestions.",
       "Thresholds and model versions are controlled by admins and versioned. A model that ranks worse than the current one on held-out tests is refused unless an admin overrides it on purpose, and past runs keep the model and cut-offs they used. See [thresholds and model versions](/features/model-governance/).",
       "Every company's data is separated by row-level security in the database, and access follows roles.",
@@ -136,7 +136,7 @@ export const ARTICLES_C: Record<string, Block[]> = {
     ] },
     { type: "h2", text: "How FitRank handles it" },
     { type: "ul", items: [
-      "The same typed-decision engine that powers matching is exposed to your other systems. See [the Decision API](/features/decision-api/).",
+      "The same typed-decision engine that powers matching is exposed to your other systems. See [the Decision API](/features/in-house-decision-model/).",
       "In the admin area you create a project and an API key. Each project has its own budget and rate limit.",
       "You call a question by name with its inputs, from your service or the Python client. Built-in questions include helping an AI agent choose a cheap or strong model, approve a tool action and check a result.",
       "Each question has a fixed list of options. You get back a probability for each, or an abstain when the model is not sure.",

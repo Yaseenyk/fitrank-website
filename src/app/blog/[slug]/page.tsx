@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import JsonLd from "@/components/JsonLd";
 import { Breadcrumbs, Container, CtaBand } from "@/components/Blocks";
-import { PUBLISHED, post, words, type Block } from "@/lib/blog";
+import { PUBLISHED, isShortPost, post, words, type Block } from "@/lib/blog";
 import { ORG_ID, breadcrumbJsonLd, canonicalUrl, faqPageJsonLd, pageMetadata, personRef, shareImage } from "@/lib/seo";
 import { MAKER, SITE_URL, withBase } from "@/lib/site";
 
@@ -22,7 +22,12 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
     path: `blog/${p.slug}`,
     article: { publishedTime: p.date, tags: p.keywords, section: p.topic },
   });
-  return { ...meta, alternates: { ...meta.alternates, types: { "application/rss+xml": `${SITE_URL}/blog/feed.xml` } } };
+  return {
+    ...meta,
+    alternates: { ...meta.alternates, types: { "application/rss+xml": `${SITE_URL}/blog/feed.xml` } },
+    // A short post is readable but not offered to search engines until it is deepened (see MIN_INDEXED_WORDS).
+    ...(isShortPost(p) ? { robots: { index: false, follow: true } } : {}),
+  };
 }
 
 /** Text with [label](href) links: internal links stay in the site, outside ones open a new tab. */

@@ -130,7 +130,7 @@ export const USE_CASES: UseCase[] = [
     ],
     outcome: "Idle time turned into a short, actionable list instead of a weekly report.",
     shot: "bench",
-    features: ["bench-management", "employee-value"],
+    features: ["bench-management", "what-if-staffing"],
   },
   {
     slug: "skill-gap-planning",
@@ -160,7 +160,7 @@ export const USE_CASES: UseCase[] = [
     ],
     outcome: "Fewer unnecessary hires and faster internal moves.",
     shot: "taskDetail",
-    features: ["hire-or-move", "candidate-matching"],
+    features: ["skill-gap-analysis", "hiring-requests"],
   },
   {
     slug: "hr-candidate-pipeline",
@@ -175,7 +175,7 @@ export const USE_CASES: UseCase[] = [
     ],
     outcome: "One tracked hand-off from manager to HR and back, with privacy built in.",
     shot: "hrHome",
-    features: ["hiring-requests", "resume-reading", "candidate-matching"],
+    features: ["hiring-requests", "resume-reading"],
   },
   {
     slug: "multi-task-staffing",
@@ -205,7 +205,7 @@ export const USE_CASES: UseCase[] = [
     ],
     outcome: "Start dates you can commit to with confidence.",
     shot: "whatIf",
-    features: ["what-if-staffing", "employee-value"],
+    features: ["what-if-staffing", "bench-management"],
   },
   {
     slug: "fair-auditable-decisions",
@@ -220,7 +220,7 @@ export const USE_CASES: UseCase[] = [
     ],
     outcome: "Answers for auditors, works councils and your own leadership.",
     shot: "fairness",
-    features: ["health-and-fairness", "security-and-access", "model-governance"],
+    features: ["model-governance", "security-and-access"],
   },
   {
     slug: "decision-api",
@@ -235,7 +235,7 @@ export const USE_CASES: UseCase[] = [
     ],
     outcome: "AI answers your code can rely on, with limits you control.",
     shot: "runTrail",
-    features: ["decision-api", "in-house-decision-model"],
+    features: ["in-house-decision-model"],
   },
 ];
 

@@ -61,3 +61,19 @@ sitemaps and both llms files; no built page links to them.
   the multi-task use case) is possible but would remove a real capability page.
 - No customers, reviews or references exist, which the site says honestly. "Genuine user interest" for AdSense depends on real traffic.
 - Benchmarks are synthetic and say so; real accuracy needs a pilot company's own decisions.
+
+## Privacy and crawl audit (19 Nov 2026)
+
+Method: home and /contact/ loaded in headless Chromium with every third-party request and cookie recorded, three more
+pages fetched raw, and the root layout read for scripts injected later.
+
+- Loaded on fitrank.streamerosai.com: Google Analytics 4 (googletagmanager.com, analytics.google.com,
+  stats.g.doubleclick.net; cookies `_ga`, `_ga_64FMK4BV5Z`), Microsoft Clarity (clarity.ms, c.bing.com; cookies `_clck`,
+  `_clsk`, plus Microsoft's `MUID`/`MR`/`SM`), Pulse (pulse.yaseenyk.workers.dev, no cookies). On demand only: EmailJS when
+  a form is sent. No AdSense, no Google Fonts request.
+- Privacy page fixed: the Pulse text missed what it records (country, network name, clicks, form name on submit), the
+  daily-rotating visitor code and its host; Clarity's own and Microsoft's cookies and a GA opt-out were missing. Now one
+  list item per service. AdSense "future use" paragraph kept.
+- Crawl: robots.txt allows crawling and names both sitemaps. All 57 URLs in sitemap.xml and image-sitemap.xml return 200,
+  none redirects, none is noindex, every canonical matches.
+- Raw HTML: main text is in the static HTML (home about 2,380 words, inner pages 700 to 880 words).

@@ -27,11 +27,29 @@ export default function PrivacyPage() {
           advertising cookies today.
         </p>
         <h2>Analytics</h2>
-        <p>
-          We use Google Analytics to see how visitors find and use the site. It sets first-party analytics cookies and sends usage data, such
-          as pages viewed and approximate location, to Google. We don&apos;t use it for advertising. The site also uses Microsoft Clarity, a free tool that records anonymised heatmaps and session replays so I can see where visitors get stuck. Text typed into forms is masked and is not recorded. You can block it with a browser extension
-          or by disabling cookies. A small counter run by me on my own server also records page views, the page you came from and link clicks, and whether the visit looks like a person or a bot. It sets no cookies and stores no IP address, name or anything you type. Records are deleted after 90 days, and it switches itself off if your browser sends Do Not Track or Global Privacy Control.
-        </p>
+        <p>Three measuring tools load on this site. None of them is used for advertising, and the site works the same if you block them with a browser extension.</p>
+        <ul>
+          <li>
+            <strong>Google Analytics</strong> (googletagmanager.com) shows how visitors find and use the site. It sets first-party cookies
+            (<code>_ga</code>, <code>_ga_*</code>) and sends usage data, such as pages viewed and approximate location, to Google. Opt out with
+            Google&apos;s <a href="https://tools.google.com/dlpage/gaoptout">browser add-on</a>.
+          </li>
+          <li>
+            <strong>Microsoft Clarity</strong> (clarity.ms) records session replays and heatmaps (mouse movement, clicks and scrolling) so I can
+            see where visitors get stuck. Text typed into forms is masked and is not recorded. It sets its own cookies (<code>_clck</code>,{" "}
+            <code>_clsk</code>) and Microsoft cookies on clarity.ms and bing.com (such as <code>MUID</code>); see the{" "}
+            <a href="https://privacy.microsoft.com/privacystatement">Microsoft privacy statement</a>.
+          </li>
+          <li>
+            <strong>Pulse</strong>, a small counter run by me (a script from pulse.yaseenyk.workers.dev, a Cloudflare Worker). It records the
+            page (without the query string), the page you came from and campaign tags, country, device type, browser and system name, screen
+            size, language, the name of your network provider, scroll depth, time on the page, page speed, which links and buttons were
+            clicked, and, when a form is sent, the form&apos;s name only, never what you typed. It sets no cookies and stores no IP address or
+            browser string: the address is used in memory only, to limit abuse and to make a visitor code that changes every day (a one-way
+            hash with a random salt that is deleted the next day), so visits cannot be linked across days. Records are deleted after 90 days,
+            and it switches itself off if your browser sends Do Not Track or Global Privacy Control.
+          </li>
+        </ul>
         <h2>Cookies</h2>
         <p>
           The only cookies or local storage on this site come from Google Analytics and Microsoft Clarity, and from Google if ads are ever switched on. The site itself keeps one note in your browser, the first site that sent you, so an enquiry can be tied to where you came from. Clearing your browser data removes it.
@@ -48,7 +66,7 @@ export default function PrivacyPage() {
         <p>
           To see, correct or delete what you sent us, email <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>. The website is run by Yaseen Khatib in Hyderabad, India. See also the <Link href="/about/">about page</Link>, the <Link href="/terms/">terms</Link> and the <Link href="/contact/">contact page</Link>.
         </p>
-        <p className="text-sm">Last updated 16 November 2026.</p>
+        <p className="text-sm">Last updated 19 November 2026.</p>
       </Container>
     </>
   );

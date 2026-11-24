@@ -3,6 +3,7 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import { EMAILJS } from "@/lib/emailjs";
+import { sendToInbox } from "@/lib/inbox";
 import { withBase } from "@/lib/site";
 import { gaEvent } from "@/lib/ga";
 
@@ -35,6 +36,14 @@ const SUBMIT_LABEL: Record<Intent, string> = {
   sales: "Contact sales",
   demo: "Request a demo",
   question: "Send question",
+};
+
+// The form name the owner's inbox files each request under.
+const INBOX_FORM: Record<Intent, string> = {
+  "early-access": "early-access",
+  sales: "sales",
+  demo: "demo-request",
+  question: "question",
 };
 
 const SENT_MESSAGE: Record<Intent, string> = {
@@ -79,6 +88,19 @@ export default function LeadForm({ defaultIntent = "early-access" }: { defaultIn
       form.message || "(no message)",
     ].join("\n");
 
+    // The inbox (the owner's own database) is the record; email is only a notification on top.
+    const extra: Record<string, string> = { company: form.company };
+    if (form.role) extra.role = form.role;
+    if (form.teamSize) extra.company_size = form.teamSize;
+    const saved = await sendToInbox({
+      form: INBOX_FORM[intent],
+      name: form.name,
+      email: form.email,
+      phone: form.phone || undefined,
+      message: form.message || undefined,
+      extra,
+    });
+
     try {
       await emailjs.send(
         EMAILJS.service,
@@ -99,6 +121,15 @@ export default function LeadForm({ defaultIntent = "early-access" }: { defaultIn
       setStatus("sent");
       setForm(EMPTY);
     } catch (err) {
+      console.error("EmailJS send failed:", err);
+      if (saved) {
+        // Stored in the inbox, so the request is not lost even though the email notice failed.
+        setSentIntent(intent);
+        gaEvent("generate_lead", { form_name: "fitrank-lead", cta_text: intent });
+        setStatus("sent");
+        setForm(EMPTY);
+        return;
+      }
       const e = err as { status?: number; text?: string };
       setErrorDetail(e?.text ? `${e.status ?? ""} ${e.text}`.trim() : "");
       setStatus("error");

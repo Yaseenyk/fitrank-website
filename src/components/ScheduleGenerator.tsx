@@ -228,7 +228,8 @@ export default function ScheduleGenerator() {
           At most one shift per person per day
         </label>
         <p className="tabular text-sm text-ink-mute">
-          {demand} slots to fill, {capacity} available this week{capacity < demand ? ": some slots will stay unfilled" : ""}
+          {/* One string, so the counts still update when the page is machine-translated. */}
+          {`${demand} slots to fill, ${capacity} available this week${capacity < demand ? ": some slots will stay unfilled" : ""}`}
         </p>
         <button type="button" onClick={run} className="ml-auto rounded-md bg-cobalt px-5 py-2.5 text-[15px] font-semibold text-white hover:bg-cobalt-deep">
           Generate schedule

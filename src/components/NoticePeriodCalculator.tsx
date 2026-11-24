@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type Unit = "days" | "months";
 
@@ -35,7 +35,15 @@ function lastWorkingDay(start: Date, amount: number, unit: Unit, countResignatio
 }
 
 export default function NoticePeriodCalculator() {
-  const [resigned, setResigned] = useState(todayIso());
+  // Today's date is filled in after the page loads: the HTML is built ahead of time, so a date picked at build time
+  // would differ from the visitor's day and break hydration (React errors 418/425).
+  const [resigned, setResigned] = useState("");
+  const [today, setToday] = useState<string | null>(null);
+  useEffect(() => {
+    const t = todayIso();
+    setToday(t);
+    setResigned((r) => r || t);
+  }, []);
   const [amount, setAmount] = useState(90);
   const [unit, setUnit] = useState<Unit>("days");
   const [countDay, setCountDay] = useState(true);
@@ -46,11 +54,11 @@ export default function NoticePeriodCalculator() {
     if (!start || !Number.isFinite(amount) || amount < 1 || amount > 365) return null;
     const last = lastWorkingDay(start, amount, unit, countDay);
     const shortened = buyout > 0 ? new Date(last.getTime() - buyout * DAY) : null;
-    const today = parse(todayIso())!;
-    const left = Math.round((last.getTime() - today.getTime()) / DAY);
+    const now = today ? parse(today) : null;
+    const left = now ? Math.round((last.getTime() - now.getTime()) / DAY) : null;
     const weekend = [0, 6].includes(last.getUTCDay());
     return { last, shortened, left, weekend };
-  }, [resigned, amount, unit, countDay, buyout]);
+  }, [resigned, amount, unit, countDay, buyout, today]);
 
   const field = "mt-1 w-full rounded-md border border-line bg-white px-3 py-2 text-ink focus:border-cobalt focus:outline-none";
 
@@ -113,12 +121,14 @@ export default function NoticePeriodCalculator() {
             <p className="mt-1 font-display text-3xl font-semibold text-ink">{show(result.last)}</p>
             <p className="mt-1 text-sm text-ink-mute">{iso(result.last)}</p>
             {result.weekend && <p className="mt-3 text-sm text-ink-soft">This falls on a weekend. Many companies then treat the Friday before as your last working day; ask HR.</p>}
-            <p className="mt-4 leading-relaxed text-ink-soft">
-              {result.left > 0 ? `${result.left} days from today.` : result.left === 0 ? "That is today." : `That was ${-result.left} days ago.`}
-            </p>
+            {result.left !== null && (
+              <p className="mt-4 leading-relaxed text-ink-soft">
+                {result.left > 0 ? `${result.left} days from today.` : result.left === 0 ? "That is today." : `That was ${-result.left} days ago.`}
+              </p>
+            )}
             {result.shortened && (
               <p className="mt-4 leading-relaxed text-ink-soft">
-                With {buyout} days bought out or waived: <strong className="text-ink">{show(result.shortened)}</strong>.
+                <span>{`With ${buyout} days bought out or waived:`}</span> <strong className="text-ink">{show(result.shortened)}</strong>.
               </p>
             )}
             <p className="mt-6 text-sm leading-relaxed text-ink-mute">
